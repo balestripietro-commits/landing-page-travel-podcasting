@@ -1,0 +1,1089 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Travel Podcasting</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Roboto+Flex:opsz,wght@8..144,400..800&display=swap">
+<style>
+/* Travel Podcasting — landing page.
+   I token riprendono il design system dei siti dei borghi (design-system.css +
+   theme-vicopisano.css), così la landing e i percorsi restano la stessa famiglia. */
+
+:root {
+  --tp-color-primary: #245c52;
+  --tp-color-on-primary: #ffffff;
+  --tp-color-primary-container: #d9eee8;
+  --tp-color-on-primary-container: #0e332d;
+  --tp-color-secondary: #2c6da3;
+  --tp-color-tertiary: #e8c36d;
+  --tp-color-surface: #fff7ed;
+  --tp-color-surface-bright: #fffdf7;
+  --tp-color-surface-container: #f7efe5;
+  --tp-color-surface-container-high: #efe2d5;
+  --tp-color-on-surface: #1f5f53;
+  --tp-color-on-surface-variant: #49685f;
+  --tp-color-outline: #adc2bd;
+  --tp-color-outline-variant: #d9e5e1;
+  --tp-color-ink: #10231f;
+
+  --tp-font-ui: "Roboto Flex", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tp-font-editorial: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --tp-space-2: 8px;
+  --tp-space-3: 12px;
+  --tp-space-4: 16px;
+  --tp-space-5: 24px;
+  --tp-space-6: 32px;
+  --tp-space-7: 48px;
+  --tp-space-8: 64px;
+  --tp-space-9: 96px;
+
+  --tp-radius-sm: 12px;
+  --tp-radius-md: 18px;
+  --tp-radius-lg: 24px;
+  --tp-radius-xl: 34px;
+  --tp-radius-xxl: 48px;
+  --tp-radius-full: 999px;
+
+  --tp-elevation-1: 0 2px 8px rgba(23, 63, 57, 0.08);
+  --tp-elevation-2: 0 8px 24px rgba(23, 63, 57, 0.12);
+  --tp-elevation-3: 0 18px 44px rgba(23, 63, 57, 0.18);
+
+  --heading: #245c52;
+  --fg: #10231f;
+  --btn-bg: #245c52;
+  --btn-fg: #ffffff;
+  --ink-bg: #245c52;
+  --input-bg: #ffffff;
+  --ok: #1e7c55;
+  --err: #b3261e;
+  --tp-gutter: 24px;
+  --tp-measure: 1180px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  --tp-color-primary-container: #1d3a34;
+  --tp-color-on-primary-container: #d9eee8;
+  --tp-color-secondary: #86b9e4;
+  --tp-color-tertiary: #e8c36d;
+  --tp-color-surface: #0f1d1a;
+  --tp-color-surface-bright: #162825;
+  --tp-color-surface-container: #132421;
+  --tp-color-surface-container-high: #1b312d;
+  --tp-color-on-surface-variant: #a8c4bc;
+  --tp-color-outline: #3d5a53;
+  --tp-color-outline-variant: #284039;
+  --heading: #bfe3d9;
+  --fg: #e6f0ed;
+  --btn-bg: #2f7a6b;
+  --btn-fg: #ffffff;
+  --ink-bg: #0b2a25;
+  --input-bg: #0f1d1a;
+  --ok: #5fcf9b;
+  --err: #ff8f86;
+  color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --tp-color-primary-container: #1d3a34;
+  --tp-color-on-primary-container: #d9eee8;
+  --tp-color-secondary: #86b9e4;
+  --tp-color-tertiary: #e8c36d;
+  --tp-color-surface: #0f1d1a;
+  --tp-color-surface-bright: #162825;
+  --tp-color-surface-container: #132421;
+  --tp-color-surface-container-high: #1b312d;
+  --tp-color-on-surface-variant: #a8c4bc;
+  --tp-color-outline: #3d5a53;
+  --tp-color-outline-variant: #284039;
+  --heading: #bfe3d9;
+  --fg: #e6f0ed;
+  --btn-bg: #2f7a6b;
+  --btn-fg: #ffffff;
+  --ink-bg: #0b2a25;
+  --input-bg: #0f1d1a;
+  --ok: #5fcf9b;
+  --err: #ff8f86;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--tp-font-ui);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--tp-color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--tp-font-editorial);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--tp-measure);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.eyebrow {
+  font-family: var(--tp-font-ui);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tp-color-secondary);
+  margin-bottom: var(--tp-space-4);
+}
+
+/* ---------- intestazione ---------- */
+
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--tp-color-surface) 86%, transparent);
+  border-bottom: 1px solid var(--tp-color-outline-variant);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tp-space-4);
+  min-height: 68px;
+}
+
+.brand {
+  font-family: var(--tp-font-ui);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--tp-space-5);
+}
+
+.site-nav a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--tp-color-on-surface-variant);
+}
+
+.site-nav a:hover {
+  color: var(--heading);
+}
+
+.site-nav .btn {
+  color: var(--btn-fg);
+}
+
+@media (max-width: 740px) {
+  .site-nav .nav-link {
+    display: none;
+  }
+}
+
+/* ---------- pulsanti ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tp-space-2);
+  padding: 13px 24px;
+  border: 0;
+  border-radius: var(--tp-radius-full);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--tp-font-ui);
+  font-size: 0.97rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--tp-elevation-2);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--heading);
+  box-shadow: inset 0 0 0 1.5px var(--tp-color-outline);
+}
+
+.btn--ghost:hover {
+  background: var(--tp-color-primary-container);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  padding-block: clamp(72px, 13vw, 144px) clamp(56px, 9vw, 104px);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 58% at 14% -8%, color-mix(in srgb, var(--tp-color-tertiary) 30%, transparent), transparent 62%),
+    radial-gradient(ellipse 58% 48% at 92% 4%, color-mix(in srgb, var(--tp-color-secondary) 16%, transparent), transparent 60%),
+    linear-gradient(170deg, var(--tp-color-surface-bright), var(--tp-color-surface));
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7.2vw, 5rem);
+  max-width: 15ch;
+  color: var(--heading);
+}
+
+.hero__lead {
+  margin-top: var(--tp-space-5);
+  max-width: 54ch;
+  font-size: clamp(1.08rem, 2.1vw, 1.32rem);
+  color: var(--tp-color-on-surface-variant);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tp-space-3);
+  margin-top: var(--tp-space-7);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tp-space-6);
+  margin-top: var(--tp-space-8);
+  padding-top: var(--tp-space-6);
+  border-top: 1px solid var(--tp-color-outline-variant);
+}
+
+.hero__meta div {
+  flex: 1 1 180px;
+}
+
+.hero__meta dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--tp-color-secondary);
+}
+
+.hero__meta dd {
+  margin: 6px 0 0;
+  font-size: 0.97rem;
+  color: var(--tp-color-on-surface-variant);
+}
+
+/* ---------- sezioni ---------- */
+
+.section {
+  padding-block: clamp(64px, 10vw, 112px);
+}
+
+.section--tinted {
+  background: var(--tp-color-surface-container);
+}
+
+.section--ink {
+  background: var(--ink-bg);
+  color: #eaf5f1;
+}
+
+/* Più specifico di `.section__head h2`, altrimenti il titolo resta verde su verde. */
+.section--ink .section__head h2,
+.section--ink .section__intro {
+  color: inherit;
+}
+
+.section--ink .eyebrow {
+  color: var(--tp-color-tertiary);
+}
+
+.section__head {
+  max-width: 62ch;
+  margin-bottom: var(--tp-space-8);
+}
+
+.section__head h2 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  color: var(--heading);
+}
+
+.section__intro {
+  margin-top: var(--tp-space-4);
+  font-size: 1.06rem;
+  color: var(--tp-color-on-surface-variant);
+}
+
+/* ---------- i due piloti ---------- */
+
+.pilots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--tp-space-6);
+}
+
+.pilot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 460px;
+  border-radius: var(--tp-radius-xl);
+  overflow: hidden;
+  background: var(--tp-color-ink);
+  text-decoration: none;
+  color: #fff;
+  box-shadow: var(--tp-elevation-2);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.pilot:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--tp-elevation-3);
+}
+
+.pilot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.pilot:hover img {
+  transform: scale(1.04);
+}
+
+.pilot__scrim {
+  position: relative;
+  margin-top: auto;
+  padding: var(--tp-space-7) var(--tp-space-6) var(--tp-space-6);
+  background: linear-gradient(to top, rgba(8, 26, 23, 0.92) 12%, rgba(8, 26, 23, 0.68) 52%, transparent);
+}
+
+.pilot__tag {
+  display: inline-block;
+  padding: 5px 13px;
+  border-radius: var(--tp-radius-full);
+  background: color-mix(in srgb, var(--tp-color-tertiary) 90%, transparent);
+  color: #3a2b06;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pilot h3 {
+  margin-top: var(--tp-space-4);
+  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+}
+
+.pilot p {
+  margin-top: var(--tp-space-3);
+  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.pilot__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tp-space-4);
+  margin-top: var(--tp-space-5);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pilot__links span:first-child {
+  color: var(--tp-color-tertiary);
+}
+
+.pilot__links span:last-child {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ---------- tre caratteristiche ---------- */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: var(--tp-space-6);
+}
+
+.feature {
+  padding: var(--tp-space-6);
+  border-radius: var(--tp-radius-lg);
+  background: var(--tp-color-surface-bright);
+  box-shadow: var(--tp-elevation-1);
+}
+
+.feature__num {
+  font-family: var(--tp-font-editorial);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--tp-color-tertiary);
+}
+
+.feature h3 {
+  margin-top: var(--tp-space-4);
+  font-size: 1.32rem;
+  color: var(--heading);
+}
+
+.feature p {
+  margin-top: var(--tp-space-3);
+  font-size: 0.97rem;
+  color: var(--tp-color-on-surface-variant);
+}
+
+.feature__stat {
+  display: block;
+  margin-top: var(--tp-space-4);
+  padding-top: var(--tp-space-4);
+  border-top: 1px solid var(--tp-color-outline-variant);
+  font-family: var(--tp-font-editorial);
+  font-size: 2.1rem;
+  color: var(--tp-color-secondary);
+}
+
+.feature__stat small {
+  display: block;
+  font-family: var(--tp-font-ui);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--tp-color-on-surface-variant);
+}
+
+/* ---------- metodo ---------- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--tp-space-5);
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: var(--tp-space-6) var(--tp-space-5);
+  border-radius: var(--tp-radius-md);
+  background: color-mix(in srgb, #ffffff 10%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
+}
+
+.step__num {
+  font-family: var(--tp-font-editorial);
+  font-size: 0.95rem;
+  color: var(--tp-color-tertiary);
+}
+
+.step h3 {
+  margin-top: var(--tp-space-3);
+  font-size: 1.22rem;
+}
+
+.step p {
+  margin-top: var(--tp-space-2);
+  font-size: 0.93rem;
+  color: rgba(234, 245, 241, 0.78);
+}
+
+/* ---------- team ---------- */
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: var(--tp-space-6);
+}
+
+.person {
+  padding: var(--tp-space-6);
+  border-radius: var(--tp-radius-lg);
+  background: var(--tp-color-surface-bright);
+  box-shadow: var(--tp-elevation-1);
+}
+
+.person h3 {
+  font-size: 1.3rem;
+  color: var(--heading);
+}
+
+.person__role {
+  margin-top: var(--tp-space-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tp-color-secondary);
+}
+
+.person p {
+  margin-top: var(--tp-space-4);
+  font-size: 0.96rem;
+  color: var(--tp-color-on-surface-variant);
+}
+
+/* ---------- contatto ---------- */
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: var(--tp-space-8);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact__card {
+  padding: var(--tp-space-7);
+  border-radius: var(--tp-radius-xl);
+  background: var(--tp-color-surface-bright);
+  box-shadow: var(--tp-elevation-2);
+}
+
+.field {
+  display: block;
+  margin-bottom: var(--tp-space-4);
+}
+
+.field span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--tp-color-on-surface-variant);
+}
+
+.field input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--tp-color-outline);
+  border-radius: var(--tp-radius-sm);
+  background: var(--input-bg);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--fg);
+}
+
+.field input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--tp-color-secondary) 42%, transparent);
+  outline-offset: 1px;
+  border-color: var(--tp-color-secondary);
+}
+
+.consent {
+  display: flex;
+  gap: var(--tp-space-3);
+  align-items: flex-start;
+  margin-bottom: var(--tp-space-5);
+  font-size: 0.88rem;
+  color: var(--tp-color-on-surface-variant);
+}
+
+.consent input {
+  margin-top: 3px;
+  width: 19px;
+  height: 19px;
+  accent-color: var(--heading);
+  flex: none;
+}
+
+.form-note {
+  margin-top: var(--tp-space-4);
+  font-size: 0.87rem;
+  min-height: 1.4em;
+}
+
+.form-note[data-state="ok"] {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.form-note[data-state="error"] {
+  color: var(--err);
+  font-weight: 600;
+}
+
+/* ---------- piè di pagina ---------- */
+
+.site-footer {
+  padding-block: var(--tp-space-8);
+  background: var(--tp-color-surface-container-high);
+  border-top: 1px solid var(--tp-color-outline-variant);
+  font-size: 0.9rem;
+  color: var(--tp-color-on-surface-variant);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tp-space-5);
+  justify-content: space-between;
+}
+
+.site-footer a {
+  color: var(--heading);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .pilot,
+  .pilot img,
+  .btn {
+    transition: none;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--tp-color-surface);
+}
+
+</style>
+
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="#top">Travel Podcasting</a>
+        <nav class="site-nav">
+          <a class="nav-link" href="#piloti">I piloti</a>
+          <a class="nav-link" href="#prodotto">Il prodotto</a>
+          <a class="nav-link" href="#metodo">Il metodo</a>
+          <a class="btn" href="#contatto">Parliamone</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap">
+          <p class="eyebrow">Storie digitali per i luoghi</p>
+          <h1>L'AI che dà voce ai luoghi</h1>
+          <p class="hero__lead">
+            Percorsi audio che raccontano un borgo mentre lo si attraversa. Si aprono dal
+            web, senza installare nulla, con mappa, voce e testo che avanza. Pensati per i
+            Comuni che vogliono far arrivare le proprie storie a più persone.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="#piloti">Vedi i due piloti</a>
+            <a class="btn btn--ghost" href="#contatto">Parliamo del vostro Comune</a>
+          </div>
+          <dl class="hero__meta">
+            <div>
+              <dt>Dove siamo ora</dt>
+              <dd>Due piloti attivi: Vicopisano e Calci, in provincia di Pisa.</dd>
+            </div>
+            <div>
+              <dt>Come si apre</dt>
+              <dd>Dal browser del telefono. Nessuna app da scaricare.</dd>
+            </div>
+            <div>
+              <dt>Chi lo costruisce</dt>
+              <dd>Pietro Balestri e Iacopo Piccaluga, due freelance.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section" id="piloti">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="eyebrow">I due piloti</p>
+            <h2>Due borghi, due percorsi già camminabili</h2>
+            <p class="section__intro">
+              Non sono mockup: sono siti pubblicati, con le voci registrate e le tappe sulla
+              mappa. Apriteli dal telefono e provateli come li proverebbe un visitatore.
+            </p>
+          </div>
+          <div class="pilots">
+            <a
+              class="pilot"
+              href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/"
+            >
+              <img
+                src="assets/vicopisano.webp"
+                alt="La Torre delle Quattro Porte a Vicopisano"
+                loading="lazy"
+              />
+              <div class="pilot__scrim">
+                <span class="pilot__tag">Pilota</span>
+                <h3>Vicopisano</h3>
+                <p>
+                  Otto tappe dentro il borgo fortificato, dalla Torre delle Quattro Porte al
+                  Palazzo Comunale. La prima tappa è disponibile anche in inglese,
+                  francese, tedesco, spagnolo, portoghese e russo.
+                </p>
+                <p class="pilot__links">
+                  <span>Apri il percorso →</span>
+                </p>
+              </div>
+            </a>
+            <a
+              class="pilot"
+              href="https://balestripietro-commits.github.io/calci-travel-podcasting/"
+            >
+              <img
+                src="assets/calci.webp"
+                alt="La Certosa Monumentale di Calci"
+                loading="lazy"
+              />
+              <div class="pilot__scrim">
+                <span class="pilot__tag">Pilota</span>
+                <h3>Calci</h3>
+                <p>
+                  Sette tappe dalla Certosa Monumentale al Monte Serra, lungo la valle dei
+                  mulini. Una guida che accompagna il visitatore tra acqua, pietra e lavoro.
+                </p>
+                <p class="pilot__links">
+                  <span>Apri il percorso →</span>
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tinted" id="prodotto">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="eyebrow">Il prodotto</p>
+            <h2>Tre cose che lo rendono adatto a un Comune</h2>
+          </div>
+          <div class="features">
+            <article class="feature">
+              <p class="feature__num">01</p>
+              <h3>Storytelling</h3>
+              <p>
+                Storie e personaggi aiutano a scoprire il territorio. Non un elenco di date:
+                un racconto che tiene insieme le tappe e dà un motivo per arrivare alla
+                successiva.
+              </p>
+            </article>
+            <article class="feature">
+              <p class="feature__num">02</p>
+              <h3>Lingue e accessibilità</h3>
+              <p>
+                Audio e testo affiancati, in più lingue. Chi non può ascoltare legge, chi non
+                parla italiano sceglie la propria lingua.
+              </p>
+              <span class="feature__stat"
+                >47%
+                <small
+                  >degli europei parla inglese come lingua straniera.<br />Eurobarometro 2024,
+                  Commissione europea.</small
+                ></span
+              >
+            </article>
+            <article class="feature">
+              <p class="feature__num">03</p>
+              <h3>Chiavi in mano</h3>
+              <p>
+                Si apre dal web, senza app, e si aggiorna facilmente. Si integra con la rete
+                locale e con le scuole, affiancando il lavoro di guide, musei, associazioni e
+                operatori, a costi sostenibili per i Comuni.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--ink" id="metodo">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="eyebrow">Dall'esperienza al metodo</p>
+            <h2>Da Pisa a un format replicabile</h2>
+            <p class="section__intro">
+              Il format nasce dall'esperienza avviata a Pisa con il Comune e l'Università nel
+              2022. Funzionava, ma ogni percorso richiedeva troppo lavoro per poterlo proporre
+              a molti Comuni. Oggi l'intelligenza artificiale accorcia tutte le fasi: copy,
+              adattamento linguistico, voce, materiali grafici e sviluppo. Riducendo il lavoro
+              ripetitivo possiamo contenere i costi e personalizzare il progetto per ogni
+              Comune.
+            </p>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <p class="step__num">01</p>
+              <h3>Selezionare</h3>
+              <p>Fonti e storie, insieme a chi conosce il luogo.</p>
+            </article>
+            <article class="step">
+              <p class="step__num">02</p>
+              <h3>Preparare</h3>
+              <p>Copywriting e versioni linguistiche, da rivedere insieme.</p>
+            </article>
+            <article class="step">
+              <p class="step__num">03</p>
+              <h3>Produrre</h3>
+              <p>Voce, audio e materiali visivi.</p>
+            </article>
+            <article class="step">
+              <p class="step__num">04</p>
+              <h3>Pubblicare</h3>
+              <p>Un'esperienza web leggera, facile da aggiornare.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="team">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="eyebrow">Chi lo costruisce</p>
+            <h2>Due freelance, dall'idea al prototipo</h2>
+            <p class="section__intro">
+              Competenze diverse, nessuna divisione rigida dei ruoli: storie, contenuti,
+              tecnologie e prototipi li costruiamo insieme.
+            </p>
+          </div>
+          <div class="team">
+            <article class="person">
+              <h3>Pietro Balestri</h3>
+              <p class="person__role">Ingegneria gestionale · Scienze della comunicazione</p>
+              <p>
+                Borsista di ricerca all'Università di Pisa. Lavora come freelance in
+                copywriting e formazione sull'intelligenza artificiale.
+              </p>
+            </article>
+            <article class="person">
+              <h3>Iacopo Piccaluga</h3>
+              <p class="person__role">Allievo Ordinario alla Scuola Superiore Sant'Anna</p>
+              <p>
+                È stato a INNOVIT, a San Francisco. Ha ideato NExTerritorio, coinvolgendo
+                oltre cento studenti e tre Comuni. Porta nel progetto una prospettiva di
+                organizzazione e gestione.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tinted" id="contatto">
+        <div class="wrap contact">
+          <div >
+            <p class="eyebrow">Il prossimo passo</p>
+            <h2>Parliamo del vostro Comune</h2>
+            <p class="section__intro">
+              Completiamo i piloti di Vicopisano e Calci raccogliendo, insieme ai Comuni, cosa
+              funziona e cosa portare alla tappa successiva. L'idea è aggiungere un punto di
+              accesso leggero che valorizza il lavoro di chi già si occupa di turismo e
+              cultura. Le scuole possono usare lo stesso patrimonio per esplorare il
+              territorio e lavorare sulle fonti.
+            </p>
+            <p class="section__intro">
+              Lasciate un contatto: vi scriviamo noi, con il link alle demo e una scheda breve
+              del progetto.
+            </p>
+          </div>
+          <div class="contact__card">
+            <form id="contact-form" novalidate>
+              <label class="field">
+                <span>Nome e Comune o ente</span>
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="organization"
+                  placeholder="Maria Rossi — Comune di…"
+                  required
+                />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="nome@comune.it"
+                  required
+                />
+              </label>
+              <label class="consent">
+                <input type="checkbox" name="consent" required />
+                <span
+                  >Acconsento a essere ricontattato su questo progetto. Il contatto non viene
+                  usato per altro e può essere cancellato su richiesta.</span
+                >
+              </label>
+              <button class="btn" type="submit">Invia il contatto</button>
+              <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap site-footer__inner">
+        <p>Travel Podcasting · Pietro Balestri e Iacopo Piccaluga</p>
+        <p>
+          Siti:
+          <a href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/"
+            >Vicopisano</a
+          >
+          ·
+          <a href="https://balestripietro-commits.github.io/calci-travel-podcasting/">Calci</a>
+          ·
+          Codice:
+          <a href="https://github.com/balestripietro-commits/vicopisano-travel-podcasting"
+            >Vicopisano</a
+          >
+          ·
+          <a href="https://github.com/balestripietro-commits/calci-travel-podcasting">Calci</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+// Landing page di Travel Podcasting: comparsa allo scorrimento e invio del contatto.
+
+// Indirizzo dell'app web di Google Apps Script che riceve i contatti.
+// Finché resta vuoto il modulo non invia nulla e lo dice a chi scrive.
+const ENDPOINT_CONTATTI = "";
+
+function mostraNota(nota, testo, stato) {
+  nota.textContent = testo;
+  nota.dataset.state = stato;
+}
+
+function attivaModulo() {
+  const modulo = document.getElementById("contact-form");
+  const nota = document.getElementById("form-note");
+
+  if (!modulo || !nota) {
+    return;
+  }
+
+  modulo.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
+
+    const dati = new FormData(modulo);
+    const nome = String(dati.get("name") || "").trim();
+    const email = String(dati.get("email") || "").trim().toLowerCase();
+    const consenso = dati.get("consent") === "on";
+
+    if (!nome) {
+      mostraNota(nota, "Scrivete il nome e il Comune o l'ente.", "error");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      mostraNota(nota, "Controllate l'indirizzo email.", "error");
+      return;
+    }
+
+    if (!consenso) {
+      mostraNota(nota, "Serve la spunta sul consenso per poter rispondere.", "error");
+      return;
+    }
+
+    if (!ENDPOINT_CONTATTI) {
+      mostraNota(
+        nota,
+        "Il modulo non è ancora collegato. Scriveteci a balestripietro@gmail.com.",
+        "error"
+      );
+      return;
+    }
+
+    const pulsante = modulo.querySelector("button[type=submit]");
+    pulsante.disabled = true;
+    mostraNota(nota, "Invio in corso…", "");
+
+    try {
+      await fetch(ENDPOINT_CONTATTI, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          name: nome,
+          email,
+          consent: true,
+          page: location.href,
+        }),
+      });
+      // Con mode "no-cors" la risposta non è leggibile: Apps Script riceve comunque
+      // il contenuto, quindi un invio senza eccezioni viene considerato riuscito.
+      modulo.reset();
+      mostraNota(nota, "Grazie: vi scriviamo noi nei prossimi giorni.", "ok");
+    } catch (errore) {
+      mostraNota(
+        nota,
+        "Invio non riuscito. Riprovate o scriveteci a balestripietro@gmail.com.",
+        "error"
+      );
+    } finally {
+      pulsante.disabled = false;
+    }
+  });
+}
+
+attivaModulo();
+
+</script>
+  
+</body></html>
