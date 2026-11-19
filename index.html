@@ -1,13 +1,34 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Travel Podcasting</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Roboto+Flex:opsz,wght@8..144,400..800&display=swap">
+<meta name="description" content="Percorsi audio che raccontano un borgo mentre lo si attraversa. Si aprono dal web, senza app, per i Comuni che vogliono far arrivare le proprie storie a più persone.">
+<meta name="theme-color" content="#245c52">
+<link rel="icon" type="image/svg+xml" href="assets/segno.svg">
+<link rel="preload" href="assets/fonts/Petrona.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Travel Podcasting — landing page.
-   I token riprendono il design system dei siti dei borghi (design-system.css +
-   theme-vicopisano.css), così la landing e i percorsi restano la stessa famiglia. */
+   Stessa identità dei siti dei borghi: segno M-2, verde #245C52, oro #E8C36D,
+   crema #FFF8EF, carattere Petrona, forme-contenitore (torre, arco, tassello,
+   foglia, lente, blocco). Il viola delle tappe non compare: qui non ci sono tappe. */
+
+@font-face {
+  font-family: "Petrona";
+  src: url("assets/fonts/Petrona.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Petrona";
+  src: url("assets/fonts/Petrona-Italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   --tp-color-primary: #245c52;
@@ -16,18 +37,18 @@
   --tp-color-on-primary-container: #0e332d;
   --tp-color-secondary: #2c6da3;
   --tp-color-tertiary: #e8c36d;
-  --tp-color-surface: #fff7ed;
-  --tp-color-surface-bright: #fffdf7;
-  --tp-color-surface-container: #f7efe5;
-  --tp-color-surface-container-high: #efe2d5;
-  --tp-color-on-surface: #1f5f53;
+  --tp-color-on-tertiary: #3a2b06;
+  --tp-color-surface: #fff8ef;
+  --tp-color-surface-bright: #fffdf8;
+  --tp-color-surface-container: #f6ecde;
+  --tp-color-surface-container-high: #efe2d1;
   --tp-color-on-surface-variant: #49685f;
   --tp-color-outline: #adc2bd;
-  --tp-color-outline-variant: #d9e5e1;
+  --tp-color-outline-variant: #e1dccf;
   --tp-color-ink: #10231f;
 
-  --tp-font-ui: "Roboto Flex", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --tp-font-editorial: "Fraunces", Georgia, "Times New Roman", serif;
+  --tp-font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --tp-font-editorial: "Petrona", Georgia, "Times New Roman", serif;
 
   --tp-space-2: 8px;
   --tp-space-3: 12px;
@@ -36,88 +57,61 @@
   --tp-space-6: 32px;
   --tp-space-7: 48px;
   --tp-space-8: 64px;
-  --tp-space-9: 96px;
 
   --tp-radius-sm: 12px;
   --tp-radius-md: 18px;
   --tp-radius-lg: 24px;
   --tp-radius-xl: 34px;
-  --tp-radius-xxl: 48px;
   --tp-radius-full: 999px;
 
   --tp-elevation-1: 0 2px 8px rgba(23, 63, 57, 0.08);
   --tp-elevation-2: 0 8px 24px rgba(23, 63, 57, 0.12);
-  --tp-elevation-3: 0 18px 44px rgba(23, 63, 57, 0.18);
 
   --heading: #245c52;
   --fg: #10231f;
   --btn-bg: #245c52;
   --btn-fg: #ffffff;
   --ink-bg: #245c52;
+  --ink-fg: #fff8ef;
   --input-bg: #ffffff;
+  --shape-a: #245c52;
+  --shape-b: #e8c36d;
+  --shape-c: #d9eee8;
   --ok: #1e7c55;
   --err: #b3261e;
-  --tp-gutter: 24px;
   --tp-measure: 1180px;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --tp-color-primary-container: #1d3a34;
-  --tp-color-on-primary-container: #d9eee8;
-  --tp-color-secondary: #86b9e4;
-  --tp-color-tertiary: #e8c36d;
-  --tp-color-surface: #0f1d1a;
-  --tp-color-surface-bright: #162825;
-  --tp-color-surface-container: #132421;
-  --tp-color-surface-container-high: #1b312d;
-  --tp-color-on-surface-variant: #a8c4bc;
-  --tp-color-outline: #3d5a53;
-  --tp-color-outline-variant: #284039;
-  --heading: #bfe3d9;
-  --fg: #e6f0ed;
-  --btn-bg: #2f7a6b;
-  --btn-fg: #ffffff;
-  --ink-bg: #0b2a25;
-  --input-bg: #0f1d1a;
-  --ok: #5fcf9b;
-  --err: #ff8f86;
-  color-scheme: dark;
+    --tp-color-primary-container: #1d3a34;
+    --tp-color-on-primary-container: #d9eee8;
+    --tp-color-secondary: #86b9e4;
+    --tp-color-surface: #0f1d1a;
+    --tp-color-surface-bright: #162825;
+    --tp-color-surface-container: #132421;
+    --tp-color-surface-container-high: #1b312d;
+    --tp-color-on-surface-variant: #a8c4bc;
+    --tp-color-outline: #3d5a53;
+    --tp-color-outline-variant: #284039;
+    --heading: #bfe3d9;
+    --fg: #e6f0ed;
+    --btn-bg: #e8c36d;
+    --btn-fg: #2b1f04;
+    --ink-bg: #0b2a25;
+    --input-bg: #0f1d1a;
+    --shape-a: #2f7a6b;
+    --shape-c: #1d3a34;
+    --ok: #5fcf9b;
+    --err: #ff8f86;
+    color-scheme: dark;
   }
 }
 
-:root[data-theme="dark"] {
-  --tp-color-primary-container: #1d3a34;
-  --tp-color-on-primary-container: #d9eee8;
-  --tp-color-secondary: #86b9e4;
-  --tp-color-tertiary: #e8c36d;
-  --tp-color-surface: #0f1d1a;
-  --tp-color-surface-bright: #162825;
-  --tp-color-surface-container: #132421;
-  --tp-color-surface-container-high: #1b312d;
-  --tp-color-on-surface-variant: #a8c4bc;
-  --tp-color-outline: #3d5a53;
-  --tp-color-outline-variant: #284039;
-  --heading: #bfe3d9;
-  --fg: #e6f0ed;
-  --btn-bg: #2f7a6b;
-  --btn-fg: #ffffff;
-  --ink-bg: #0b2a25;
-  --input-bg: #0f1d1a;
-  --ok: #5fcf9b;
-  --err: #ff8f86;
-  color-scheme: dark;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
 body {
   margin: 0;
@@ -129,42 +123,32 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-family: var(--tp-font-editorial);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   margin: 0;
   text-wrap: balance;
 }
 
-p {
-  margin: 0;
-  text-wrap: pretty;
-}
-
-a {
-  color: inherit;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
 
 .wrap {
   width: 100%;
   max-width: var(--tp-measure);
   margin-inline: auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
 
 .eyebrow {
-  font-family: var(--tp-font-ui);
-  font-size: 0.74rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -172,14 +156,26 @@ img {
   margin-bottom: var(--tp-space-4);
 }
 
+/* il puntino oro del segno, usato come segnaposto dei titoletti */
+.eyebrow::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--tp-color-tertiary);
+  flex: none;
+}
+
 /* ---------- intestazione ---------- */
 
 .site-header {
   position: sticky;
-  top: env(safe-area-inset-top, 0px);
+  top: 0;
   z-index: 20;
+  padding-top: env(safe-area-inset-top, 0px);
   backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--tp-color-surface) 86%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--tp-color-surface) 88%, transparent);
   border-bottom: 1px solid var(--tp-color-outline-variant);
 }
 
@@ -188,44 +184,33 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: var(--tp-space-4);
-  min-height: 68px;
+  min-height: 72px;
 }
 
-.brand {
-  font-family: var(--tp-font-ui);
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--heading);
-  text-decoration: none;
+.brand { display: inline-flex; align-items: center; }
+.brand img { height: 40px; width: auto; }
+.brand .logo-dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .brand .logo-light { display: none; }
+  :root:not([data-theme="light"]) .brand .logo-dark { display: block; }
 }
 
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--tp-space-5);
-}
+.site-nav { display: flex; align-items: center; gap: var(--tp-space-5); }
 
 .site-nav a {
-  font-size: 0.92rem;
+  font-size: 0.93rem;
   font-weight: 500;
   text-decoration: none;
   color: var(--tp-color-on-surface-variant);
 }
 
-.site-nav a:hover {
-  color: var(--heading);
-}
-
-.site-nav .btn {
-  color: var(--btn-fg);
-}
+.site-nav a:hover { color: var(--heading); }
+.site-nav .btn { color: var(--btn-fg); }
 
 @media (max-width: 740px) {
-  .site-nav .nav-link {
-    display: none;
-  }
+  .site-nav .nav-link { display: none; }
+  .brand img { height: 34px; }
 }
 
 /* ---------- pulsanti ---------- */
@@ -245,12 +230,16 @@ img {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--tp-elevation-2);
+.btn:hover { transform: translateY(-1px); box-shadow: var(--tp-elevation-2); }
+
+.btn:focus-visible,
+.pilot:focus-visible,
+.site-nav a:focus-visible {
+  outline: 3px solid var(--tp-color-secondary);
+  outline-offset: 3px;
 }
 
 .btn--ghost {
@@ -259,39 +248,46 @@ img {
   box-shadow: inset 0 0 0 1.5px var(--tp-color-outline);
 }
 
-.btn--ghost:hover {
-  background: var(--tp-color-primary-container);
-}
+.btn--ghost:hover { background: var(--tp-color-primary-container); }
+
+/* ---------- forme ---------- */
+
+.shape { display: block; width: 100%; height: auto; }
+.shape--a { fill: var(--shape-a); }
+.shape--b { fill: var(--shape-b); }
+.shape--c { fill: var(--shape-c); }
 
 /* ---------- hero ---------- */
 
-.hero {
-  position: relative;
-  padding-block: clamp(72px, 13vw, 144px) clamp(56px, 9vw, 104px);
-  overflow: hidden;
+.hero { padding-block: clamp(48px, 9vw, 112px) clamp(48px, 8vw, 96px); }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--tp-space-7);
+  align-items: center;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 58% at 14% -8%, color-mix(in srgb, var(--tp-color-tertiary) 30%, transparent), transparent 62%),
-    radial-gradient(ellipse 58% 48% at 92% 4%, color-mix(in srgb, var(--tp-color-secondary) 16%, transparent), transparent 60%),
-    linear-gradient(170deg, var(--tp-color-surface-bright), var(--tp-color-surface));
-  z-index: -1;
+@media (max-width: 900px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__art { max-width: 420px; }
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 7.2vw, 5rem);
-  max-width: 15ch;
+  font-size: clamp(2.7rem, 7vw, 5rem);
+  max-width: 13ch;
   color: var(--heading);
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 600;
 }
 
 .hero__lead {
   margin-top: var(--tp-space-5);
-  max-width: 54ch;
-  font-size: clamp(1.08rem, 2.1vw, 1.32rem);
+  max-width: 52ch;
+  font-size: clamp(1.08rem, 2.1vw, 1.28rem);
   color: var(--tp-color-on-surface-variant);
 }
 
@@ -299,20 +295,20 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: var(--tp-space-3);
-  margin-top: var(--tp-space-7);
+  margin-top: var(--tp-space-6);
 }
+
+/* composizione di forme: le tre foto dei percorsi e il segno al centro */
+.hero__art { position: relative; width: 100%; }
+.hero__art svg { width: 100%; height: auto; overflow: visible; }
 
 .hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--tp-space-6);
-  margin-top: var(--tp-space-8);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--tp-space-5) var(--tp-space-6);
+  margin: var(--tp-space-8) 0 0;
   padding-top: var(--tp-space-6);
   border-top: 1px solid var(--tp-color-outline-variant);
-}
-
-.hero__meta div {
-  flex: 1 1 180px;
 }
 
 .hero__meta dt {
@@ -331,36 +327,18 @@ img {
 
 /* ---------- sezioni ---------- */
 
-.section {
-  padding-block: clamp(64px, 10vw, 112px);
-}
+.section { padding-block: clamp(64px, 10vw, 112px); }
+.section--tinted { background: var(--tp-color-surface-container); }
+.section--ink { background: var(--ink-bg); color: var(--ink-fg); }
 
-.section--tinted {
-  background: var(--tp-color-surface-container);
-}
-
-.section--ink {
-  background: var(--ink-bg);
-  color: #eaf5f1;
-}
-
-/* Più specifico di `.section__head h2`, altrimenti il titolo resta verde su verde. */
 .section--ink .section__head h2,
-.section--ink .section__intro {
-  color: inherit;
-}
+.section--ink .section__intro { color: inherit; }
+.section--ink .eyebrow { color: var(--tp-color-tertiary); }
 
-.section--ink .eyebrow {
-  color: var(--tp-color-tertiary);
-}
-
-.section__head {
-  max-width: 62ch;
-  margin-bottom: var(--tp-space-8);
-}
+.section__head { max-width: 62ch; margin-bottom: var(--tp-space-8); }
 
 .section__head h2 {
-  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
   color: var(--heading);
 }
 
@@ -379,50 +357,33 @@ img {
 }
 
 .pilot {
-  position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 460px;
+  gap: var(--tp-space-5);
+  padding: var(--tp-space-5);
   border-radius: var(--tp-radius-xl);
-  overflow: hidden;
-  background: var(--tp-color-ink);
+  background: var(--tp-color-surface-bright);
+  box-shadow: var(--tp-elevation-1);
   text-decoration: none;
-  color: #fff;
-  box-shadow: var(--tp-elevation-2);
+  color: inherit;
   transition: transform 240ms ease, box-shadow 240ms ease;
 }
 
-.pilot:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--tp-elevation-3);
+.pilot:hover { transform: translateY(-4px); box-shadow: var(--tp-elevation-2); }
+
+.pilot__photo {
+  width: min(100%, 340px);
+  margin-inline: auto;
 }
 
-.pilot img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 600ms ease;
-}
-
-.pilot:hover img {
-  transform: scale(1.04);
-}
-
-.pilot__scrim {
-  position: relative;
-  margin-top: auto;
-  padding: var(--tp-space-7) var(--tp-space-6) var(--tp-space-6);
-  background: linear-gradient(to top, rgba(8, 26, 23, 0.92) 12%, rgba(8, 26, 23, 0.68) 52%, transparent);
-}
+.pilot__photo svg { display: block; width: 100%; height: auto; }
 
 .pilot__tag {
   display: inline-block;
   padding: 5px 13px;
   border-radius: var(--tp-radius-full);
-  background: color-mix(in srgb, var(--tp-color-tertiary) 90%, transparent);
-  color: #3a2b06;
+  background: var(--tp-color-tertiary);
+  color: var(--tp-color-on-tertiary);
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -430,31 +391,21 @@ img {
 }
 
 .pilot h3 {
-  margin-top: var(--tp-space-4);
-  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+  margin-top: var(--tp-space-3);
+  font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+  color: var(--heading);
 }
 
 .pilot p {
   margin-top: var(--tp-space-3);
   font-size: 0.97rem;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--tp-color-on-surface-variant);
 }
 
-.pilot__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--tp-space-4);
-  margin-top: var(--tp-space-5);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.pilot__links span:first-child {
-  color: var(--tp-color-tertiary);
-}
-
-.pilot__links span:last-child {
-  color: rgba(255, 255, 255, 0.62);
+.pilot .pilot__go {
+  margin-top: var(--tp-space-4);
+  font-weight: 700;
+  color: var(--heading);
 }
 
 /* ---------- tre caratteristiche ---------- */
@@ -472,18 +423,29 @@ img {
   box-shadow: var(--tp-elevation-1);
 }
 
-.feature__num {
-  font-family: var(--tp-font-editorial);
-  font-size: 2.6rem;
-  line-height: 1;
-  color: var(--tp-color-tertiary);
+/* numero dentro una forma del brand */
+.badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
 }
 
-.feature h3 {
-  margin-top: var(--tp-space-4);
-  font-size: 1.32rem;
-  color: var(--heading);
+.badge svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.badge span {
+  position: relative;
+  font-family: var(--tp-font-editorial);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
 }
+
+.badge--gold span { color: var(--tp-color-on-tertiary); }
+.badge--green span { color: #fff8ef; }
+
+.feature h3 { margin-top: var(--tp-space-5); font-size: 1.45rem; color: var(--heading); }
 
 .feature p {
   margin-top: var(--tp-space-3);
@@ -497,13 +459,15 @@ img {
   padding-top: var(--tp-space-4);
   border-top: 1px solid var(--tp-color-outline-variant);
   font-family: var(--tp-font-editorial);
-  font-size: 2.1rem;
+  font-weight: 700;
+  font-size: 2.3rem;
   color: var(--tp-color-secondary);
 }
 
 .feature__stat small {
   display: block;
   font-family: var(--tp-font-ui);
+  font-weight: 400;
   font-size: 0.8rem;
   line-height: 1.45;
   color: var(--tp-color-on-surface-variant);
@@ -515,32 +479,23 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: var(--tp-space-5);
-  counter-reset: step;
 }
 
 .step {
-  position: relative;
   padding: var(--tp-space-6) var(--tp-space-5);
   border-radius: var(--tp-radius-md);
-  background: color-mix(in srgb, #ffffff 10%, transparent);
+  background: color-mix(in srgb, #ffffff 9%, transparent);
   border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
 }
 
-.step__num {
-  font-family: var(--tp-font-editorial);
-  font-size: 0.95rem;
-  color: var(--tp-color-tertiary);
-}
-
-.step h3 {
-  margin-top: var(--tp-space-3);
-  font-size: 1.22rem;
-}
+.step .badge { width: 52px; height: 52px; }
+.step .badge span { font-size: 1.1rem; }
+.step h3 { margin-top: var(--tp-space-4); font-size: 1.35rem; }
 
 .step p {
   margin-top: var(--tp-space-2);
-  font-size: 0.93rem;
-  color: rgba(234, 245, 241, 0.78);
+  font-size: 0.94rem;
+  color: rgba(255, 248, 239, 0.8);
 }
 
 /* ---------- team ---------- */
@@ -558,10 +513,7 @@ img {
   box-shadow: var(--tp-elevation-1);
 }
 
-.person h3 {
-  font-size: 1.3rem;
-  color: var(--heading);
-}
+.person h3 { font-size: 1.45rem; color: var(--heading); }
 
 .person__role {
   margin-top: var(--tp-space-2);
@@ -571,7 +523,7 @@ img {
   color: var(--tp-color-secondary);
 }
 
-.person p {
+.person p:not(.person__role) {
   margin-top: var(--tp-space-4);
   font-size: 0.96rem;
   color: var(--tp-color-on-surface-variant);
@@ -586,11 +538,9 @@ img {
   align-items: start;
 }
 
-@media (max-width: 860px) {
-  .contact {
-    grid-template-columns: 1fr;
-  }
-}
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; gap: var(--tp-space-7); } }
+
+.contact h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); color: var(--heading); }
 
 .contact__card {
   padding: var(--tp-space-7);
@@ -599,10 +549,9 @@ img {
   box-shadow: var(--tp-elevation-2);
 }
 
-.field {
-  display: block;
-  margin-bottom: var(--tp-space-4);
-}
+@media (max-width: 520px) { .contact__card { padding: var(--tp-space-5); } }
+
+.field { display: block; margin-bottom: var(--tp-space-4); }
 
 .field span {
   display: block;
@@ -638,92 +587,78 @@ img {
   color: var(--tp-color-on-surface-variant);
 }
 
-.consent input {
-  margin-top: 3px;
-  width: 19px;
-  height: 19px;
-  accent-color: var(--heading);
-  flex: none;
-}
+.consent input { margin-top: 3px; width: 19px; height: 19px; accent-color: var(--heading); flex: none; }
 
-.form-note {
-  margin-top: var(--tp-space-4);
-  font-size: 0.87rem;
-  min-height: 1.4em;
-}
-
-.form-note[data-state="ok"] {
-  color: var(--ok);
-  font-weight: 600;
-}
-
-.form-note[data-state="error"] {
-  color: var(--err);
-  font-weight: 600;
-}
+.form-note { margin-top: var(--tp-space-4); font-size: 0.87rem; min-height: 1.4em; }
+.form-note[data-state="ok"] { color: var(--ok); font-weight: 600; }
+.form-note[data-state="error"] { color: var(--err); font-weight: 600; }
 
 /* ---------- piè di pagina ---------- */
 
 .site-footer {
-  padding-block: var(--tp-space-8);
-  background: var(--tp-color-surface-container-high);
-  border-top: 1px solid var(--tp-color-outline-variant);
+  padding-block: var(--tp-space-7);
+  background: var(--ink-bg);
+  color: var(--ink-fg);
   font-size: 0.9rem;
-  color: var(--tp-color-on-surface-variant);
 }
 
 .site-footer__inner {
   display: flex;
   flex-wrap: wrap;
   gap: var(--tp-space-5);
+  align-items: center;
   justify-content: space-between;
 }
 
-.site-footer a {
-  color: var(--heading);
-  font-weight: 500;
-}
+.site-footer img { height: 38px; width: auto; }
+.site-footer p { color: rgba(255, 248, 239, 0.82); }
+.site-footer a { color: var(--tp-color-tertiary); font-weight: 500; }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .pilot,
-  .pilot img,
-  .btn {
-    transition: none;
-  }
+  html { scroll-behavior: auto; }
+  .pilot, .btn { transition: none; }
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0 0 auto;
-  height: env(safe-area-inset-top, 0px);
-  z-index: 30;
-  background: var(--tp-color-surface);
-}
-
 </style>
+</head>
+<body>
 
-    <header class="site-header">
-      <div class="wrap site-header__inner">
-        <a class="brand" href="#top">Travel Podcasting</a>
-        <nav class="site-nav">
-          <a class="nav-link" href="#piloti">I piloti</a>
-          <a class="nav-link" href="#prodotto">Il prodotto</a>
-          <a class="nav-link" href="#metodo">Il metodo</a>
-          <a class="btn" href="#contatto">Parliamone</a>
-        </nav>
-      </div>
-    </header>
+<!-- Forme del brand: stessi tracciati dei siti dei borghi (viewBox 0 0 400 420). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="p-torre" d="M50 390V80Q50 30 100 30Q150 30 150 80V105Q150 130 175 130H225Q250 130 250 105V80Q250 30 300 30Q350 30 350 80V390Q350 400 340 400H60Q50 400 50 390Z"/>
+    <path id="p-arco" d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/>
+    <path id="p-tassello" d="M200 20A180 180 0 0 0 20 200A180 180 0 0 0 200 380H345Q380 380 380 345V200A180 180 0 0 0 200 20Z"/>
+    <path id="p-foglia" d="M200 20H380V200A180 180 0 0 1 200 380H20V200A180 180 0 0 1 200 20Z"/>
+    <path id="p-blocco" d="M110 30H290Q370 30 370 110V290Q370 370 290 370H110Q30 370 30 290V110Q30 30 110 30Z"/>
+    <path id="p-lente" d="M110 20H290Q315 20 330 45L385 170Q395 200 385 230L330 355Q315 380 290 380H110Q85 380 70 355L15 230Q5 200 15 170L70 45Q85 20 110 20Z"/>
+    <clipPath id="c-tassello"><use href="#p-tassello"/></clipPath>
+    <clipPath id="c-blocco"><use href="#p-blocco"/></clipPath>
+    <clipPath id="c-arco"><use href="#p-arco"/></clipPath>
+  </defs>
+</svg>
 
-    <main id="top">
-      <section class="hero">
-        <div class="wrap">
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="#top" aria-label="Travel Podcasting, vai all'inizio">
+      <img class="logo-light" src="assets/logo-orizzontale.svg" alt="Travel Podcasting" width="136" height="40">
+      <img class="logo-dark" src="assets/logo-orizzontale-scuro.svg" alt="" width="136" height="40">
+    </a>
+    <nav class="site-nav" aria-label="Sezioni">
+      <a class="nav-link" href="#piloti">I piloti</a>
+      <a class="nav-link" href="#prodotto">Il prodotto</a>
+      <a class="nav-link" href="#metodo">Il metodo</a>
+      <a class="btn" href="#contatto">Parliamone</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
           <p class="eyebrow">Storie digitali per i luoghi</p>
-          <h1>L'AI che dà voce ai luoghi</h1>
+          <h1>L'AI che dà <em>voce</em> ai luoghi</h1>
           <p class="hero__lead">
             Percorsi audio che raccontano un borgo mentre lo si attraversa. Si aprono dal
             web, senza installare nulla, con mappa, voce e testo che avanza. Pensati per i
@@ -733,273 +668,259 @@ body::before {
             <a class="btn" href="#piloti">Vedi i due piloti</a>
             <a class="btn btn--ghost" href="#contatto">Parliamo del vostro Comune</a>
           </div>
-          <dl class="hero__meta">
-            <div>
-              <dt>Dove siamo ora</dt>
-              <dd>Due piloti attivi: Vicopisano e Calci, in provincia di Pisa.</dd>
-            </div>
-            <div>
-              <dt>Come si apre</dt>
-              <dd>Dal browser del telefono. Nessuna app da scaricare.</dd>
-            </div>
-            <div>
-              <dt>Chi lo costruisce</dt>
-              <dd>Pietro Balestri e Iacopo Piccaluga, due freelance.</dd>
-            </div>
-          </dl>
         </div>
-      </section>
 
-      <section class="section" id="piloti">
-        <div class="wrap">
-          <div class="section__head">
-            <p class="eyebrow">I due piloti</p>
-            <h2>Due borghi, due percorsi già camminabili</h2>
-            <p class="section__intro">
-              Non sono mockup: sono siti pubblicati, con le voci registrate e le tappe sulla
-              mappa. Apriteli dal telefono e provateli come li proverebbe un visitatore.
-            </p>
-          </div>
-          <div class="pilots">
-            <a
-              class="pilot"
-              href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/"
-            >
-              <img
-                src="assets/vicopisano.webp"
-                alt="La Torre delle Quattro Porte a Vicopisano"
-                loading="lazy"
-              />
-              <div class="pilot__scrim">
-                <span class="pilot__tag">Pilota</span>
-                <h3>Vicopisano</h3>
-                <p>
-                  Otto tappe dentro il borgo fortificato, dalla Torre delle Quattro Porte al
-                  Palazzo Comunale. La prima tappa è disponibile anche in inglese,
-                  francese, tedesco, spagnolo, portoghese e russo.
-                </p>
-                <p class="pilot__links">
-                  <span>Apri il percorso →</span>
-                </p>
-              </div>
-            </a>
-            <a
-              class="pilot"
-              href="https://balestripietro-commits.github.io/calci-travel-podcasting/"
-            >
-              <img
-                src="assets/calci.webp"
-                alt="La Certosa Monumentale di Calci"
-                loading="lazy"
-              />
-              <div class="pilot__scrim">
-                <span class="pilot__tag">Pilota</span>
-                <h3>Calci</h3>
-                <p>
-                  Sette tappe dalla Certosa Monumentale al Monte Serra, lungo la valle dei
-                  mulini. Una guida che accompagna il visitatore tra acqua, pietra e lavoro.
-                </p>
-                <p class="pilot__links">
-                  <span>Apri il percorso →</span>
-                </p>
-              </div>
-            </a>
-          </div>
+        <div class="hero__art" aria-hidden="true">
+          <svg viewBox="0 0 440 440" focusable="false">
+            <g transform="scale(0.55)"><image href="assets/vicopisano.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-tassello)"/></g>
+            <g transform="translate(236 6) scale(0.5)"><use href="#p-arco" fill="var(--shape-b)"/></g>
+            <g transform="translate(220 220) scale(0.55)"><image href="assets/calci.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-blocco)"/></g>
+            <g transform="translate(4 236) scale(0.5)"><use href="#p-lente" fill="var(--shape-a)"/></g>
+            <circle cx="104" cy="334" r="9" fill="var(--tp-color-tertiary)"/>
+          </svg>
         </div>
-      </section>
+      </div>
 
-      <section class="section section--tinted" id="prodotto">
-        <div class="wrap">
-          <div class="section__head">
-            <p class="eyebrow">Il prodotto</p>
-            <h2>Tre cose che lo rendono adatto a un Comune</h2>
-          </div>
-          <div class="features">
-            <article class="feature">
-              <p class="feature__num">01</p>
-              <h3>Storytelling</h3>
-              <p>
-                Storie e personaggi aiutano a scoprire il territorio. Non un elenco di date:
-                un racconto che tiene insieme le tappe e dà un motivo per arrivare alla
-                successiva.
-              </p>
-            </article>
-            <article class="feature">
-              <p class="feature__num">02</p>
-              <h3>Lingue e accessibilità</h3>
-              <p>
-                Audio e testo affiancati, in più lingue. Chi non può ascoltare legge, chi non
-                parla italiano sceglie la propria lingua.
-              </p>
-              <span class="feature__stat"
-                >47%
-                <small
-                  >degli europei parla inglese come lingua straniera.<br />Eurobarometro 2024,
-                  Commissione europea.</small
-                ></span
-              >
-            </article>
-            <article class="feature">
-              <p class="feature__num">03</p>
-              <h3>Chiavi in mano</h3>
-              <p>
-                Si apre dal web, senza app, e si aggiorna facilmente. Si integra con la rete
-                locale e con le scuole, affiancando il lavoro di guide, musei, associazioni e
-                operatori, a costi sostenibili per i Comuni.
-              </p>
-            </article>
-          </div>
+      <dl class="hero__meta">
+        <div>
+          <dt>Dove siamo ora</dt>
+          <dd>Due piloti attivi: Vicopisano e Calci, in provincia di Pisa.</dd>
         </div>
-      </section>
-
-      <section class="section section--ink" id="metodo">
-        <div class="wrap">
-          <div class="section__head">
-            <p class="eyebrow">Dall'esperienza al metodo</p>
-            <h2>Da Pisa a un format replicabile</h2>
-            <p class="section__intro">
-              Il format nasce dall'esperienza avviata a Pisa con il Comune e l'Università nel
-              2022. Funzionava, ma ogni percorso richiedeva troppo lavoro per poterlo proporre
-              a molti Comuni. Oggi l'intelligenza artificiale accorcia tutte le fasi: copy,
-              adattamento linguistico, voce, materiali grafici e sviluppo. Riducendo il lavoro
-              ripetitivo possiamo contenere i costi e personalizzare il progetto per ogni
-              Comune.
-            </p>
-          </div>
-          <div class="steps">
-            <article class="step">
-              <p class="step__num">01</p>
-              <h3>Selezionare</h3>
-              <p>Fonti e storie, insieme a chi conosce il luogo.</p>
-            </article>
-            <article class="step">
-              <p class="step__num">02</p>
-              <h3>Preparare</h3>
-              <p>Copywriting e versioni linguistiche, da rivedere insieme.</p>
-            </article>
-            <article class="step">
-              <p class="step__num">03</p>
-              <h3>Produrre</h3>
-              <p>Voce, audio e materiali visivi.</p>
-            </article>
-            <article class="step">
-              <p class="step__num">04</p>
-              <h3>Pubblicare</h3>
-              <p>Un'esperienza web leggera, facile da aggiornare.</p>
-            </article>
-          </div>
+        <div>
+          <dt>Come si apre</dt>
+          <dd>Dal browser del telefono. Nessuna app da scaricare.</dd>
         </div>
-      </section>
-
-      <section class="section" id="team">
-        <div class="wrap">
-          <div class="section__head">
-            <p class="eyebrow">Chi lo costruisce</p>
-            <h2>Due freelance, dall'idea al prototipo</h2>
-            <p class="section__intro">
-              Competenze diverse, nessuna divisione rigida dei ruoli: storie, contenuti,
-              tecnologie e prototipi li costruiamo insieme.
-            </p>
-          </div>
-          <div class="team">
-            <article class="person">
-              <h3>Pietro Balestri</h3>
-              <p class="person__role">Ingegneria gestionale · Scienze della comunicazione</p>
-              <p>
-                Borsista di ricerca all'Università di Pisa. Lavora come freelance in
-                copywriting e formazione sull'intelligenza artificiale.
-              </p>
-            </article>
-            <article class="person">
-              <h3>Iacopo Piccaluga</h3>
-              <p class="person__role">Allievo Ordinario alla Scuola Superiore Sant'Anna</p>
-              <p>
-                È stato a INNOVIT, a San Francisco. Ha ideato NExTerritorio, coinvolgendo
-                oltre cento studenti e tre Comuni. Porta nel progetto una prospettiva di
-                organizzazione e gestione.
-              </p>
-            </article>
-          </div>
+        <div>
+          <dt>Chi lo costruisce</dt>
+          <dd>Pietro Balestri e Iacopo Piccaluga, due freelance.</dd>
         </div>
-      </section>
+      </dl>
+    </div>
+  </section>
 
-      <section class="section section--tinted" id="contatto">
-        <div class="wrap contact">
-          <div >
-            <p class="eyebrow">Il prossimo passo</p>
-            <h2>Parliamo del vostro Comune</h2>
-            <p class="section__intro">
-              Completiamo i piloti di Vicopisano e Calci raccogliendo, insieme ai Comuni, cosa
-              funziona e cosa portare alla tappa successiva. L'idea è aggiungere un punto di
-              accesso leggero che valorizza il lavoro di chi già si occupa di turismo e
-              cultura. Le scuole possono usare lo stesso patrimonio per esplorare il
-              territorio e lavorare sulle fonti.
-            </p>
-            <p class="section__intro">
-              Lasciate un contatto: vi scriviamo noi, con il link alle demo e una scheda breve
-              del progetto.
-            </p>
-          </div>
-          <div class="contact__card">
-            <form id="contact-form" novalidate>
-              <label class="field">
-                <span>Nome e Comune o ente</span>
-                <input
-                  type="text"
-                  name="name"
-                  autocomplete="organization"
-                  placeholder="Maria Rossi — Comune di…"
-                  required
-                />
-              </label>
-              <label class="field">
-                <span>Email</span>
-                <input
-                  type="email"
-                  name="email"
-                  autocomplete="email"
-                  placeholder="nome@comune.it"
-                  required
-                />
-              </label>
-              <label class="consent">
-                <input type="checkbox" name="consent" required />
-                <span
-                  >Acconsento a essere ricontattato su questo progetto. Il contatto non viene
-                  usato per altro e può essere cancellato su richiesta.</span
-                >
-              </label>
-              <button class="btn" type="submit">Invia il contatto</button>
-              <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="wrap site-footer__inner">
-        <p>Travel Podcasting · Pietro Balestri e Iacopo Piccaluga</p>
-        <p>
-          Siti:
-          <a href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/"
-            >Vicopisano</a
-          >
-          ·
-          <a href="https://balestripietro-commits.github.io/calci-travel-podcasting/">Calci</a>
-          ·
-          Codice:
-          <a href="https://github.com/balestripietro-commits/vicopisano-travel-podcasting"
-            >Vicopisano</a
-          >
-          ·
-          <a href="https://github.com/balestripietro-commits/calci-travel-podcasting">Calci</a>
+  <section class="section section--tinted" id="piloti">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">I due piloti</p>
+        <h2>Due borghi, due percorsi già camminabili</h2>
+        <p class="section__intro">
+          Non sono mockup: sono siti pubblicati, con le voci registrate e le tappe sulla
+          mappa. Apriteli dal telefono e provateli come li proverebbe un visitatore.
         </p>
       </div>
-    </footer>
+      <div class="pilots">
+        <a class="pilot" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/">
+          <div class="pilot__photo">
+            <!-- la foto di una torre sta nel tassello: dentro la forma a torre non entra -->
+            <svg viewBox="0 0 400 400" role="img" aria-label="La Torre delle Quattro Porte a Vicopisano">
+              <image href="assets/vicopisano.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-tassello)"/>
+            </svg>
+          </div>
+          <div>
+            <span class="pilot__tag">Pilota</span>
+            <h3>Vicopisano</h3>
+            <p>
+              Otto tappe dentro il borgo fortificato, dalla Torre delle Quattro Porte al
+              Palazzo Comunale. Disponibile in italiano, inglese, tedesco, francese,
+              spagnolo, portoghese, russo, cinese e arabo.
+            </p>
+            <p class="pilot__go">Apri il percorso →</p>
+          </div>
+        </a>
+        <a class="pilot" href="https://balestripietro-commits.github.io/calci-travel-podcasting/">
+          <div class="pilot__photo">
+            <svg viewBox="0 0 400 400" role="img" aria-label="La Certosa Monumentale di Calci">
+              <image href="assets/calci.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-blocco)"/>
+            </svg>
+          </div>
+          <div>
+            <span class="pilot__tag">Pilota</span>
+            <h3>Calci</h3>
+            <p>
+              Sette tappe dalla Certosa Monumentale al Monte Serra, lungo la valle dei
+              mulini. Una guida che accompagna il visitatore tra acqua, pietra e lavoro.
+            </p>
+            <p class="pilot__go">Apri il percorso →</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <script>
-// Landing page di Travel Podcasting: comparsa allo scorrimento e invio del contatto.
+  <section class="section" id="prodotto">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Il prodotto</p>
+        <h2>Tre cose che lo rendono adatto a un Comune</h2>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-lente" fill="var(--shape-b)"/></svg><span>01</span></div>
+          <h3>Storytelling</h3>
+          <p>
+            Storie e personaggi aiutano a scoprire il territorio. Non un elenco di date:
+            un racconto che tiene insieme le tappe e dà un motivo per arrivare alla
+            successiva.
+          </p>
+        </article>
+        <article class="feature">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-arco" fill="var(--shape-b)"/></svg><span>02</span></div>
+          <h3>Lingue e accessibilità</h3>
+          <p>
+            Audio e testo affiancati, in più lingue. Chi non può ascoltare legge, chi non
+            parla italiano sceglie la propria lingua.
+          </p>
+          <span class="feature__stat"
+            >47%
+            <small
+              >degli europei parla inglese come lingua straniera.<br />Eurobarometro 2024,
+              Commissione europea.</small
+            ></span
+          >
+        </article>
+        <article class="feature">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-foglia" fill="var(--shape-b)"/></svg><span>03</span></div>
+          <h3>Chiavi in mano</h3>
+          <p>
+            Si apre dal web, senza app, e si aggiorna facilmente. Si integra con la rete
+            locale e con le scuole, affiancando il lavoro di guide, musei, associazioni e
+            operatori, a costi sostenibili per i Comuni.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink" id="metodo">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Dall'esperienza al metodo</p>
+        <h2>Da Pisa a un format replicabile</h2>
+        <p class="section__intro">
+          Il format nasce dall'esperienza avviata a Pisa con il Comune e l'Università nel
+          2022. Funzionava, ma ogni percorso richiedeva troppo lavoro per poterlo proporre
+          a molti Comuni. Oggi l'intelligenza artificiale accorcia tutte le fasi: copy,
+          adattamento linguistico, voce, materiali grafici e sviluppo. Riducendo il lavoro
+          ripetitivo possiamo contenere i costi e personalizzare il progetto per ogni
+          Comune.
+        </p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>1</span></div>
+          <h3>Selezionare</h3>
+          <p>Fonti e storie, insieme a chi conosce il luogo.</p>
+        </article>
+        <article class="step">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>2</span></div>
+          <h3>Preparare</h3>
+          <p>Copywriting e versioni linguistiche, da rivedere insieme.</p>
+        </article>
+        <article class="step">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>3</span></div>
+          <h3>Produrre</h3>
+          <p>Voce, audio e materiali visivi.</p>
+        </article>
+        <article class="step">
+          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>4</span></div>
+          <h3>Pubblicare</h3>
+          <p>Un'esperienza web leggera, facile da aggiornare.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Chi lo costruisce</p>
+        <h2>Due freelance, dall'idea al prototipo</h2>
+        <p class="section__intro">
+          Competenze diverse, nessuna divisione rigida dei ruoli: storie, contenuti,
+          tecnologie e prototipi li costruiamo insieme.
+        </p>
+      </div>
+      <div class="team">
+        <article class="person">
+          <h3>Pietro Balestri</h3>
+          <p class="person__role">Ingegneria gestionale · Scienze della comunicazione</p>
+          <p>
+            Borsista di ricerca all'Università di Pisa. Lavora come freelance in
+            copywriting e formazione sull'intelligenza artificiale.
+          </p>
+        </article>
+        <article class="person">
+          <h3>Iacopo Piccaluga</h3>
+          <p class="person__role">Allievo Ordinario alla Scuola Superiore Sant'Anna</p>
+          <p>
+            È stato a INNOVIT, a San Francisco. Ha ideato NExTerritorio, coinvolgendo
+            oltre cento studenti e tre Comuni. Porta nel progetto una prospettiva di
+            organizzazione e gestione.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" id="contatto">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow">Il prossimo passo</p>
+        <h2>Parliamo del vostro Comune</h2>
+        <p class="section__intro">
+          Completiamo i piloti di Vicopisano e Calci raccogliendo, insieme ai Comuni, cosa
+          funziona e cosa portare alla tappa successiva. L'idea è aggiungere un punto di
+          accesso leggero che valorizza il lavoro di chi già si occupa di turismo e
+          cultura. Le scuole possono usare lo stesso patrimonio per esplorare il
+          territorio e lavorare sulle fonti.
+        </p>
+        <p class="section__intro">
+          Lasciate un contatto: vi scriviamo noi, con il link alle demo e una scheda breve
+          del progetto.
+        </p>
+      </div>
+      <div class="contact__card">
+        <form id="contact-form" novalidate>
+          <label class="field">
+            <span>Nome e Comune o ente</span>
+            <input type="text" name="name" autocomplete="organization" placeholder="Maria Rossi — Comune di…" required />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" placeholder="nome@comune.it" required />
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent" required />
+            <span>Acconsento a essere ricontattato su questo progetto. Il contatto non viene
+              usato per altro e può essere cancellato su richiesta.</span>
+          </label>
+          <button class="btn" type="submit">Invia il contatto</button>
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <img src="assets/logo-orizzontale-scuro.svg" alt="Travel Podcasting" width="129" height="38">
+    <p>Pietro Balestri e Iacopo Piccaluga</p>
+    <p>
+      Siti:
+      <a href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/">Vicopisano</a>
+      ·
+      <a href="https://balestripietro-commits.github.io/calci-travel-podcasting/">Calci</a>
+      · Codice:
+      <a href="https://github.com/balestripietro-commits/vicopisano-travel-podcasting">Vicopisano</a>
+      ·
+      <a href="https://github.com/balestripietro-commits/calci-travel-podcasting">Calci</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+    // Landing page di Travel Podcasting: comparsa allo scorrimento e invio del contatto.
 
 // Indirizzo dell'app web di Google Apps Script che riceve i contatti.
 // Finché resta vuoto il modulo non invia nulla e lo dice a chi scrive.
@@ -1083,7 +1004,6 @@ function attivaModulo() {
 }
 
 attivaModulo();
-
 </script>
-  
-</body></html>
+</body>
+</html>
