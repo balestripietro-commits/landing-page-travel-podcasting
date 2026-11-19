@@ -32,22 +32,22 @@
 
 :root {
   --tp-color-primary: #245c52;
-  --tp-color-on-primary: #ffffff;
+  --tp-color-on-primary: #fff8ef;
   --tp-color-primary-container: #d9eee8;
   --tp-color-on-primary-container: #0e332d;
-  --tp-color-secondary: #2c6da3;
+  --tp-color-secondary: #2f6fae;
   --tp-color-tertiary: #e8c36d;
-  --tp-color-on-tertiary: #3a2b06;
+  --tp-color-on-tertiary: #245c52;
   --tp-color-surface: #fff8ef;
-  --tp-color-surface-bright: #fffdf8;
-  --tp-color-surface-container: #f6ecde;
-  --tp-color-surface-container-high: #efe2d1;
-  --tp-color-on-surface-variant: #49685f;
-  --tp-color-outline: #adc2bd;
-  --tp-color-outline-variant: #e1dccf;
-  --tp-color-ink: #10231f;
+  --tp-color-surface-bright: #fff8ef;
+  --tp-color-surface-container: #f6e6b8;
+  --tp-color-surface-container-high: #d9eee8;
+  --tp-color-on-surface-variant: #1f2a27;
+  --tp-color-outline: #245c52;
+  --tp-color-outline-variant: #d9eee8;
+  --tp-color-ink: #1f2a27;
 
-  --tp-font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --tp-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --tp-font-editorial: "Petrona", Georgia, "Times New Roman", serif;
 
   --tp-space-2: 8px;
@@ -68,12 +68,12 @@
   --tp-elevation-2: 0 8px 24px rgba(23, 63, 57, 0.12);
 
   --heading: #245c52;
-  --fg: #10231f;
+  --fg: #1f2a27;
   --btn-bg: #245c52;
-  --btn-fg: #ffffff;
+  --btn-fg: #fff8ef;
   --ink-bg: #245c52;
   --ink-fg: #fff8ef;
-  --input-bg: #ffffff;
+  --input-bg: #fff8ef;
   --shape-a: #245c52;
   --shape-b: #e8c36d;
   --shape-c: #d9eee8;
@@ -83,41 +83,15 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --tp-color-primary-container: #1d3a34;
-    --tp-color-on-primary-container: #d9eee8;
-    --tp-color-secondary: #86b9e4;
-    --tp-color-surface: #0f1d1a;
-    --tp-color-surface-bright: #162825;
-    --tp-color-surface-container: #132421;
-    --tp-color-surface-container-high: #1b312d;
-    --tp-color-on-surface-variant: #a8c4bc;
-    --tp-color-outline: #3d5a53;
-    --tp-color-outline-variant: #284039;
-    --heading: #bfe3d9;
-    --fg: #e6f0ed;
-    --btn-bg: #e8c36d;
-    --btn-fg: #2b1f04;
-    --ink-bg: #0b2a25;
-    --input-bg: #0f1d1a;
-    --shape-a: #2f7a6b;
-    --shape-c: #1d3a34;
-    --ok: #5fcf9b;
-    --err: #ff8f86;
-    color-scheme: dark;
-  }
-}
-
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
 body {
   margin: 0;
-  font-family: var(--tp-font-ui);
-  font-size: 17px;
-  line-height: 1.65;
+  font-family: var(--tp-font-editorial);
+  font-size: 19px;
+  line-height: 1.6;
   color: var(--fg);
   background: var(--tp-color-surface);
   -webkit-font-smoothing: antialiased;
@@ -189,12 +163,7 @@ img { display: block; max-width: 100%; }
 
 .brand { display: inline-flex; align-items: center; }
 .brand img { height: 40px; width: auto; }
-.brand .logo-dark { display: none; }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .brand .logo-light { display: none; }
-  :root:not([data-theme="light"]) .brand .logo-dark { display: block; }
-}
 
 .site-nav { display: flex; align-items: center; gap: var(--tp-space-5); }
 
@@ -225,7 +194,7 @@ img { display: block; max-width: 100%; }
   border-radius: var(--tp-radius-full);
   background: var(--btn-bg);
   color: var(--btn-fg);
-  font-family: var(--tp-font-ui);
+  font-family: var(--tp-font-sans);
   font-size: 0.97rem;
   font-weight: 600;
   text-decoration: none;
@@ -466,7 +435,7 @@ img { display: block; max-width: 100%; }
 
 .feature__stat small {
   display: block;
-  font-family: var(--tp-font-ui);
+  font-family: var(--tp-font-sans);
   font-weight: 400;
   font-size: 0.8rem;
   line-height: 1.45;
@@ -614,6 +583,22 @@ img { display: block; max-width: 100%; }
 .site-footer p { color: rgba(255, 248, 239, 0.82); }
 .site-footer a { color: var(--tp-color-tertiary); font-weight: 500; }
 
+
+/* interfaccia in sans (pulsanti, etichette, moduli); testi e titoli in Petrona */
+.site-nav a, .hero__meta dt, .field span, .field input, .consent, .form-note,
+.pilot__tag, .person__role, .feature__stat small, .btn { font-family: var(--tp-font-sans); }
+.pilot p, .feature p, .person p:not(.person__role), .step p, .hero__lead, .section__intro, .hero__meta dd { font-family: var(--tp-font-editorial); }
+
+/* sezioni: solo i colori della palette, come nel carosello LinkedIn */
+#piloti { background: #d9eee8; }
+#prodotto .feature { background: #f6e6b8; }
+#team { background: var(--tp-color-surface); }
+#team .person { background: #d9eee8; }
+#contatto { background: #f6e6b8; }
+.pilot, .contact__card { background: #fff8ef; }
+.pilot { box-shadow: none; }
+.feature, .person, .contact__card { box-shadow: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .pilot, .btn { transition: none; }
@@ -641,7 +626,6 @@ img { display: block; max-width: 100%; }
   <div class="wrap site-header__inner">
     <a class="brand" href="#top" aria-label="Travel Podcasting, vai all'inizio">
       <img class="logo-light" src="assets/logo-orizzontale.svg" alt="Travel Podcasting" width="136" height="40">
-      <img class="logo-dark" src="assets/logo-orizzontale-scuro.svg" alt="" width="136" height="40">
     </a>
     <nav class="site-nav" aria-label="Sezioni">
       <a class="nav-link" href="#piloti">I piloti</a>
@@ -698,7 +682,7 @@ img { display: block; max-width: 100%; }
     </div>
   </section>
 
-  <section class="section section--tinted" id="piloti">
+  <section class="section section" id="piloti">
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">I due piloti</p>
@@ -713,6 +697,7 @@ img { display: block; max-width: 100%; }
           <div class="pilot__photo">
             <!-- la foto di una torre sta nel tassello: dentro la forma a torre non entra -->
             <svg viewBox="0 0 400 400" role="img" aria-label="La Torre delle Quattro Porte a Vicopisano">
+              <use href="#p-tassello" fill="#e8c36d" transform="translate(16 16)"/>
               <image href="assets/vicopisano.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-tassello)"/>
             </svg>
           </div>
@@ -730,6 +715,7 @@ img { display: block; max-width: 100%; }
         <a class="pilot" href="https://balestripietro-commits.github.io/calci-travel-podcasting/">
           <div class="pilot__photo">
             <svg viewBox="0 0 400 400" role="img" aria-label="La Certosa Monumentale di Calci">
+              <use href="#p-blocco" fill="#e8c36d" transform="translate(16 16)"/>
               <image href="assets/calci.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-blocco)"/>
             </svg>
           </div>
