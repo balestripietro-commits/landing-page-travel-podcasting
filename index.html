@@ -442,6 +442,17 @@ img { display: block; max-width: 100%; }
   color: var(--tp-color-on-surface-variant);
 }
 
+
+.person__link { font-family: var(--tp-font-sans); font-weight: 600; font-size: 0.9rem; color: var(--tp-color-secondary); }
+
+/* ---------- dati ---------- */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--tp-space-6, 2.5rem); }
+.stat + .stat { border-left: 1px solid var(--tp-color-outline-variant); padding-left: var(--tp-space-6, 2.5rem); }
+.stat__num { font-family: var(--tp-font-editorial); font-weight: 700; font-size: clamp(3.4rem, 9vw, 6rem); line-height: 1; color: var(--tp-color-secondary); }
+.stat__text { margin-top: var(--tp-space-3); font-family: var(--tp-font-editorial); font-size: 1.25rem; color: var(--heading); }
+.stat__src { margin-top: var(--tp-space-3); font-family: var(--tp-font-editorial); font-size: 0.85rem; color: var(--tp-color-on-surface-variant); }
+@media (max-width: 720px) { .stats { grid-template-columns: 1fr; } .stat + .stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--tp-color-outline-variant); padding-top: var(--tp-space-5, 2rem); } }
+
 /* ---------- metodo ---------- */
 
 .steps {
@@ -668,6 +679,21 @@ img { display: block; max-width: 100%; }
     </div>
   </section>
 
+  <section class="section section--tinted" id="problema">
+    <div class="wrap stats">
+      <div class="stat">
+        <p class="stat__num">75%</p>
+        <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
+        <p class="stat__src">The European House &ndash; Ambrosetti (TEHA Group), su dati ISTAT 2022.</p>
+      </div>
+      <div class="stat">
+        <p class="stat__num">47%</p>
+        <p class="stat__text">degli europei parla inglese come lingua straniera.</p>
+        <p class="stat__src">Eurobarometro 2024, Commissione europea.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section section" id="piloti">
     <div class="wrap">
       <div class="section__head">
@@ -742,13 +768,6 @@ img { display: block; max-width: 100%; }
             Audio e testo affiancati, in più lingue. Chi non può ascoltare legge, chi non
             parla italiano sceglie la propria lingua.
           </p>
-          <span class="feature__stat"
-            >47%
-            <small
-              >degli europei parla inglese come lingua straniera.<br />Eurobarometro 2024,
-              Commissione europea.</small
-            ></span
-          >
         </article>
         <article class="feature">
           <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-foglia" fill="var(--shape-b)"/></svg><span>03</span></div>
@@ -817,18 +836,20 @@ img { display: block; max-width: 100%; }
           <h3>Pietro Balestri</h3>
           <p class="person__role">Ingegneria gestionale · Scienze della comunicazione</p>
           <p>
-            Borsista di ricerca all'Università di Pisa. Lavora come freelance in
-            copywriting e formazione sull'intelligenza artificiale.
+            Ricercatore all'Università di Pisa. Lavora come freelance in copywriting
+            e formazione sull'intelligenza artificiale.
           </p>
+          <p><a class="person__link" href="https://www.linkedin.com/in/pietrobalestri/" target="_blank" rel="noopener">LinkedIn &rarr;</a></p>
         </article>
         <article class="person">
           <h3>Iacopo Piccaluga</h3>
           <p class="person__role">Allievo Ordinario alla Scuola Superiore Sant'Anna</p>
           <p>
-            È stato a INNOVIT, a San Francisco. Ha ideato NExTerritorio, coinvolgendo
-            oltre cento studenti e tre Comuni. Porta nel progetto una prospettiva di
+            È stato a INNOVIT, a San Francisco. Ha ideato NExTerritorio, un progetto che
+            mette in dialogo studenti e Comuni. Porta nel progetto una prospettiva di
             organizzazione e gestione.
           </p>
+          <p><a class="person__link" href="https://www.linkedin.com/in/iacopo-piccaluga/" target="_blank" rel="noopener">LinkedIn &rarr;</a></p>
         </article>
       </div>
     </div>
