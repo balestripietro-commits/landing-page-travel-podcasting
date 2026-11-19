@@ -454,6 +454,13 @@ img { display: block; max-width: 100%; }
 @media (max-width: 720px) { .stats { grid-template-columns: 1fr; } .stat + .stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--tp-color-outline-variant); padding-top: var(--tp-space-5, 2rem); } }
 
 /* ---------- metodo ---------- */
+.origin { display: grid; grid-template-columns: 1fr 1fr; gap: var(--tp-space-6, 2.5rem); align-items: center; margin-bottom: var(--tp-space-6, 2.5rem); }
+.origin .section__head { margin-bottom: 0; }
+.origin__shot img { display: block; width: 100%; height: auto; border-radius: var(--tp-radius-md); }
+.origin__shot figcaption { margin-top: var(--tp-space-3); font-family: var(--tp-font-editorial); font-size: 0.82rem; opacity: 0.8; }
+.origin__shot figcaption a { color: inherit; text-decoration: underline; }
+@media (max-width: 860px) { .origin { grid-template-columns: 1fr; } }
+
 
 .steps {
   display: grid;
@@ -784,17 +791,23 @@ img { display: block; max-width: 100%; }
 
   <section class="section section--ink" id="metodo">
     <div class="wrap">
-      <div class="section__head">
-        <p class="eyebrow">Dall'esperienza al metodo</p>
-        <h2>Da Pisa a un format replicabile</h2>
-        <p class="section__intro">
-          Il format nasce dall'esperienza avviata a Pisa con il Comune e l'Università nel
-          2022. Funzionava, ma ogni percorso richiedeva troppo lavoro per poterlo proporre
-          a molti Comuni. Oggi l'intelligenza artificiale accorcia tutte le fasi: copy,
-          adattamento linguistico, voce, materiali grafici e sviluppo. Riducendo il lavoro
-          ripetitivo possiamo contenere i costi e personalizzare il progetto per ogni
-          Comune.
-        </p>
+      <div class="origin">
+        <div class="section__head">
+          <p class="eyebrow">Dall'esperienza al metodo</p>
+          <h2>Da Pisa a un format replicabile</h2>
+          <p class="section__intro">
+            Il format nasce dall'esperienza avviata a Pisa con il Comune e l'Università nel
+            2022. Funzionava, ma ogni percorso richiedeva troppo lavoro per poterlo proporre
+            a molti Comuni. Oggi l'intelligenza artificiale accorcia tutte le fasi: copy,
+            adattamento linguistico, voce, materiali grafici e sviluppo. Riducendo il lavoro
+            ripetitivo possiamo contenere i costi e personalizzare il progetto per ogni
+            Comune.
+          </p>
+        </div>
+        <figure class="origin__shot">
+          <img src="assets/pisa-2022.webp" alt="Comunicato del Comune di Pisa del 24 giugno 2022: «Turismo: nuovo progetto di travel podcasting nato dalla collaborazione tra Comune e UniPi»" width="1200" height="896" loading="lazy">
+          <figcaption>Comune di Pisa, 24 giugno 2022. Foto &copy; Comune di Pisa, <a href="https://creativecommons.org/licenses/by/4.0/deed.it" target="_blank" rel="noopener">CC BY 4.0</a>.</figcaption>
+        </figure>
       </div>
       <div class="steps">
         <article class="step">
