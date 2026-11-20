@@ -743,6 +743,19 @@ img { display: block; max-width: 100%; }
 .voice-single .vs__select option { color: #173f39; }
 .lang-big { font-family: var(--tp-font-editorial); font-weight: 700; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1; color: var(--heading); margin: .6rem 0 .4rem; }
 .lang-big span { color: #7d4fe0; }
+/* ---------- ritocchi: riga unica, barra cliccabile, numeri uguali ---------- */
+.vs__line { display: flex; align-items: center; gap: .9rem; }
+.vs__play { flex: 0 0 auto; width: 68px; height: 68px; padding: 4px; }
+.vs__btn svg { width: 26px; height: 26px; }
+.vs__t { font: 600 .85rem var(--tp-font-sans); color: rgba(255,248,239,.85); min-width: 2.4rem; text-align: center; }
+.vs__seek { flex: 1; min-width: 0; padding: 16px 0; cursor: pointer; touch-action: none; }
+.vs__seek:focus-visible { outline: 3px solid #fff8ef; outline-offset: 2px; border-radius: 8px; }
+.vs__ctl, .vs__time { display: none; }
+.lang-big { color: #245c52 !important; }
+.lang-big span { color: inherit; }
+#problemi .stat__text { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; line-height: 1.15; min-height: 3.5em; }
+#problemi .problem__note { font-size: 1.15rem; }
+#problemi .stat__src { font-size: .82rem; }
 /* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
 .voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
 .vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
@@ -792,8 +805,9 @@ img { display: block; max-width: 100%; }
           <h1>L'AI che dà <em>voce</em> ai luoghi</h1>
           <p class="hero__lead">
             Percorsi audio che raccontano un borgo mentre lo si attraversa. Si aprono dal
-            telefono, senza app: mappa, voce e testo che avanza. Per i Comuni che vogliono
-            far ascoltare le proprie storie.
+            telefono, senza app: il visitatore sceglie la lingua, tocca una tappa sulla mappa
+            e ascolta il racconto mentre cammina. Per i Comuni che vogliono far ascoltare le
+            proprie storie.
           </p>
           <div class="hero__actions">
             <a class="btn" href="#piloti">Ascolta un esempio</a>
@@ -820,10 +834,6 @@ img { display: block; max-width: 100%; }
       <div class="section__head">
         <p class="eyebrow">Come funziona</p>
         <h2>Si apre dal telefono, senza installare niente</h2>
-        <p class="section__intro">
-          Il visitatore sceglie la lingua, tocca una tappa sulla mappa e ascolta il racconto
-          mentre cammina.
-        </p>
       </div>
       <div class="phones" ondragstart="return false" oncontextmenu="return false">
         <figure class="phone"><div class="phone__frame"><img src="assets/schermata-home-2.webp" alt="La home del percorso di Vicopisano, con Brunelleschi che dà il benvenuto" width="500" height="1082" loading="lazy"></div></figure>
@@ -844,7 +854,7 @@ img { display: block; max-width: 100%; }
           <div>
             <p class="stat__num">75%</p>
             <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
-            <p class="problem__note">I borghi restano ai margini dei percorsi più battuti. Una storia raccontata sul posto è un motivo in più per fermarsi.</p>
+            <p class="problem__note">I borghi restano fuori dai percorsi più battuti. Una storia raccontata sul posto dà un motivo per fermarsi.</p>
             <p class="stat__src">The European House &ndash; Ambrosetti (TEHA Group), su dati ISTAT 2022.</p>
           </div>
         </article>
@@ -852,8 +862,8 @@ img { display: block; max-width: 100%; }
           <div>
             <p class="stat__num">4 su 5</p>
             <p class="stat__text">persone al mondo non parlano né italiano né inglese.</p>
-            <p class="problem__note">I cartelli tradotti solo in italiano e in inglese non bastano.</p>
-            <p class="stat__src">Circa l'81%: italiano e inglese sono parlati da circa il 19% della popolazione mondiale (1,5 miliardi di parlanti inglese e circa 65 milioni di madrelingua italiani su 8,2 miliardi di persone). Ethnologue (stime sui parlanti); Banca Mondiale (popolazione 2025).</p>
+            <p class="problem__note">I cartelli solo in italiano e in inglese non bastano: per farsi capire serve la lingua di chi arriva.</p>
+            <p class="stat__src">Ethnologue; Banca Mondiale (popolazione 2025).</p>
           </div>
         </article>
       </div>
@@ -864,16 +874,17 @@ img { display: block; max-width: 100%; }
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">Un esempio da ascoltare</p>
-        <h2>Provalo a <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span></h2>
-        <p class="lang-big"><span>70+</span> lingue</p>
-        <p class="section__intro">Ecco la prima tappa, la Torre delle Quattro Porte, in nove lingue. Possiamo farla in più di 70: tutte quelle che sa leggere la nostra voce di sintesi.</p>
+        <h2>Prova la prima tappa di <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span> in</h2>
+        <p class="lang-big">70+ lingue</p>
       </div>
 
       <div class="voice-single" id="voice-single">
         <p class="vs__name" id="vs-name" lang="it" dir="ltr">Benvenuti a Vicopisano</p>
-        <div class="vs__time"><span id="vs-cur">0:00</span><div class="vs__track" aria-hidden="true"><span id="vs-bar" style="width:0%"></span><i id="vs-dot" style="left:0%"></i></div><span id="vs-dur">--:--</span></div>
-        <div class="vs__ctl">
+        <div class="vs__line">
           <div class="vs__play" id="vs-ring" style="--p:0deg"><button class="vs__btn" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button></div>
+          <span class="vs__t" id="vs-cur">0:00</span>
+          <div class="vs__seek" id="vs-seek" role="slider" tabindex="0" aria-label="Posizione dell'audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="vs__track"><span id="vs-bar" style="width:0%"></span><i id="vs-dot" style="left:0%"></i></div></div>
+          <span class="vs__t" id="vs-dur">--:--</span>
         </div>
         <label class="vs__label" for="vs-select">Lingua</label>
         <select class="vs__select" id="vs-select" aria-label="Lingua dell'audio"><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</option></select>
@@ -1077,10 +1088,11 @@ attivaModulo();
 <script>
 (function(){
   var box=document.getElementById('voice-single'); if(!box) return;
-  var a=new Audio(); a.preload='none';
-  var sel=document.getElementById('vs-select'), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), dot=document.getElementById('vs-dot'), play=document.getElementById('vs-play'), ring=document.getElementById('vs-ring'), cur=document.getElementById('vs-cur'), dur=document.getElementById('vs-dur');
+  var a=new Audio(); a.preload='metadata';
+  var sel=document.getElementById('vs-select'), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), dot=document.getElementById('vs-dot'), play=document.getElementById('vs-play'), ring=document.getElementById('vs-ring'), cur=document.getElementById('vs-cur'), dur=document.getElementById('vs-dur'), seek=document.getElementById('vs-seek');
   function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
-  function reset(){bar.style.width='0%';dot.style.left='0%';ring.style.setProperty('--p','0deg');cur.textContent='0:00';dur.textContent='--:--'}
+  function paint(){var p=a.duration?a.currentTime/a.duration*100:0;bar.style.width=p+'%';dot.style.left=p+'%';ring.style.setProperty('--p',(p*3.6)+'deg');cur.textContent=fmt(a.currentTime);seek.setAttribute('aria-valuenow',Math.round(p))}
+  function reset(){dur.textContent='--:--';paint()}
   a.src=sel.value;
   sel.addEventListener('change',function(){
     var o=sel.options[sel.selectedIndex]; a.pause(); a.src=o.value; reset();
@@ -1089,9 +1101,15 @@ attivaModulo();
   play.addEventListener('click',function(){ if(a.paused) a.play(); else a.pause(); });
   a.addEventListener('play',function(){box.classList.add('is-playing')});
   a.addEventListener('pause',function(){box.classList.remove('is-playing')});
-  a.addEventListener('ended',function(){box.classList.remove('is-playing');reset()});
+  a.addEventListener('ended',function(){box.classList.remove('is-playing');a.currentTime=0;paint()});
   a.addEventListener('loadedmetadata',function(){dur.textContent=fmt(a.duration)});
-  a.addEventListener('timeupdate',function(){if(a.duration){var p=a.currentTime/a.duration*100;bar.style.width=p+'%';dot.style.left=p+'%';ring.style.setProperty('--p',(p*3.6)+'deg');cur.textContent=fmt(a.currentTime)}});
+  a.addEventListener('timeupdate',paint);
+  function go(e){var r=seek.getBoundingClientRect();var f=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));if(a.duration){a.currentTime=f*a.duration;paint()}}
+  var drag=false;
+  seek.addEventListener('pointerdown',function(e){drag=true;seek.setPointerCapture(e.pointerId);go(e)});
+  seek.addEventListener('pointermove',function(e){if(drag)go(e)});
+  seek.addEventListener('pointerup',function(){drag=false});
+  seek.addEventListener('keydown',function(e){if(!a.duration)return;if(e.key==='ArrowRight'){a.currentTime=Math.min(a.duration,a.currentTime+5)}else if(e.key==='ArrowLeft'){a.currentTime=Math.max(0,a.currentTime-5)}else return;e.preventDefault();paint()});
 })();
 </script>
 </body>
