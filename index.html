@@ -694,6 +694,19 @@ img { display: block; max-width: 100%; }
 #problemi .stat__text, #problemi .problem__note, #problemi .stat__src { color: #173f39; }
 #problemi .stat__text { color: #7d4fe0; }
 #problemi .problem + .problem { border-left-color: rgba(23,63,57,.35); }
+/* ---------- un solo audio da mobile ---------- */
+.voice-single { display: none; background: #fff8ef; border-radius: 24px; padding: 1.1rem 1.1rem 1.2rem; margin-top: 1.5rem; }
+.vs__name { font-family: var(--tp-font-editorial); font-size: 1.3rem; color: var(--heading); margin: 0 0 .8rem; min-height: 2.2em; }
+.vs__row { display: flex; align-items: center; gap: .8rem; }
+.vs__bar { flex: 1; min-width: 0; }
+.vs__bar span { transition: width .25s linear; }
+.vs__label { font-family: var(--tp-font-sans); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tp-color-on-surface-variant); margin: 1.1rem 0 .5rem; }
+.vs__chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.vs__chip { font: 600 .85rem var(--tp-font-sans); padding: .5rem .85rem; border-radius: 999px; border: 1.5px solid rgba(36,92,82,.35); background: transparent; color: #245c52; cursor: pointer; }
+.vs__chip.is-on { background: #245c52; color: #fff8ef; border-color: #245c52; }
+.voice-single.is-playing .i-play { display: none; }
+.voice-single.is-playing .i-pause { display: inline; }
+@media (max-width: 760px) { .voice-single { display: block; } .voices { display: none; } }
 /* ---------- voci in tutte le lingue ---------- */
 .voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .voice { background: #fff8ef; border-radius: 24px; padding: 1rem 1.1rem 1.1rem; }
@@ -804,7 +817,7 @@ img { display: block; max-width: 100%; }
           <div>
             <p class="stat__num">75%</p>
             <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
-            <p class="problem__note">I borghi restano fuori dai percorsi più battuti. Serve un racconto che dia un motivo per fermarsi.</p>
+            <p class="problem__note">I borghi restano ai margini dei percorsi più battuti. Una storia raccontata sul posto è un motivo in più per fermarsi.</p>
             <p class="stat__src">The European House &ndash; Ambrosetti (TEHA Group), su dati ISTAT 2022.</p>
           </div>
         </article>
@@ -812,7 +825,7 @@ img { display: block; max-width: 100%; }
           <div>
             <p class="stat__num">47%</p>
             <p class="stat__text">degli europei parla inglese come lingua straniera.</p>
-            <p class="problem__note">Per anni cartelli in italiano e in inglese: ma un turista su due non capisce cosa c'è scritto.</p>
+            <p class="problem__note">Cartelli in italiano e in inglese non bastano: più di un europeo su due non parla inglese.</p>
             <p class="stat__src">Eurobarometro 2024, Commissione europea.</p>
           </div>
         </article>
@@ -829,6 +842,16 @@ img { display: block; max-width: 100%; }
           Lo facciamo per diversi Comuni. Questa è la prima tappa, la Torre delle Quattro Porte,
           nelle nove lingue del percorso. Premi play su una qualsiasi.
         </p>
+      </div>
+
+      <div class="voice-single" id="voice-single">
+        <p class="vs__name" id="vs-name" lang="it" dir="ltr">Benvenuti a Vicopisano</p>
+        <div class="vs__row">
+          <button class="voice__play" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+          <div class="meter vs__bar" aria-hidden="true"><span id="vs-bar" style="width:0%"></span></div>
+        </div>
+        <p class="vs__label">Cambia lingua</p>
+        <div class="vs__chips" role="group" aria-label="Lingua dell'audio"><button type="button" class="vs__chip is-on" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</button></div>
       </div>
       <div class="voices">
           <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3">
@@ -1098,6 +1121,26 @@ attivaModulo();
     p.addEventListener('click',function(){porta(p);});
     p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();porta(p);}});
   });
+})();
+</script>
+<script>
+(function(){
+  var box=document.getElementById('voice-single'); if(!box) return;
+  var a=new Audio(); a.preload='none';
+  var chips=[].slice.call(box.querySelectorAll('.vs__chip')), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), play=document.getElementById('vs-play');
+  function set(c,go){
+    chips.forEach(function(x){x.classList.toggle('is-on',x===c)});
+    var was=!a.paused; a.pause(); a.src=c.dataset.src; bar.style.width='0%';
+    name.textContent=c.dataset.name; name.lang=c.dataset.lang; name.dir=c.dataset.dir;
+    if(go||was) a.play();
+  }
+  a.src=chips[0].dataset.src;
+  chips.forEach(function(c){c.addEventListener('click',function(){set(c,true)})});
+  play.addEventListener('click',function(){ if(a.paused) a.play(); else a.pause(); });
+  a.addEventListener('play',function(){box.classList.add('is-playing');if(window.__vsOther)window.__vsOther()});
+  a.addEventListener('pause',function(){box.classList.remove('is-playing')});
+  a.addEventListener('ended',function(){box.classList.remove('is-playing');bar.style.width='0%'});
+  a.addEventListener('timeupdate',function(){if(a.duration)bar.style.width=(a.currentTime/a.duration*100)+'%'});
 })();
 </script>
 </body>
