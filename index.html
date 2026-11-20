@@ -678,6 +678,12 @@ img { display: block; max-width: 100%; }
   .phone, .phone--mid { flex: 0 0 68vw; width: 68vw; max-width: 300px; scroll-snap-align: center; }
 }
 
+/* ---------- problemi: oro del brand, numeri viola ---------- */
+#problemi { background: #e8c36d; }
+#problemi .eyebrow { color: #245c52; }
+#problemi .stat__num { color: #7d4fe0; }
+#problemi .stat__text, #problemi .problem__note, #problemi .stat__src { color: #173f39; }
+#problemi .problem + .problem { border-left-color: rgba(23,63,57,.35); }
 /* ---------- voci in tutte le lingue ---------- */
 .voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .voice { background: #fff8ef; border-radius: 24px; padding: 1rem 1.1rem 1.1rem; }
@@ -770,14 +776,14 @@ img { display: block; max-width: 100%; }
         </p>
       </div>
       <div class="phones">
-        <figure class="phone"><div class="phone__frame"><img src="assets/app-lingua.webp" alt="Scelta della lingua all'avvio" width="500" height="1083" loading="lazy"></div><figcaption><span>1</span>Scegli la lingua</figcaption></figure>
-        <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/app-mappa.webp" alt="Mappa con le tappe e player audio" width="500" height="1083" loading="lazy"></div><figcaption><span>2</span>Tocca una tappa</figcaption></figure>
-        <figure class="phone"><div class="phone__frame"><img src="assets/app-player.webp" alt="Player audio a schermo intero con la tappa" width="500" height="1083" loading="lazy"></div><figcaption><span>3</span>Ascolta e cammina</figcaption></figure>
+        <figure class="phone"><div class="phone__frame"><img src="assets/app-home.webp" alt="La home del percorso di Vicopisano, con Brunelleschi che dà il benvenuto" width="500" height="1082" loading="lazy"></div></figure>
+        <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/app-mappa.webp" alt="La mappa con le tappe e il player audio" width="500" height="1082" loading="lazy"></div></figure>
+        <figure class="phone"><div class="phone__frame"><img src="assets/app-player.webp" alt="Il player audio a schermo intero con la prima tappa" width="500" height="1082" loading="lazy"></div></figure>
       </div>
     </div>
   </section>
 
-  <section class="section section--tinted" id="problemi">
+  <section class="section" id="problemi">
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">Il problema</p>
@@ -785,7 +791,6 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="problems">
         <article class="problem">
-          <div class="meter" role="img" aria-label="75 su 100"><span style="width:75%"></span></div>
           <div>
             <p class="stat__num">75%</p>
             <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
@@ -794,7 +799,6 @@ img { display: block; max-width: 100%; }
           </div>
         </article>
         <article class="problem">
-          <div class="meter" role="img" aria-label="47 su 100"><span style="width:47%"></span></div>
           <div>
             <p class="stat__num">47%</p>
             <p class="stat__text">degli europei parla inglese come lingua straniera.</p>
@@ -891,8 +895,7 @@ img { display: block; max-width: 100%; }
           </div>
       </div>
       <p class="story__cta">
-        <a class="btn" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/?lang=it&amp;tappa=1" target="_blank" rel="noopener">Apri la tappa</a>
-        <a class="btn btn--ghost" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Apri il percorso</a>
+        <a class="btn" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Apri il percorso</a>
       </p>
     </div>
   </section>
@@ -900,12 +903,7 @@ img { display: block; max-width: 100%; }
   <section class="section" id="team">
     <div class="wrap">
       <div class="section__head">
-        <p class="eyebrow">Chi lo costruisce</p>
-        <h2>Due freelance, dall'idea al prototipo</h2>
-        <p class="section__intro">
-          Competenze diverse, nessuna divisione rigida dei ruoli: storie, contenuti,
-          tecnologie e prototipi li costruiamo insieme.
-        </p>
+        <h2>Chi lo costruisce</h2>
       </div>
       <div class="team">
         <article class="person">
