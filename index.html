@@ -796,6 +796,18 @@ img { display: block; max-width: 100%; }
 html, body, * { -webkit-tap-highlight-color: transparent; }
 button, a, summary, label, select, input, [role="button"], [tabindex] { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
 button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:not(:focus-visible), summary:focus:not(:focus-visible) { outline: none; }
+/* ---------- apertura del sito: il pallino, poi le virgolette, poi il sito ---------- */
+.intro { position: fixed; inset: 0; z-index: 9999; background: #fff8ef; display: grid; place-items: center; animation: introOut .7s ease 2.3s forwards; }
+.intro__logo { width: min(46vw, 260px); height: auto; overflow: visible; }
+.intro-ch { fill: none; stroke: #245c52; stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; }
+.intro-dot { fill: #e8c36d; transform-box: fill-box; transform-origin: center; animation: introDot .6s cubic-bezier(.2,1.3,.4,1) .2s both; }
+.intro-l { animation: introL .8s cubic-bezier(.65,0,.35,1) 1s both; }
+.intro-r { animation: introR .8s cubic-bezier(.65,0,.35,1) 1s both; }
+@keyframes introDot { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes introL { from { transform: translateX(52px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes introR { from { transform: translateX(-52px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes introOut { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
 /* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
 .voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
 .vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
@@ -806,6 +818,14 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+  <svg viewBox="10 50 180 100" class="intro__logo" focusable="false">
+    <g class="intro-l"><path class="intro-ch" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g>
+    <g class="intro-r"><path class="intro-ch" transform="matrix(-1 0 0 1 200 0)" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g>
+    <circle class="intro-dot" cx="100" cy="100" r="15"/>
+  </svg>
+</div>
+
 
 <!-- Forme del brand: stessi tracciati dei siti dei borghi (viewBox 0 0 400 420). -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -825,17 +845,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="#top" aria-label="Travel Podcasting, vai all'inizio">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="10.0 50 526.5 100" role="img" aria-label="Travel Podcasting"><style>
-.tpl{--verde:#245c52;--oro:#e8c36d;--testo:#b8902f}
-.tpl .ch{fill:none;stroke:var(--verde);stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
-.tpl .a{animation-duration:24s;animation-timing-function:cubic-bezier(.65,0,.35,1);animation-iteration-count:infinite;animation-fill-mode:both}
-.tpl-dx{animation-name:tpl-dx}.tpl-sx{animation-name:tpl-sx}
-.tpl-dot{fill:var(--oro);transform-box:fill-box;transform-origin:center;animation-name:tpl-dot}
-.tpl text{font:700 30px Petrona,Georgia,serif;fill:var(--testo)}
-.tpl-t0{animation-name:tpl-t0;clip-path:inset(-8px 100% -8px 0)}.tpl-t1{animation-name:tpl-t1;clip-path:inset(-8px 100% -8px 0)}
-@keyframes tpl-dx{0%{transform:translateX(0.0px)}4.167%{transform:translateX(0.0px)}15.833%{transform:translateX(230.1px)}31.667%{transform:translateX(230.1px)}42.5%{transform:translateX(0.0px)}54.167%{transform:translateX(0.0px)}65.833%{transform:translateX(337.1px)}81.667%{transform:translateX(337.1px)}92.5%{transform:translateX(0.0px)}100%{transform:translateX(0.0px)}}@keyframes tpl-dot{0%{transform:scale(1);opacity:1}4.167%{transform:scale(1);opacity:1}10.0%{transform:scale(0);opacity:0}36.667%{transform:scale(0);opacity:0}42.5%{transform:scale(1);opacity:1}54.167%{transform:scale(1);opacity:1}60.0%{transform:scale(0);opacity:0}86.667%{transform:scale(0);opacity:0}92.5%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:1}}@keyframes tpl-t0{0%{clip-path:inset(-8px 100% -8px 0)}4.167%{clip-path:inset(-8px 100% -8px 0)}15.833%{clip-path:inset(-8px -3% -8px -3%)}31.667%{clip-path:inset(-8px -3% -8px -3%)}42.5%{clip-path:inset(-8px 100% -8px 0)}100%{clip-path:inset(-8px 100% -8px 0)}}@keyframes tpl-t1{0%{clip-path:inset(-8px 100% -8px 0)}54.167%{clip-path:inset(-8px 100% -8px 0)}65.833%{clip-path:inset(-8px -3% -8px -3%)}81.667%{clip-path:inset(-8px -3% -8px -3%)}92.5%{clip-path:inset(-8px 100% -8px 0)}100%{clip-path:inset(-8px 100% -8px 0)}}
-@media (prefers-reduced-motion:reduce){.tpl .a{animation:none}.tpl [class*="tpl-t"]{display:none}}
-</style><g class="tpl"><g><path class="ch" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g><g class="a tpl-dx"><path class="ch" transform="matrix(-1 0 0 1 200 0)" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g><circle class="a tpl-dot" cx="100" cy="100" r="15"/><g class="a tpl-t0"><text x="102" y="109.9" text-anchor="start">Travel podcasting</text></g><g class="a tpl-t1"><text x="102" y="109.9" text-anchor="start">Storie digitali per i luoghi</text></g></g></svg>
+      <img class="logo-light" src="assets/logo-orizzontale.svg" alt="Travel Podcasting" width="136" height="40">
     </a>
     <nav class="site-nav" aria-label="Sezioni">
       <a class="nav-link" href="#piloti">Esempio</a>
@@ -1168,6 +1178,9 @@ attivaModulo();
   }
   window.addEventListener('load',init); init();
 })();
+</script>
+<script>
+(function(){var i=document.getElementById('intro');if(!i)return;setTimeout(function(){i.remove()},3200);})();
 </script>
 </body>
 </html>
