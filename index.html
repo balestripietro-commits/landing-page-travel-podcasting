@@ -644,6 +644,7 @@ img { display: block; max-width: 100%; }
 .problem__note { margin-top: var(--tp-space-3, .75rem); font-family: var(--tp-font-editorial); font-size: 1.02rem; color: var(--tp-color-on-surface-variant); }
 .stat__src { margin-top: var(--tp-space-3, .75rem); font-family: var(--tp-font-editorial); font-size: .85rem; color: var(--tp-color-on-surface-variant); }
 @media (max-width: 760px) { .problems { grid-template-columns: 1fr; } .problem + .problem { border-left: 0; padding-left: 0; border-top: 1px solid rgba(36,92,82,.25); padding-top: var(--tp-space-5, 2rem); } }
+#piloti .pilots { grid-template-columns: minmax(0, 820px); justify-content: center; }
 </style>
 </head>
 <body>
@@ -669,7 +670,7 @@ img { display: block; max-width: 100%; }
       <img class="logo-light" src="assets/logo-orizzontale.svg" alt="Travel Podcasting" width="136" height="40">
     </a>
     <nav class="site-nav" aria-label="Sezioni">
-      <a class="nav-link" href="#piloti">I piloti</a>
+      <a class="nav-link" href="#piloti">Esempio</a>
       <a class="nav-link" href="#come-funziona">Come funziona</a>
       <a class="nav-link" href="#metodo">Il metodo</a>
       <a class="btn" href="#contatto">Parliamone</a>
@@ -690,7 +691,7 @@ img { display: block; max-width: 100%; }
             Comuni che vogliono far arrivare le proprie storie a più persone.
           </p>
           <div class="hero__actions">
-            <a class="btn" href="#piloti">Vedi i due piloti</a>
+            <a class="btn" href="#piloti">Ascolta un esempio</a>
             <a class="btn btn--ghost" href="#contatto">Parliamo del vostro Comune</a>
           </div>
         </div>
@@ -753,11 +754,12 @@ img { display: block; max-width: 100%; }
   <section class="section section" id="piloti">
     <div class="wrap">
       <div class="section__head">
-        <p class="eyebrow">I due piloti</p>
-        <h2>Due borghi, due percorsi già camminabili</h2>
+        <p class="eyebrow">Un esempio da ascoltare</p>
+        <h2>Provalo a Vicopisano</h2>
         <p class="section__intro">
-          Non sono mockup: sono siti pubblicati, con le voci registrate e le tappe sulla
-          mappa. Apriteli e provateli come li proverebbe un visitatore.
+          Lo facciamo per diversi Comuni. Questo è un percorso già pubblicato, con le voci
+          registrate e le tappe sulla mappa: apritelo e provatelo come lo proverebbe un
+          visitatore.
         </p>
       </div>
       <div class="pilots">
@@ -770,29 +772,12 @@ img { display: block; max-width: 100%; }
             </svg>
           </div>
           <div>
-            <span class="pilot__tag">Pilota</span>
+            <span class="pilot__tag">Esempio</span>
             <h3>Vicopisano</h3>
             <p>
               Otto tappe dentro il borgo fortificato, dalla Torre delle Quattro Porte al
               Palazzo Comunale. Disponibile in italiano, inglese, tedesco, francese,
               spagnolo, portoghese, russo, cinese e arabo.
-            </p>
-            <p class="pilot__go">Apri il percorso →</p>
-          </div>
-        </a>
-        <a class="pilot" href="https://balestripietro-commits.github.io/calci-travel-podcasting/">
-          <div class="pilot__photo">
-            <svg viewBox="0 0 400 400" role="img" aria-label="La Certosa Monumentale di Calci">
-              <use href="#p-blocco" fill="#e8c36d" transform="translate(16 16)"/>
-              <image href="assets/calci.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-blocco)"/>
-            </svg>
-          </div>
-          <div>
-            <span class="pilot__tag">Pilota</span>
-            <h3>Calci</h3>
-            <p>
-              Sette tappe dalla Certosa Monumentale al Monte Serra, lungo la valle dei
-              mulini. Una guida che accompagna il visitatore tra acqua, pietra e lavoro.
             </p>
             <p class="pilot__go">Apri il percorso →</p>
           </div>
@@ -886,7 +871,7 @@ img { display: block; max-width: 100%; }
         <p class="eyebrow">Il prossimo passo</p>
         <h2>Parliamo del vostro Comune</h2>
         <p class="section__intro">
-          Completiamo i piloti di Vicopisano e Calci raccogliendo, insieme ai Comuni, cosa
+          Lavoriamo con diversi Comuni raccogliendo, insieme a loro, cosa
           funziona e cosa portare alla tappa successiva. L'idea è aggiungere un punto di
           accesso leggero che valorizza il lavoro di chi già si occupa di turismo e
           cultura. Le scuole possono usare lo stesso patrimonio per esplorare il
