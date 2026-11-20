@@ -673,7 +673,7 @@ img { display: block; max-width: 100%; }
 .meter span { display: block; height: 100%; border-radius: 7px; background: var(--tp-color-secondary); }
 .site-footer--thin { padding: 0; height: 14px; }
 @media (max-width: 760px) {
-  .phones { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding: 0 0 1rem; margin-inline: calc(var(--tp-space-5, 1.25rem) * -1); padding-inline: var(--tp-space-5, 1.25rem); scrollbar-width: none; }
+  .phones { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding-top: 34px; padding-bottom: 48px; margin-top: -10px; margin-inline: calc(var(--tp-space-5, 1.25rem) * -1); padding-inline: var(--tp-space-5, 1.25rem); scrollbar-width: none; }
   .phones::-webkit-scrollbar { display: none; }
   .phone, .phone--mid { flex: 0 0 68vw; width: 68vw; max-width: 300px; scroll-snap-align: center; }
 }
@@ -681,11 +681,11 @@ img { display: block; max-width: 100%; }
 /* ---------- telefoni cliccabili ---------- */
 .phone img { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; pointer-events: none; }
 .phone { -webkit-user-select: none; user-select: none; cursor: pointer; transition: transform .35s cubic-bezier(.2,.7,.2,1), width .35s ease; outline: none; }
-.phone:not(.phone--mid):hover, .phone:not(.phone--mid):focus-visible { transform: translateY(-10px) rotate(-1.2deg); }
-.phone:not(.phone--mid):nth-child(3):hover, .phone:not(.phone--mid):nth-child(3):focus-visible { transform: translateY(-10px) rotate(1.2deg); }
-.phone--mid:hover { transform: translateY(-6px) scale(1.015); }
+@media (hover:hover) { .phone:not(.phone--mid):hover { transform: translateY(-10px) rotate(-1.2deg); } }
+.phone:not(.phone--mid):focus-visible { transform: translateY(-10px); }
+@media (hover:hover) { .phone--mid:hover { transform: translateY(-6px) scale(1.015); } }
 .phone__frame { transition: box-shadow .35s ease; }
-.phone:hover .phone__frame, .phone:focus-visible .phone__frame { box-shadow: 0 26px 52px rgba(0,0,0,.38), 0 0 0 3px #e8c36d; }
+@media (hover:hover) { .phone:hover .phone__frame { box-shadow: 0 22px 44px rgba(0,0,0,.34), 0 0 0 3px #e8c36d; } }
 @media (prefers-reduced-motion: reduce) { .phone, .phone__frame { transition: none; } }
 /* ---------- problemi: oro del brand, numeri viola ---------- */
 #problemi { background: #f6e6b8; }
@@ -723,6 +723,12 @@ img { display: block; max-width: 100%; }
 .voice__lang { font-family: var(--tp-font-sans); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tp-color-on-surface-variant); white-space: nowrap; }
 .voices + .story__cta { margin-top: 2rem; text-align: center; }
 @media (max-width: 820px) { .voices { grid-template-columns: 1fr; } }
+/* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
+.voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
+.vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
+.vs__select:focus-visible { outline: 3px solid #7d4fe0; outline-offset: 3px; }
+.vs__label { margin-top: 1rem; }
+.voices { display: none !important; }
 </style>
 </head>
 <body>
@@ -778,7 +784,7 @@ img { display: block; max-width: 100%; }
           <svg viewBox="0 0 440 440" focusable="false">
             <g transform="scale(0.55)"><image href="assets/hero-vicopisano.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-tassello)"/></g>
             <g transform="translate(236 6) scale(0.5)"><use href="#p-arco" fill="var(--shape-b)"/></g>
-            <g transform="translate(220 220) scale(0.55)"><image href="assets/hero-calci.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-blocco)"/></g>
+            <g transform="translate(220 220) scale(0.55)"><image href="assets/hero-certosa.webp" width="400" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#c-blocco)"/></g>
             <g transform="translate(4 236) scale(0.5)"><use href="#p-lente" fill="var(--shape-a)"/></g>
             <circle cx="104" cy="334" r="9" fill="var(--tp-color-tertiary)"/>
           </svg>
@@ -850,82 +856,8 @@ img { display: block; max-width: 100%; }
           <button class="voice__play" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
           <div class="meter vs__bar" aria-hidden="true"><span id="vs-bar" style="width:0%"></span></div>
         </div>
-        <p class="vs__label">Cambia lingua</p>
-        <div class="vs__chips" role="group" aria-label="Lingua dell'audio"><button type="button" class="vs__chip is-on" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</button><button type="button" class="vs__chip" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</button></div>
-      </div>
-      <div class="voices">
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3">
-            <p class="voice__name" lang="it" dir="ltr">Benvenuti a Vicopisano</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in Italiano"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">Italiano</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3">
-            <p class="voice__name" lang="en" dir="ltr">Welcome to Vicopisano</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in English"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">English</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3">
-            <p class="voice__name" lang="es" dir="ltr">Bienvenidos a Vicopisano</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in Español"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">Español</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3">
-            <p class="voice__name" lang="fr" dir="ltr">Bienvenue à Vicopisano</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in Français"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">Français</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3">
-            <p class="voice__name" lang="de" dir="ltr">Willkommen in Vicopisano</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in Deutsch"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">Deutsch</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3">
-            <p class="voice__name" lang="pt" dir="ltr">Bem-vindos a Vicopisano</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in Português"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">Português</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3">
-            <p class="voice__name" lang="ru" dir="ltr">Добро пожаловать в Викопизано</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in Русский"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">Русский</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3">
-            <p class="voice__name" lang="zh" dir="ltr">欢迎来到维科皮萨诺</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in 中文"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">中文</span>
-            </div>
-          </div>
-          <div class="voice" data-src="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3">
-            <p class="voice__name" lang="ar" dir="rtl">مرحبًا بكم في فيكوبيزانو</p>
-            <div class="voice__row">
-              <button class="voice__play" type="button" aria-label="Ascolta in العربية"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-              <div class="meter voice__bar" aria-hidden="true"><span style="width:0%"></span></div>
-              <span class="voice__lang">العربية</span>
-            </div>
-          </div>
+        <label class="vs__label" for="vs-select">Lingua</label>
+        <select class="vs__select" id="vs-select" aria-label="Lingua dell'audio"><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</option></select>
       </div>
       <p class="story__cta">
         <a class="btn" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Apri il percorso</a>
@@ -1127,17 +1059,14 @@ attivaModulo();
 (function(){
   var box=document.getElementById('voice-single'); if(!box) return;
   var a=new Audio(); a.preload='none';
-  var chips=[].slice.call(box.querySelectorAll('.vs__chip')), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), play=document.getElementById('vs-play');
-  function set(c,go){
-    chips.forEach(function(x){x.classList.toggle('is-on',x===c)});
-    var was=!a.paused; a.pause(); a.src=c.dataset.src; bar.style.width='0%';
-    name.textContent=c.dataset.name; name.lang=c.dataset.lang; name.dir=c.dataset.dir;
-    if(go||was) a.play();
-  }
-  a.src=chips[0].dataset.src;
-  chips.forEach(function(c){c.addEventListener('click',function(){set(c,true)})});
+  var sel=document.getElementById('vs-select'), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), play=document.getElementById('vs-play');
+  a.src=sel.value;
+  sel.addEventListener('change',function(){
+    var o=sel.options[sel.selectedIndex]; var was=!a.paused; a.pause(); a.src=o.value; bar.style.width='0%';
+    name.textContent=o.dataset.name; name.lang=o.dataset.lang; name.dir=o.dataset.dir; a.play();
+  });
   play.addEventListener('click',function(){ if(a.paused) a.play(); else a.pause(); });
-  a.addEventListener('play',function(){box.classList.add('is-playing');if(window.__vsOther)window.__vsOther()});
+  a.addEventListener('play',function(){box.classList.add('is-playing')});
   a.addEventListener('pause',function(){box.classList.remove('is-playing')});
   a.addEventListener('ended',function(){box.classList.remove('is-playing');bar.style.width='0%'});
   a.addEventListener('timeupdate',function(){if(a.duration)bar.style.width=(a.currentTime/a.duration*100)+'%'});
