@@ -678,6 +678,14 @@ img { display: block; max-width: 100%; }
   .phone, .phone--mid { flex: 0 0 68vw; width: 68vw; max-width: 300px; scroll-snap-align: center; }
 }
 
+/* ---------- telefoni cliccabili ---------- */
+.phone { cursor: pointer; transition: transform .35s cubic-bezier(.2,.7,.2,1), width .35s ease; outline: none; }
+.phone:not(.phone--mid):hover, .phone:not(.phone--mid):focus-visible { transform: translateY(-10px) rotate(-1.2deg); }
+.phone:not(.phone--mid):nth-child(3):hover, .phone:not(.phone--mid):nth-child(3):focus-visible { transform: translateY(-10px) rotate(1.2deg); }
+.phone--mid:hover { transform: translateY(-6px) scale(1.015); }
+.phone__frame { transition: box-shadow .35s ease; }
+.phone:hover .phone__frame, .phone:focus-visible .phone__frame { box-shadow: 0 26px 52px rgba(0,0,0,.38), 0 0 0 3px #e8c36d; }
+@media (prefers-reduced-motion: reduce) { .phone, .phone__frame { transition: none; } }
 /* ---------- problemi: oro del brand, numeri viola ---------- */
 #problemi { background: #f6e6b8; }
 #problemi .eyebrow { color: #245c52; }
@@ -778,7 +786,7 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="phones">
         <figure class="phone"><div class="phone__frame"><img src="assets/schermata-home-2.webp" alt="La home del percorso di Vicopisano, con Brunelleschi che dà il benvenuto" width="500" height="1082" loading="lazy"></div></figure>
-        <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/schermata-mappa-2.webp" alt="La mappa con le tappe e il player audio" width="500" height="1082" loading="lazy"></div></figure>
+        <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/schermata-mappa-3.webp" alt="La mappa con le tappe e il player audio" width="500" height="1082" loading="lazy"></div></figure>
         <figure class="phone"><div class="phone__frame"><img src="assets/schermata-player-2.webp" alt="Il player audio a schermo intero con la prima tappa" width="500" height="1082" loading="lazy"></div></figure>
       </div>
     </div>
@@ -1062,6 +1070,32 @@ attivaModulo();
     a.addEventListener('pause',function(){v.classList.remove('is-playing');});
     a.addEventListener('ended',function(){v.classList.remove('is-playing');bar.style.width='0%';});
     a.addEventListener('timeupdate',function(){if(a.duration)bar.style.width=(a.currentTime/a.duration*100)+'%';});
+  });
+})();
+</script>
+<script>
+(function(){
+  var box=document.querySelector('.phones'); if(!box) return;
+  var phones=[].slice.call(box.children);
+  phones.forEach(function(p){p.setAttribute('tabindex','0');p.setAttribute('role','button');p.setAttribute('aria-label','Porta questa schermata al centro');});
+  function porta(p){
+    if(window.matchMedia('(max-width: 760px)').matches){p.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});return;}
+    var mid=box.querySelector('.phone--mid'); if(!mid||mid===p) return;
+    var all=[].slice.call(box.children), before={};
+    all.forEach(function(e,i){before[i]=e.getBoundingClientRect();});
+    var ip=all.indexOf(p), im=all.indexOf(mid);
+    var ph=document.createElement('span'); box.replaceChild(ph,p); box.replaceChild(p,mid); box.replaceChild(mid,ph);
+    mid.classList.remove('phone--mid'); p.classList.add('phone--mid');
+    var after=[].slice.call(box.children);
+    [p,mid].forEach(function(e){
+      var old=before[all.indexOf(e)], now=e.getBoundingClientRect();
+      e.style.transition='none'; e.style.transform='translate('+(old.left-now.left)+'px,'+(old.bottom-now.bottom)+'px)';
+      void e.offsetWidth; e.style.transition=''; e.style.transform='';
+    });
+  }
+  phones.forEach(function(p){
+    p.addEventListener('click',function(){porta(p);});
+    p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();porta(p);}});
   });
 })();
 </script>
