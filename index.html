@@ -628,6 +628,22 @@ img { display: block; max-width: 100%; }
 #metodo .step .badge svg use { fill: #e6defa; }
 #team .person__link { color: #7d4fe0; }
 #problema-placeholder {}
+
+/* ---------- come funziona + problemi ---------- */
+.phones { display: flex; justify-content: center; align-items: flex-end; gap: var(--tp-space-6, 2.5rem); flex-wrap: wrap; }
+.phone { margin: 0; width: min(260px, 72vw); text-align: center; }
+.phone--mid { width: min(300px, 78vw); }
+.phone__frame { padding: 10px; border-radius: 38px; background: #14201d; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.phone__frame img { display: block; width: 100%; height: auto; border-radius: 30px; }
+.phone figcaption { margin-top: var(--tp-space-4, 1rem); font-family: var(--tp-font-editorial); font-size: 1.15rem; color: var(--ink-fg); display: flex; gap: .6rem; justify-content: center; align-items: center; }
+.phone figcaption span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 10px; background: #e6defa; color: #7143d2; font-weight: 700; font-size: 1rem; }
+.problems { display: grid; grid-template-columns: 1fr 1fr; gap: var(--tp-space-6, 2.5rem); }
+.problem + .problem { border-left: 1px solid rgba(36,92,82,.25); padding-left: var(--tp-space-6, 2.5rem); }
+.stat__num { font-family: var(--tp-font-editorial); font-weight: 700; font-size: clamp(3.4rem, 9vw, 6rem); line-height: 1; color: var(--tp-color-secondary); }
+.stat__text { margin-top: var(--tp-space-3, .75rem); font-family: var(--tp-font-editorial); font-size: 1.35rem; color: var(--heading); }
+.problem__note { margin-top: var(--tp-space-3, .75rem); font-family: var(--tp-font-editorial); font-size: 1.02rem; color: var(--tp-color-on-surface-variant); }
+.stat__src { margin-top: var(--tp-space-3, .75rem); font-family: var(--tp-font-editorial); font-size: .85rem; color: var(--tp-color-on-surface-variant); }
+@media (max-width: 760px) { .problems { grid-template-columns: 1fr; } .problem + .problem { border-left: 0; padding-left: 0; border-top: 1px solid rgba(36,92,82,.25); padding-top: var(--tp-space-5, 2rem); } }
 </style>
 </head>
 <body>
@@ -654,7 +670,7 @@ img { display: block; max-width: 100%; }
     </a>
     <nav class="site-nav" aria-label="Sezioni">
       <a class="nav-link" href="#piloti">I piloti</a>
-      <a class="nav-link" href="#prodotto">Il prodotto</a>
+      <a class="nav-link" href="#come-funziona">Come funziona</a>
       <a class="nav-link" href="#metodo">Il metodo</a>
       <a class="btn" href="#contatto">Parliamone</a>
     </nav>
@@ -690,6 +706,47 @@ img { display: block; max-width: 100%; }
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <section class="section section--ink" id="come-funziona">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Come funziona</p>
+        <h2>Si apre dal telefono, senza installare niente</h2>
+        <p class="section__intro">
+          Il visitatore sceglie la lingua, tocca una tappa sulla mappa e ascolta il racconto
+          mentre cammina. Tre schermate del percorso di Vicopisano.
+        </p>
+      </div>
+      <div class="phones">
+        <figure class="phone"><div class="phone__frame"><img src="assets/app-lingua.webp" alt="Scelta della lingua all'avvio" width="500" height="1083" loading="lazy"></div><figcaption><span>1</span>Scegli la lingua</figcaption></figure>
+        <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/app-mappa.webp" alt="Mappa con le tappe e player audio" width="500" height="1083" loading="lazy"></div><figcaption><span>2</span>Tocca una tappa</figcaption></figure>
+        <figure class="phone"><div class="phone__frame"><img src="assets/app-player.webp" alt="Player audio a schermo intero con la tappa" width="500" height="1083" loading="lazy"></div><figcaption><span>3</span>Ascolta e cammina</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" id="problemi">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Il problema</p>
+        <h2>Due problemi dei piccoli borghi</h2>
+      </div>
+      <div class="problems">
+        <article class="problem">
+          <p class="stat__num">75%</p>
+          <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
+          <p class="problem__note">I borghi restano fuori dai percorsi più battuti. Serve un racconto che dia un motivo per fermarsi e per arrivare alla tappa successiva.</p>
+          <p class="stat__src">The European House &ndash; Ambrosetti (TEHA Group), su dati ISTAT 2022.</p>
+        </article>
+        <article class="problem">
+          <p class="stat__num">47%</p>
+          <p class="stat__text">degli europei parla inglese come lingua straniera.</p>
+          <p class="problem__note">Meno di una persona su due. Per anni abbiamo fatto cartelli in italiano e in inglese, ma un turista su due non capisce cosa c'è scritto.</p>
+          <p class="stat__src">Eurobarometro 2024, Commissione europea.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -740,55 +797,6 @@ img { display: block; max-width: 100%; }
             <p class="pilot__go">Apri il percorso →</p>
           </div>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="prodotto">
-    <div class="wrap">
-      <div class="section__head">
-        <p class="eyebrow">Il prodotto</p>
-        <h2>Tre cose che lo rendono adatto a un Comune</h2>
-      </div>
-      <div class="features">
-        <article class="feature">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-lente" fill="var(--shape-b)"/></svg><span>01</span></div>
-          <h3>Storytelling</h3>
-          <p>
-            Storie e personaggi aiutano a scoprire il territorio. Non un elenco di date:
-            un racconto che tiene insieme le tappe e dà un motivo per arrivare alla
-            successiva.
-          </p>
-          <span class="feature__stat"
-            >75%
-            <small
-              >dei turisti visita solo il 4% dell'Italia.<br />The European House &ndash; Ambrosetti (TEHA Group), su dati ISTAT 2022.</small
-            ></span
-          >
-        </article>
-        <article class="feature">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-arco" fill="var(--shape-b)"/></svg><span>02</span></div>
-          <h3>Lingue e accessibilità</h3>
-          <p>
-            Audio e testo affiancati, in più lingue. Chi non può ascoltare legge, chi non
-            parla italiano sceglie la propria lingua.
-          </p>
-          <span class="feature__stat"
-            >47%
-            <small
-              >degli europei parla inglese come lingua straniera.<br />Eurobarometro 2024, Commissione europea.</small
-            ></span
-          >
-        </article>
-        <article class="feature">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-foglia" fill="var(--shape-b)"/></svg><span>03</span></div>
-          <h3>Chiavi in mano</h3>
-          <p>
-            Si apre dal web, senza app, e si aggiorna facilmente. Si integra con la rete
-            locale e con le scuole, affiancando il lavoro di guide, musei, associazioni e
-            operatori, a costi sostenibili per i Comuni.
-          </p>
-        </article>
       </div>
     </div>
   </section>
