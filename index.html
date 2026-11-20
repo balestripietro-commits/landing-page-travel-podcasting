@@ -656,6 +656,16 @@ img { display: block; max-width: 100%; }
 .story__quote cite { display: block; margin-top: .8rem; font-style: normal; font-size: .85rem; color: var(--tp-color-on-surface-variant); }
 .person__photo { display: block; width: 104px; height: 104px; object-fit: cover; border-radius: 26px; margin-bottom: var(--tp-space-4, 1rem); }
 @media (max-width: 820px) { .story { grid-template-columns: 1fr; } }
+
+.gq { color: #e8c36d; }
+.meter { height: 14px; border-radius: 7px; background: rgba(36,92,82,.18); overflow: hidden; width: 100%; }
+.meter span { display: block; height: 100%; border-radius: 7px; background: var(--tp-color-secondary); }
+.site-footer--thin { padding: 0; height: 14px; }
+@media (max-width: 760px) {
+  .phones { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding: 0 0 1rem; margin-inline: calc(var(--tp-space-5, 1.25rem) * -1); padding-inline: var(--tp-space-5, 1.25rem); scrollbar-width: none; }
+  .phones::-webkit-scrollbar { display: none; }
+  .phone, .phone--mid { flex: 0 0 68vw; width: 68vw; max-width: 300px; scroll-snap-align: center; }
+}
 </style>
 </head>
 <body>
@@ -683,7 +693,6 @@ img { display: block; max-width: 100%; }
     <nav class="site-nav" aria-label="Sezioni">
       <a class="nav-link" href="#piloti">Esempio</a>
       <a class="nav-link" href="#come-funziona">Come funziona</a>
-      <a class="nav-link" href="#metodo">Il metodo</a>
       <a class="nav-link" href="#team">Chi siamo</a>
       <a class="btn" href="#contatto">Parliamone</a>
     </nav>
@@ -748,7 +757,7 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="problems">
         <article class="problem">
-          <svg class="dots" viewBox="0 0 200 200" aria-hidden="true"><circle class="on" cx="10" cy="10" r="7"/><circle class="on" cx="30" cy="10" r="7"/><circle class="on" cx="50" cy="10" r="7"/><circle class="on" cx="70" cy="10" r="7"/><circle class="on" cx="90" cy="10" r="7"/><circle class="on" cx="110" cy="10" r="7"/><circle class="on" cx="130" cy="10" r="7"/><circle class="on" cx="150" cy="10" r="7"/><circle class="on" cx="170" cy="10" r="7"/><circle class="on" cx="190" cy="10" r="7"/><circle class="on" cx="10" cy="30" r="7"/><circle class="on" cx="30" cy="30" r="7"/><circle class="on" cx="50" cy="30" r="7"/><circle class="on" cx="70" cy="30" r="7"/><circle class="on" cx="90" cy="30" r="7"/><circle class="on" cx="110" cy="30" r="7"/><circle class="on" cx="130" cy="30" r="7"/><circle class="on" cx="150" cy="30" r="7"/><circle class="on" cx="170" cy="30" r="7"/><circle class="on" cx="190" cy="30" r="7"/><circle class="on" cx="10" cy="50" r="7"/><circle class="on" cx="30" cy="50" r="7"/><circle class="on" cx="50" cy="50" r="7"/><circle class="on" cx="70" cy="50" r="7"/><circle class="on" cx="90" cy="50" r="7"/><circle class="on" cx="110" cy="50" r="7"/><circle class="on" cx="130" cy="50" r="7"/><circle class="on" cx="150" cy="50" r="7"/><circle class="on" cx="170" cy="50" r="7"/><circle class="on" cx="190" cy="50" r="7"/><circle class="on" cx="10" cy="70" r="7"/><circle class="on" cx="30" cy="70" r="7"/><circle class="on" cx="50" cy="70" r="7"/><circle class="on" cx="70" cy="70" r="7"/><circle class="on" cx="90" cy="70" r="7"/><circle class="on" cx="110" cy="70" r="7"/><circle class="on" cx="130" cy="70" r="7"/><circle class="on" cx="150" cy="70" r="7"/><circle class="on" cx="170" cy="70" r="7"/><circle class="on" cx="190" cy="70" r="7"/><circle class="on" cx="10" cy="90" r="7"/><circle class="on" cx="30" cy="90" r="7"/><circle class="on" cx="50" cy="90" r="7"/><circle class="on" cx="70" cy="90" r="7"/><circle class="on" cx="90" cy="90" r="7"/><circle class="on" cx="110" cy="90" r="7"/><circle class="on" cx="130" cy="90" r="7"/><circle class="on" cx="150" cy="90" r="7"/><circle class="on" cx="170" cy="90" r="7"/><circle class="on" cx="190" cy="90" r="7"/><circle class="on" cx="10" cy="110" r="7"/><circle class="on" cx="30" cy="110" r="7"/><circle class="on" cx="50" cy="110" r="7"/><circle class="on" cx="70" cy="110" r="7"/><circle class="on" cx="90" cy="110" r="7"/><circle class="on" cx="110" cy="110" r="7"/><circle class="on" cx="130" cy="110" r="7"/><circle class="on" cx="150" cy="110" r="7"/><circle class="on" cx="170" cy="110" r="7"/><circle class="on" cx="190" cy="110" r="7"/><circle class="on" cx="10" cy="130" r="7"/><circle class="on" cx="30" cy="130" r="7"/><circle class="on" cx="50" cy="130" r="7"/><circle class="on" cx="70" cy="130" r="7"/><circle class="on" cx="90" cy="130" r="7"/><circle class="on" cx="110" cy="130" r="7"/><circle class="on" cx="130" cy="130" r="7"/><circle class="on" cx="150" cy="130" r="7"/><circle class="on" cx="170" cy="130" r="7"/><circle class="on" cx="190" cy="130" r="7"/><circle class="on" cx="10" cy="150" r="7"/><circle class="on" cx="30" cy="150" r="7"/><circle class="on" cx="50" cy="150" r="7"/><circle class="on" cx="70" cy="150" r="7"/><circle class="on" cx="90" cy="150" r="7"/><circle class="off" cx="110" cy="150" r="7"/><circle class="off" cx="130" cy="150" r="7"/><circle class="off" cx="150" cy="150" r="7"/><circle class="off" cx="170" cy="150" r="7"/><circle class="off" cx="190" cy="150" r="7"/><circle class="off" cx="10" cy="170" r="7"/><circle class="off" cx="30" cy="170" r="7"/><circle class="off" cx="50" cy="170" r="7"/><circle class="off" cx="70" cy="170" r="7"/><circle class="off" cx="90" cy="170" r="7"/><circle class="off" cx="110" cy="170" r="7"/><circle class="off" cx="130" cy="170" r="7"/><circle class="off" cx="150" cy="170" r="7"/><circle class="off" cx="170" cy="170" r="7"/><circle class="off" cx="190" cy="170" r="7"/><circle class="off" cx="10" cy="190" r="7"/><circle class="off" cx="30" cy="190" r="7"/><circle class="off" cx="50" cy="190" r="7"/><circle class="off" cx="70" cy="190" r="7"/><circle class="off" cx="90" cy="190" r="7"/><circle class="off" cx="110" cy="190" r="7"/><circle class="off" cx="130" cy="190" r="7"/><circle class="off" cx="150" cy="190" r="7"/><circle class="off" cx="170" cy="190" r="7"/><circle class="off" cx="190" cy="190" r="7"/></svg>
+          <div class="meter" role="img" aria-label="75 su 100"><span style="width:75%"></span></div>
           <div>
             <p class="stat__num">75%</p>
             <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
@@ -757,7 +766,7 @@ img { display: block; max-width: 100%; }
           </div>
         </article>
         <article class="problem">
-          <svg class="dots" viewBox="0 0 200 200" aria-hidden="true"><circle class="on" cx="10" cy="10" r="7"/><circle class="on" cx="30" cy="10" r="7"/><circle class="on" cx="50" cy="10" r="7"/><circle class="on" cx="70" cy="10" r="7"/><circle class="on" cx="90" cy="10" r="7"/><circle class="on" cx="110" cy="10" r="7"/><circle class="on" cx="130" cy="10" r="7"/><circle class="on" cx="150" cy="10" r="7"/><circle class="on" cx="170" cy="10" r="7"/><circle class="on" cx="190" cy="10" r="7"/><circle class="on" cx="10" cy="30" r="7"/><circle class="on" cx="30" cy="30" r="7"/><circle class="on" cx="50" cy="30" r="7"/><circle class="on" cx="70" cy="30" r="7"/><circle class="on" cx="90" cy="30" r="7"/><circle class="on" cx="110" cy="30" r="7"/><circle class="on" cx="130" cy="30" r="7"/><circle class="on" cx="150" cy="30" r="7"/><circle class="on" cx="170" cy="30" r="7"/><circle class="on" cx="190" cy="30" r="7"/><circle class="on" cx="10" cy="50" r="7"/><circle class="on" cx="30" cy="50" r="7"/><circle class="on" cx="50" cy="50" r="7"/><circle class="on" cx="70" cy="50" r="7"/><circle class="on" cx="90" cy="50" r="7"/><circle class="on" cx="110" cy="50" r="7"/><circle class="on" cx="130" cy="50" r="7"/><circle class="on" cx="150" cy="50" r="7"/><circle class="on" cx="170" cy="50" r="7"/><circle class="on" cx="190" cy="50" r="7"/><circle class="on" cx="10" cy="70" r="7"/><circle class="on" cx="30" cy="70" r="7"/><circle class="on" cx="50" cy="70" r="7"/><circle class="on" cx="70" cy="70" r="7"/><circle class="on" cx="90" cy="70" r="7"/><circle class="on" cx="110" cy="70" r="7"/><circle class="on" cx="130" cy="70" r="7"/><circle class="on" cx="150" cy="70" r="7"/><circle class="on" cx="170" cy="70" r="7"/><circle class="on" cx="190" cy="70" r="7"/><circle class="on" cx="10" cy="90" r="7"/><circle class="on" cx="30" cy="90" r="7"/><circle class="on" cx="50" cy="90" r="7"/><circle class="on" cx="70" cy="90" r="7"/><circle class="on" cx="90" cy="90" r="7"/><circle class="on" cx="110" cy="90" r="7"/><circle class="on" cx="130" cy="90" r="7"/><circle class="off" cx="150" cy="90" r="7"/><circle class="off" cx="170" cy="90" r="7"/><circle class="off" cx="190" cy="90" r="7"/><circle class="off" cx="10" cy="110" r="7"/><circle class="off" cx="30" cy="110" r="7"/><circle class="off" cx="50" cy="110" r="7"/><circle class="off" cx="70" cy="110" r="7"/><circle class="off" cx="90" cy="110" r="7"/><circle class="off" cx="110" cy="110" r="7"/><circle class="off" cx="130" cy="110" r="7"/><circle class="off" cx="150" cy="110" r="7"/><circle class="off" cx="170" cy="110" r="7"/><circle class="off" cx="190" cy="110" r="7"/><circle class="off" cx="10" cy="130" r="7"/><circle class="off" cx="30" cy="130" r="7"/><circle class="off" cx="50" cy="130" r="7"/><circle class="off" cx="70" cy="130" r="7"/><circle class="off" cx="90" cy="130" r="7"/><circle class="off" cx="110" cy="130" r="7"/><circle class="off" cx="130" cy="130" r="7"/><circle class="off" cx="150" cy="130" r="7"/><circle class="off" cx="170" cy="130" r="7"/><circle class="off" cx="190" cy="130" r="7"/><circle class="off" cx="10" cy="150" r="7"/><circle class="off" cx="30" cy="150" r="7"/><circle class="off" cx="50" cy="150" r="7"/><circle class="off" cx="70" cy="150" r="7"/><circle class="off" cx="90" cy="150" r="7"/><circle class="off" cx="110" cy="150" r="7"/><circle class="off" cx="130" cy="150" r="7"/><circle class="off" cx="150" cy="150" r="7"/><circle class="off" cx="170" cy="150" r="7"/><circle class="off" cx="190" cy="150" r="7"/><circle class="off" cx="10" cy="170" r="7"/><circle class="off" cx="30" cy="170" r="7"/><circle class="off" cx="50" cy="170" r="7"/><circle class="off" cx="70" cy="170" r="7"/><circle class="off" cx="90" cy="170" r="7"/><circle class="off" cx="110" cy="170" r="7"/><circle class="off" cx="130" cy="170" r="7"/><circle class="off" cx="150" cy="170" r="7"/><circle class="off" cx="170" cy="170" r="7"/><circle class="off" cx="190" cy="170" r="7"/><circle class="off" cx="10" cy="190" r="7"/><circle class="off" cx="30" cy="190" r="7"/><circle class="off" cx="50" cy="190" r="7"/><circle class="off" cx="70" cy="190" r="7"/><circle class="off" cx="90" cy="190" r="7"/><circle class="off" cx="110" cy="190" r="7"/><circle class="off" cx="130" cy="190" r="7"/><circle class="off" cx="150" cy="190" r="7"/><circle class="off" cx="170" cy="190" r="7"/><circle class="off" cx="190" cy="190" r="7"/></svg>
+          <div class="meter" role="img" aria-label="47 su 100"><span style="width:47%"></span></div>
           <div>
             <p class="stat__num">47%</p>
             <p class="stat__text">degli europei parla inglese come lingua straniera.</p>
@@ -773,7 +782,7 @@ img { display: block; max-width: 100%; }
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">Un esempio da ascoltare</p>
-        <h2>Provalo a Vicopisano</h2>
+        <h2>Provalo a <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span></h2>
         <p class="section__intro">
           Lo facciamo per diversi Comuni. Questo percorso è già pubblicato, con le voci
           registrate e le tappe sulla mappa.
@@ -803,76 +812,6 @@ img { display: block; max-width: 100%; }
             <a class="btn btn--ghost" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Apri il percorso</a>
           </p>
         </div>
-      </div>
-      <div class="markband" aria-label="Travel Podcasting, Comune di Vicopisano">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-155.7 50 511.3 100" role="img" aria-label="Travel Podcasting, Comune di Vicopisano"><style>
-.tpl{--verde:#FFF8EF;--oro:#E8C36D;--testo:#E8C36D}
-.tpl .ch{fill:none;stroke:var(--verde);stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
-.tpl .a{animation-duration:28s;animation-timing-function:cubic-bezier(.65,0,.35,1);animation-iteration-count:infinite;animation-fill-mode:both}
-.tpl-dx{animation-name:tpl-dx}.tpl-sx{animation-name:tpl-sx}
-.tpl-dot{fill:var(--oro);transform-box:fill-box;transform-origin:center;animation-name:tpl-dot}
-.tpl text{font:700 34px Petrona,Georgia,serif;fill:var(--testo)}
-.tpl-t0{animation-name:tpl-t0;clip-path:inset(-8px 50% -8px 50%)}.tpl-t1{animation-name:tpl-t1;clip-path:inset(-8px 50% -8px 50%)}
-@keyframes tpl-dx{0%{transform:translateX(0.0px)}7.143%{transform:translateX(0.0px)}15.0%{transform:translateX(119.6px)}22.857%{transform:translateX(119.6px)}30.714%{transform:translateX(0.0px)}57.143%{transform:translateX(0.0px)}65.0%{transform:translateX(156.2px)}72.857%{transform:translateX(156.2px)}80.714%{transform:translateX(0.0px)}100%{transform:translateX(0.0px)}}@keyframes tpl-sx{0%{transform:translateX(0.0px)}7.143%{transform:translateX(0.0px)}15.0%{transform:translateX(-119.6px)}22.857%{transform:translateX(-119.6px)}30.714%{transform:translateX(0.0px)}57.143%{transform:translateX(0.0px)}65.0%{transform:translateX(-156.2px)}72.857%{transform:translateX(-156.2px)}80.714%{transform:translateX(0.0px)}100%{transform:translateX(0.0px)}}@keyframes tpl-dot{0%{transform:scale(1);opacity:1}7.143%{transform:scale(1);opacity:1}12.143%{transform:scale(0);opacity:0}25.714%{transform:scale(0);opacity:0}30.714%{transform:scale(1);opacity:1}57.143%{transform:scale(1);opacity:1}62.143%{transform:scale(0);opacity:0}75.714%{transform:scale(0);opacity:0}80.714%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:1}}@keyframes tpl-t0{0%{clip-path:inset(-8px 50% -8px 50%)}7.143%{clip-path:inset(-8px 50% -8px 50%)}15.0%{clip-path:inset(-8px -3% -8px -3%)}22.857%{clip-path:inset(-8px -3% -8px -3%)}30.714%{clip-path:inset(-8px 50% -8px 50%)}100%{clip-path:inset(-8px 50% -8px 50%)}}@keyframes tpl-t1{0%{clip-path:inset(-8px 50% -8px 50%)}57.143%{clip-path:inset(-8px 50% -8px 50%)}65.0%{clip-path:inset(-8px -3% -8px -3%)}72.857%{clip-path:inset(-8px -3% -8px -3%)}80.714%{clip-path:inset(-8px 50% -8px 50%)}100%{clip-path:inset(-8px 50% -8px 50%)}}
-@media (prefers-reduced-motion:reduce){.tpl .a{animation:none}.tpl [class*="tpl-t"]{display:none}}
-
-/* problemi con puntini, esempio, fascia animata */
-.problem { display: grid; gap: var(--tp-space-5, 1.5rem); align-content: start; }
-.dots { width: min(220px, 60%); height: auto; }
-.dots .on { fill: var(--tp-color-secondary); }
-.dots .off { fill: none; stroke: var(--tp-color-secondary); stroke-opacity: .35; stroke-width: 1.5; }
-.stat__num { font-size: clamp(4rem, 11vw, 7.5rem); }
-.stat__text { font-size: 1.6rem; }
-.story__h { font-size: 1.5rem; color: var(--heading); margin-bottom: var(--tp-space-3, .75rem); }
-.story__cta { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: var(--tp-space-4, 1rem); }
-.markband { margin-top: var(--tp-space-6, 2.5rem); padding: var(--tp-space-5, 1.5rem); border-radius: var(--tp-radius-lg); background: #245c52; }
-.markband svg { display: block; width: min(560px, 100%); height: auto; margin-inline: auto; }
-</style><g class="tpl"><g class="a tpl-sx"><path class="ch" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g><g class="a tpl-dx"><path class="ch" transform="matrix(-1 0 0 1 200 0)" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g><circle class="a tpl-dot" cx="100" cy="100" r="15"/><g class="a tpl-t0"><text x="100" y="111.2" text-anchor="middle">Travel Podcasting</text></g><g class="a tpl-t1"><text x="100" y="111.2" text-anchor="middle">Comune di Vicopisano</text></g></g></svg>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--ink" id="metodo">
-    <div class="wrap">
-      <div class="origin">
-        <div class="section__head">
-          <p class="eyebrow">Dall'esperienza al metodo</p>
-          <h2>Da Pisa a un format replicabile</h2>
-          <p class="section__intro">
-            Il format nasce dall'esperienza avviata a Pisa con il Comune e l'Università nel
-            2022. Funzionava, ma ogni percorso richiedeva troppo lavoro per poterlo proporre
-            a molti Comuni. Oggi l'intelligenza artificiale accorcia tutte le fasi: copy,
-            adattamento linguistico, voce, materiali grafici e sviluppo. Riducendo il lavoro
-            ripetitivo possiamo contenere i costi e personalizzare il progetto per ogni
-            Comune.
-          </p>
-        </div>
-        <figure class="origin__shot">
-          <img src="assets/pisa-2022.webp" alt="Comunicato del Comune di Pisa del 24 giugno 2022: «Turismo: nuovo progetto di travel podcasting nato dalla collaborazione tra Comune e UniPi»" width="1200" height="896" loading="lazy">
-          <figcaption>Comune di Pisa, 24 giugno 2022. Foto &copy; Comune di Pisa, <a href="https://creativecommons.org/licenses/by/4.0/deed.it" target="_blank" rel="noopener">CC BY 4.0</a>.</figcaption>
-        </figure>
-      </div>
-      <div class="steps">
-        <article class="step">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>1</span></div>
-          <h3>Selezionare</h3>
-          <p>Fonti e storie, insieme a chi conosce il luogo.</p>
-        </article>
-        <article class="step">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>2</span></div>
-          <h3>Preparare</h3>
-          <p>Copywriting e versioni linguistiche, da rivedere insieme.</p>
-        </article>
-        <article class="step">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>3</span></div>
-          <h3>Produrre</h3>
-          <p>Voce, audio e materiali visivi.</p>
-        </article>
-        <article class="step">
-          <div class="badge badge--gold"><svg viewBox="0 0 400 400" aria-hidden="true"><use href="#p-blocco" fill="var(--tp-color-tertiary)"/></svg><span>4</span></div>
-          <h3>Pubblicare</h3>
-          <p>Un'esperienza web leggera, facile da aggiornare.</p>
-        </article>
       </div>
     </div>
   </section>
@@ -940,13 +879,7 @@ img { display: block; max-width: 100%; }
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap site-footer__inner">
-    <img src="assets/logo-orizzontale-scuro.svg" alt="Travel Podcasting" width="129" height="38">
-    <p>Pietro Balestri e Iacopo Piccaluga</p>
-    <p><a href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/">Esempio: Vicopisano</a></p>
-  </div>
-</footer>
+<footer class="site-footer site-footer--thin" aria-hidden="true"></footer>
 
 <script>
     // Landing page di Travel Podcasting: comparsa allo scorrimento e invio del contatto.
