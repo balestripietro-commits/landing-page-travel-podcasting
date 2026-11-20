@@ -723,6 +723,26 @@ img { display: block; max-width: 100%; }
 .voice__lang { font-family: var(--tp-font-sans); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tp-color-on-surface-variant); white-space: nowrap; }
 .voices + .story__cta { margin-top: 2rem; text-align: center; }
 @media (max-width: 820px) { .voices { grid-template-columns: 1fr; } }
+/* ---------- player nello stile del sito ---------- */
+.voice-single { background: linear-gradient(160deg,#245c52,#173f39); color: #fff8ef; border-radius: 28px; padding: 1.6rem 1.6rem 1.7rem; box-shadow: 0 18px 40px rgba(23,63,57,.28); }
+.vs__name { font-family: var(--tp-font-editorial); font-size: 1.5rem; font-weight: 700; color: #fff8ef; margin: 0 0 1.1rem; }
+.vs__time { display: flex; align-items: center; gap: .8rem; font: 600 .85rem var(--tp-font-sans); color: rgba(255,248,239,.85); }
+.vs__track { position: relative; flex: 1; height: 6px; border-radius: 4px; background: rgba(255,255,255,.22); }
+.vs__track span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: #e8c36d; transition: width .25s linear; }
+.vs__track i { position: absolute; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #e8c36d; box-shadow: 0 0 0 3px rgba(232,195,109,.3); transition: left .25s linear; }
+.vs__ctl { display: flex; justify-content: center; margin: 1.1rem 0 1.2rem; }
+.vs__play { width: 84px; height: 84px; border-radius: 50%; padding: 5px; background: conic-gradient(#e8c36d var(--p), rgba(255,255,255,.2) 0); display: grid; place-items: center; }
+.vs__btn { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #f0d58c; background: #e8c36d; color: #173f39; display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 8px 22px rgba(0,0,0,.28); }
+.vs__btn svg { width: 30px; height: 30px; fill: currentColor; }
+.vs__btn .i-pause { display: none; }
+.voice-single.is-playing .vs__btn .i-play { display: none; }
+.voice-single.is-playing .vs__btn .i-pause { display: inline; }
+.vs__btn:focus-visible { outline: 3px solid #fff8ef; outline-offset: 3px; }
+.voice-single .vs__label { color: rgba(255,248,239,.75); margin-top: .4rem; }
+.voice-single .vs__select { background-color: rgba(255,255,255,.1); color: #fff8ef; border-color: rgba(255,255,255,.4); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23fff8ef' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.voice-single .vs__select option { color: #173f39; }
+.lang-big { font-family: var(--tp-font-editorial); font-weight: 700; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1; color: var(--heading); margin: .6rem 0 .4rem; }
+.lang-big span { color: #7d4fe0; }
 /* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
 .voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
 .vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
@@ -830,10 +850,10 @@ img { display: block; max-width: 100%; }
         </article>
         <article class="problem">
           <div>
-            <p class="stat__num">1 su 5</p>
-            <p class="stat__text">persone al mondo parla italiano o inglese.</p>
-            <p class="problem__note">Cartelli in italiano e in inglese raggiungono meno di un quinto del mondo. Per tutti gli altri serve il racconto nella loro lingua.</p>
-            <p class="stat__src">Circa il 19%: 1,5 miliardi di parlanti inglese e circa 65 milioni di madrelingua italiani su 8,2 miliardi di persone. Ethnologue (stime sui parlanti); Banca Mondiale (popolazione 2025).</p>
+            <p class="stat__num">4 su 5</p>
+            <p class="stat__text">persone al mondo non parlano né italiano né inglese.</p>
+            <p class="problem__note">I cartelli tradotti solo in italiano e in inglese non bastano.</p>
+            <p class="stat__src">Circa l'81%: italiano e inglese sono parlati da circa il 19% della popolazione mondiale (1,5 miliardi di parlanti inglese e circa 65 milioni di madrelingua italiani su 8,2 miliardi di persone). Ethnologue (stime sui parlanti); Banca Mondiale (popolazione 2025).</p>
           </div>
         </article>
       </div>
@@ -845,17 +865,15 @@ img { display: block; max-width: 100%; }
       <div class="section__head">
         <p class="eyebrow">Un esempio da ascoltare</p>
         <h2>Provalo a <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span></h2>
-        <p class="section__intro">
-          Ecco la prima tappa, la Torre delle Quattro Porte, nelle nove lingue del percorso.
-          Scegli una lingua e premi play. Possiamo farlo in fino a 74 lingue.
-        </p>
+        <p class="lang-big"><span>70+</span> lingue</p>
+        <p class="section__intro">Ecco la prima tappa, la Torre delle Quattro Porte, in nove lingue. Possiamo farla in più di 70: tutte quelle che sa leggere la nostra voce di sintesi.</p>
       </div>
 
       <div class="voice-single" id="voice-single">
         <p class="vs__name" id="vs-name" lang="it" dir="ltr">Benvenuti a Vicopisano</p>
-        <div class="vs__row">
-          <button class="voice__play" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-          <div class="meter vs__bar" aria-hidden="true"><span id="vs-bar" style="width:0%"></span></div>
+        <div class="vs__time"><span id="vs-cur">0:00</span><div class="vs__track" aria-hidden="true"><span id="vs-bar" style="width:0%"></span><i id="vs-dot" style="left:0%"></i></div><span id="vs-dur">--:--</span></div>
+        <div class="vs__ctl">
+          <div class="vs__play" id="vs-ring" style="--p:0deg"><button class="vs__btn" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button></div>
         </div>
         <label class="vs__label" for="vs-select">Lingua</label>
         <select class="vs__select" id="vs-select" aria-label="Lingua dell'audio"><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</option></select>
@@ -1060,17 +1078,20 @@ attivaModulo();
 (function(){
   var box=document.getElementById('voice-single'); if(!box) return;
   var a=new Audio(); a.preload='none';
-  var sel=document.getElementById('vs-select'), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), play=document.getElementById('vs-play');
+  var sel=document.getElementById('vs-select'), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), dot=document.getElementById('vs-dot'), play=document.getElementById('vs-play'), ring=document.getElementById('vs-ring'), cur=document.getElementById('vs-cur'), dur=document.getElementById('vs-dur');
+  function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
+  function reset(){bar.style.width='0%';dot.style.left='0%';ring.style.setProperty('--p','0deg');cur.textContent='0:00';dur.textContent='--:--'}
   a.src=sel.value;
   sel.addEventListener('change',function(){
-    var o=sel.options[sel.selectedIndex]; var was=!a.paused; a.pause(); a.src=o.value; bar.style.width='0%';
+    var o=sel.options[sel.selectedIndex]; a.pause(); a.src=o.value; reset();
     name.textContent=o.dataset.name; name.lang=o.dataset.lang; name.dir=o.dataset.dir; a.play();
   });
   play.addEventListener('click',function(){ if(a.paused) a.play(); else a.pause(); });
   a.addEventListener('play',function(){box.classList.add('is-playing')});
   a.addEventListener('pause',function(){box.classList.remove('is-playing')});
-  a.addEventListener('ended',function(){box.classList.remove('is-playing');bar.style.width='0%'});
-  a.addEventListener('timeupdate',function(){if(a.duration)bar.style.width=(a.currentTime/a.duration*100)+'%'});
+  a.addEventListener('ended',function(){box.classList.remove('is-playing');reset()});
+  a.addEventListener('loadedmetadata',function(){dur.textContent=fmt(a.duration)});
+  a.addEventListener('timeupdate',function(){if(a.duration){var p=a.currentTime/a.duration*100;bar.style.width=p+'%';dot.style.left=p+'%';ring.style.setProperty('--p',(p*3.6)+'deg');cur.textContent=fmt(a.currentTime)}});
 })();
 </script>
 </body>
