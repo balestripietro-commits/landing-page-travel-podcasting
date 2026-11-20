@@ -635,8 +635,8 @@ img { display: block; max-width: 100%; }
 
 /* accenti: viola e oro ogni tanto, in punti diversi */
 #piloti .eyebrow, #team .eyebrow { color: #7d4fe0; }
-#metodo .step .badge span { color: #7143d2; }
-#metodo .step .badge svg use { fill: #e6defa; }
+#metodo .step .badge span { color: #7d4fe0; }
+#metodo .step .badge svg use { fill: #dce3d6; }
 #team .person__link { color: #7d4fe0; }
 #problema-placeholder {}
 
@@ -647,7 +647,7 @@ img { display: block; max-width: 100%; }
 .phone__frame { padding: 10px; border-radius: 38px; background: #14201d; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
 .phone__frame img { display: block; width: 100%; height: auto; border-radius: 30px; }
 .phone figcaption { margin-top: var(--tp-space-4, 1rem); font-family: var(--tp-font-editorial); font-size: 1.15rem; color: var(--ink-fg); display: flex; gap: .6rem; justify-content: center; align-items: center; }
-.phone figcaption span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 10px; background: #e6defa; color: #7143d2; font-weight: 700; font-size: 1rem; }
+.phone figcaption span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 10px; background: #dce3d6; color: #7d4fe0; font-weight: 700; font-size: 1rem; }
 .problems { display: grid; grid-template-columns: 1fr 1fr; gap: var(--tp-space-6, 2.5rem); }
 .problem + .problem { border-left: 1px solid rgba(36,92,82,.25); padding-left: var(--tp-space-6, 2.5rem); }
 .stat__num { font-family: var(--tp-font-editorial); font-weight: 700; font-size: clamp(3.4rem, 9vw, 6rem); line-height: 1; color: var(--tp-color-secondary); }
@@ -679,7 +679,8 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---------- telefoni cliccabili ---------- */
-.phone { cursor: pointer; transition: transform .35s cubic-bezier(.2,.7,.2,1), width .35s ease; outline: none; }
+.phone img { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; pointer-events: none; }
+.phone { -webkit-user-select: none; user-select: none; cursor: pointer; transition: transform .35s cubic-bezier(.2,.7,.2,1), width .35s ease; outline: none; }
 .phone:not(.phone--mid):hover, .phone:not(.phone--mid):focus-visible { transform: translateY(-10px) rotate(-1.2deg); }
 .phone:not(.phone--mid):nth-child(3):hover, .phone:not(.phone--mid):nth-child(3):focus-visible { transform: translateY(-10px) rotate(1.2deg); }
 .phone--mid:hover { transform: translateY(-6px) scale(1.015); }
@@ -784,7 +785,7 @@ img { display: block; max-width: 100%; }
           mentre cammina. Tre schermate del percorso di Vicopisano.
         </p>
       </div>
-      <div class="phones">
+      <div class="phones" ondragstart="return false" oncontextmenu="return false">
         <figure class="phone"><div class="phone__frame"><img src="assets/schermata-home-2.webp" alt="La home del percorso di Vicopisano, con Brunelleschi che dà il benvenuto" width="500" height="1082" loading="lazy"></div></figure>
         <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/schermata-mappa-3.webp" alt="La mappa con le tappe e il player audio" width="500" height="1082" loading="lazy"></div></figure>
         <figure class="phone"><div class="phone__frame"><img src="assets/schermata-player-2.webp" alt="Il player audio a schermo intero con la prima tappa" width="500" height="1082" loading="lazy"></div></figure>
