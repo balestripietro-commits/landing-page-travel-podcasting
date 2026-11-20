@@ -756,6 +756,23 @@ img { display: block; max-width: 100%; }
 #problemi .stat__text { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; line-height: 1.15; min-height: 3.5em; }
 #problemi .problem__note { font-size: 1.15rem; }
 #problemi .stat__src { font-size: .82rem; }
+/* ---------- ritocchi 2 ---------- */
+.btn--wide { min-width: min(100%, 380px); justify-content: center; padding-inline: 3rem; }
+.phone, .phone * { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+.phone:focus { outline: none; }
+.phone.is-picked .phone__frame { box-shadow: 0 0 0 4px #e8c36d, 0 18px 40px rgba(0,0,0,.3); animation: picked .55s ease-out; }
+@keyframes picked { 0% { box-shadow: 0 0 0 0 rgba(232,195,109,.9), 0 18px 40px rgba(0,0,0,.3); } 100% { box-shadow: 0 0 0 4px #e8c36d, 0 18px 40px rgba(0,0,0,.3); } }
+.phones-cta { display: flex; justify-content: center; margin-top: 2.4rem; }
+.btn--open { background: #e8c36d; color: #173f39; padding-inline: 2.6rem; }
+.btn--open:hover { background: #f0d58c; }
+#problemi .stat__text { font-size: clamp(1.8rem, 3vw, 2.6rem) !important; line-height: 1.15; min-height: 0 !important; margin-top: 0; font-weight: 600; }
+#problemi .stat__text b { font-weight: 700; }
+#problemi .stat__src { color: #7d4fe0 !important; font-size: 1.15rem !important; margin-top: .9rem; }
+#problemi .problem__note { font-size: 1.15rem !important; margin-top: .6rem; }
+.piloti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.piloti-grid .section__head { margin: 0; }
+.piloti-grid .voice-single { max-width: none; margin: 0; }
+@media (max-width: 860px) { .piloti-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 /* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
 .voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
 .vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
@@ -810,8 +827,7 @@ img { display: block; max-width: 100%; }
             proprie storie.
           </p>
           <div class="hero__actions">
-            <a class="btn" href="#piloti">Ascolta un esempio</a>
-            <a class="btn btn--ghost" href="#contatto">Parliamo del vostro Comune</a>
+            <a class="btn btn--wide" href="#piloti">Ascolta un esempio</a>
           </div>
         </div>
 
@@ -840,6 +856,7 @@ img { display: block; max-width: 100%; }
         <figure class="phone phone--mid"><div class="phone__frame"><img src="assets/schermata-mappa-3.webp" alt="La mappa con le tappe e il player audio" width="500" height="1082" loading="lazy"></div></figure>
         <figure class="phone"><div class="phone__frame"><img src="assets/schermata-player-2.webp" alt="Il player audio a schermo intero con la prima tappa" width="500" height="1082" loading="lazy"></div></figure>
       </div>
+      <p class="phones-cta"><a class="btn btn--open" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Apri il percorso</a></p>
     </div>
   </section>
 
@@ -852,18 +869,16 @@ img { display: block; max-width: 100%; }
       <div class="problems">
         <article class="problem">
           <div>
-            <p class="stat__num">75%</p>
-            <p class="stat__text">dei turisti visita solo il 4% dell'Italia.</p>
-            <p class="problem__note">I borghi restano fuori dai percorsi più battuti. Una storia raccontata sul posto dà un motivo per fermarsi.</p>
+            <p class="stat__text"><b>75%</b> dei turisti visita solo il 4% dell'Italia.</p>
             <p class="stat__src">The European House &ndash; Ambrosetti (TEHA Group), su dati ISTAT 2022.</p>
+            <p class="problem__note">I borghi restano fuori dai percorsi più battuti. Una storia raccontata sul posto dà un motivo per fermarsi.</p>
           </div>
         </article>
         <article class="problem">
           <div>
-            <p class="stat__num">4 su 5</p>
-            <p class="stat__text">persone al mondo non parlano né italiano né inglese.</p>
-            <p class="problem__note">I cartelli solo in italiano e in inglese non bastano: per farsi capire serve la lingua di chi arriva.</p>
+            <p class="stat__text"><b>4 su 5</b> persone al mondo non parlano né italiano né inglese.</p>
             <p class="stat__src">Ethnologue; Banca Mondiale (popolazione 2025).</p>
+            <p class="problem__note">I cartelli solo in italiano e in inglese non bastano: per farsi capire serve la lingua di chi arriva.</p>
           </div>
         </article>
       </div>
@@ -872,13 +887,13 @@ img { display: block; max-width: 100%; }
 
   <section class="section" id="piloti">
     <div class="wrap">
-      <div class="section__head">
+      <div class="piloti-grid">
+        <div class="section__head">
         <p class="eyebrow">Un esempio da ascoltare</p>
         <h2>Prova la prima tappa di <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span> in</h2>
         <p class="lang-big">70+ lingue</p>
       </div>
-
-      <div class="voice-single" id="voice-single">
+        <div class="voice-single" id="voice-single">
         <p class="vs__name" id="vs-name" lang="it" dir="ltr">Benvenuti a Vicopisano</p>
         <div class="vs__line">
           <div class="vs__play" id="vs-ring" style="--p:0deg"><button class="vs__btn" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button></div>
@@ -889,11 +904,8 @@ img { display: block; max-width: 100%; }
         <label class="vs__label" for="vs-select">Lingua</label>
         <select class="vs__select" id="vs-select" aria-label="Lingua dell'audio"><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</option></select>
       </div>
-      <p class="story__cta">
-        <a class="btn" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Apri il percorso</a>
-      </p>
-    </div>
-  </section>
+      </div>
+    </section>
 
   <section class="section" id="team">
     <div class="wrap">
@@ -1065,6 +1077,7 @@ attivaModulo();
   var phones=[].slice.call(box.children);
   phones.forEach(function(p){p.setAttribute('tabindex','0');p.setAttribute('role','button');p.setAttribute('aria-label','Porta questa schermata al centro');});
   function porta(p){
+    phones.forEach(function(x){x.classList.remove('is-picked')}); p.classList.add('is-picked');
     if(window.matchMedia('(max-width: 760px)').matches){p.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});return;}
     var mid=box.querySelector('.phone--mid'); if(!mid||mid===p) return;
     var all=[].slice.call(box.children), before={};
