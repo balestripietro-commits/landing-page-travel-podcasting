@@ -33,7 +33,7 @@
 :root {
   --tp-color-primary: #245c52;
   --tp-color-on-primary: #fff8ef;
-  --tp-color-primary-container: #d9eee8;
+  --tp-color-primary-container: #dce3d6;
   --tp-color-on-primary-container: #0e332d;
   --tp-color-secondary: #245c52;
   --tp-color-tertiary: #e8c36d;
@@ -41,10 +41,10 @@
   --tp-color-surface: #fff8ef;
   --tp-color-surface-bright: #fff8ef;
   --tp-color-surface-container: #f6e6b8;
-  --tp-color-surface-container-high: #d9eee8;
+  --tp-color-surface-container-high: #dce3d6;
   --tp-color-on-surface-variant: #1f2a27;
   --tp-color-outline: #245c52;
-  --tp-color-outline-variant: #d9eee8;
+  --tp-color-outline-variant: #dce3d6;
   --tp-color-ink: #1f2a27;
 
   --tp-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -76,7 +76,7 @@
   --input-bg: #fff8ef;
   --shape-a: #245c52;
   --shape-b: #e8c36d;
-  --shape-c: #d9eee8;
+  --shape-c: #dce3d6;
   --ok: #1e7c55;
   --err: #b3261e;
   --tp-measure: 1180px;
@@ -608,10 +608,10 @@ img { display: block; max-width: 100%; }
 .pilot p, .feature p, .person p:not(.person__role), .step p, .hero__lead, .section__intro, .hero__meta dd { font-family: var(--tp-font-editorial); }
 
 /* sezioni: solo i colori della palette, come nel carosello LinkedIn */
-#piloti { background: #d9eee8; }
-#prodotto .feature { background: #f6e6b8; }
+#piloti { background: #dce3d6; }
+#prodotto .feature { background: #dce3d6; }
 #team { background: var(--tp-color-surface); }
-#team .person { background: #d9eee8; }
+#team .person { background: #dce3d6; }
 #contatto { background: #f6e6b8; }
 .pilot, .contact__card { background: #fff8ef; }
 .pilot { box-shadow: none; }
@@ -621,6 +621,13 @@ img { display: block; max-width: 100%; }
   html { scroll-behavior: auto; }
   .pilot, .btn { transition: none; }
 }
+
+/* accenti: viola e oro ogni tanto, in punti diversi */
+#piloti .eyebrow, #team .eyebrow { color: #7d4fe0; }
+#metodo .step .badge span { color: #7143d2; }
+#metodo .step .badge svg use { fill: #e6defa; }
+#team .person__link { color: #7d4fe0; }
+#problema-placeholder {}
 </style>
 </head>
 <body>
