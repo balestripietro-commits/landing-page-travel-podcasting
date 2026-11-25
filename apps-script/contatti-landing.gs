@@ -70,7 +70,7 @@ function avvisaDiscord(c) {
   var utente = (menzione.match(/\d{5,}/) || [])[0];
   var opzioni = {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
-    payload: JSON.stringify({ username: 'Bruno', content: testo.slice(0, 1900), allowed_mentions: { users: utente ? [utente] : [] } })
+    payload: JSON.stringify({ username: 'Bruno', avatar_url: AVATAR_BRUNO, content: testo.slice(0, 1900), allowed_mentions: { users: utente ? [utente] : [] } })
   };
   var r = UrlFetchApp.fetch(url + (url.indexOf('?') < 0 ? '?wait=true' : '&wait=true'), opzioni);
   if (r.getResponseCode() >= 300) { Utilities.sleep(1500); r = UrlFetchApp.fetch(url, opzioni); }
@@ -79,6 +79,7 @@ function avvisaDiscord(c) {
 }
 
 var DESTINATARI = 'balestripietro@gmail.com,iacopopicca@gmail.com';
+var AVATAR_BRUNO = 'https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/bruno-avatar.png';
 var LOGO = 'https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/logo-orizzontale-su-scuro.png';   // Pietro e Iacopo; NOTIFICA_EMAIL lo sostituisce
 
 function esc(t) { return String(t || '').replace(/[&<>"]/g, function (x) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[x]; }); }
