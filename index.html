@@ -991,6 +991,12 @@ section[id] { scroll-margin-top: 0; }
   #problemi .problem__note { font-size: 1.02rem !important; line-height: 1.5; }
   #problemi .section__head { margin-bottom: 1.6rem; }
 }
+/* Tasto sotto i telefoni: apre il sito di Vicopisano */
+.carousel__cta { margin: 2rem 0 0; text-align: center; }
+.carousel__cta .btn { min-width: min(100%, 320px); }
+.carousel__cta .btn:focus-visible { outline: 3px solid #fff8ef; outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+@media (max-width: 760px) { .carousel__cta { margin-top: -1.4rem; position: relative; z-index: 21; } }
 </style>
 </head>
 <body>
@@ -1082,6 +1088,7 @@ section[id] { scroll-margin-top: 0; }
       </div>
       <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Schermata successiva"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M90 62 L118 100 L90 138" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
+      <p class="carousel__cta"><a class="btn btn--open" href="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/" target="_blank" rel="noopener">Prova il sito di Vicopisano <span aria-hidden="true">↗</span><span class="sr-only"> (si apre in una nuova scheda)</span></a></p>
     </div>
   </section>
 
