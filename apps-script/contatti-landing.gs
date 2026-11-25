@@ -116,6 +116,18 @@ function avvisaEmail(c) {
   });
 }
 
+// Da lanciare una volta a mano: salva nel webhook di Discord il nome «Bruno» e la sua foto
+// (così Discord la conserva e non serve un'immagine pubblica a ogni messaggio).
+function impostaWebhookBruno() {
+  var url = PropertiesService.getScriptProperties().getProperty('DISCORD_WEBHOOK_URL');
+  var img = UrlFetchApp.fetch(AVATAR_BRUNO).getBlob();
+  var r = UrlFetchApp.fetch(url, {
+    method: 'patch', contentType: 'application/json', muteHttpExceptions: true,
+    payload: JSON.stringify({ name: 'Bruno', avatar: 'data:image/png;base64,' + Utilities.base64Encode(img.getBytes()) })
+  });
+  console.log('Webhook: risposta ' + r.getResponseCode());
+}
+
 // Prova da Apps Script: crea il Foglio (se manca) e manda su Discord un contatto finto, segnato come prova.
 function prova() {
   var c = { nome: 'PROVA – da cancellare', ente: 'Comune di Prova', ruolo: 'Altro', email: 'prova@example.com', telefono: '', messaggio: 'Messaggio di prova', pagina: 'prova()' };
