@@ -68,13 +68,18 @@ function avvisaDiscord(c) {
   var testo = (menzione ? menzione + ' ' : '') + 'nuovo contatto dalla landing.\n' + riassunto(c).replace(/[*_`~|>@]/g, '') +
     '\nFoglio: ' + SpreadsheetApp.openById(props.getProperty('FOGLIO_ID')).getUrl();
   var utente = (menzione.match(/\d{5,}/) || [])[0];
-  UrlFetchApp.fetch(url, {
+  var opzioni = {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
     payload: JSON.stringify({ username: 'Bruno', content: testo.slice(0, 1900), allowed_mentions: { users: utente ? [utente] : [] } })
-  });
+  };
+  var r = UrlFetchApp.fetch(url + (url.indexOf('?') < 0 ? '?wait=true' : '&wait=true'), opzioni);
+  if (r.getResponseCode() >= 300) { Utilities.sleep(1500); r = UrlFetchApp.fetch(url, opzioni); }
+  console.log('Discord: risposta ' + r.getResponseCode());
+  return r.getResponseCode();
 }
 
-var DESTINATARI = 'balestripietro@gmail.com,iacopopicca@gmail.com';   // Pietro e Iacopo; NOTIFICA_EMAIL lo sostituisce
+var DESTINATARI = 'balestripietro@gmail.com,iacopopicca@gmail.com';
+var LOGO = 'https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/logo-orizzontale-su-scuro.png';   // Pietro e Iacopo; NOTIFICA_EMAIL lo sostituisce
 
 function esc(t) { return String(t || '').replace(/[&<>"]/g, function (x) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[x]; }); }
 
@@ -93,13 +98,13 @@ function avvisaEmail(c) {
     '<div style="background:#fff8ef;padding:24px 12px;font-family:Georgia,\'Times New Roman\',serif">' +
     '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #dce3d6">' +
     '<div style="background:#245c52;padding:22px 26px;color:#fff8ef">' +
-    '<div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e8c36d;font-weight:bold">«&nbsp;●&nbsp;» Travel Podcasting</div>' +
+    '<img src="' + LOGO + '" width="200" alt="Travel Podcasting" style="display:block;width:200px;max-width:60%;height:auto;border:0">' +
     '<div style="font-size:24px;font-weight:bold;margin-top:8px">Nuovo contatto dalla landing</div>' +
     '<div style="font-size:16px;margin-top:4px;opacity:.9">' + esc(c.ente) + '</div></div>' +
     '<div style="padding:20px 26px 8px"><table style="border-collapse:collapse;width:100%">' + righe + '</table></div>' +
     '<div style="padding:12px 26px 26px">' +
     '<a href="' + rispondi + '" style="display:inline-block;background:#245c52;color:#fff8ef;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;margin:0 8px 8px 0">Rispondi a ' + esc(c.nome.split(' ')[0]) + '</a>' +
-    '<a href="' + foglioUrl + '" style="display:inline-block;background:#e8c36d;color:#173f39;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;margin:0 0 8px">Apri il Foglio dei contatti</a>' +
+    '<a href="' + foglioUrl + '" style="display:inline-block;background:#245c52;color:#fff8ef;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;margin:0 0 8px">Apri il Foglio dei contatti</a>' +
     '</div></div>' +
     '<p style="max-width:560px;margin:14px auto 0;color:#5b6b66;font-size:12px;text-align:center">Mail automatica dal modulo di balestripietro-commits.github.io/landing-page-travel-podcasting · ' + esc(Utilities.formatDate(new Date(), 'Europe/Rome', 'dd/MM/yyyy HH:mm')) + '</p></div>';
   MailApp.sendEmail({
