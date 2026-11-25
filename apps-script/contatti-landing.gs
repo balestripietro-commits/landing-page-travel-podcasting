@@ -1,6 +1,6 @@
 // Contatti della landing di Travel Podcasting (Google Apps Script, gira nel cloud di Google, gratis).
 // A ogni invio del modulo: 1) salva una riga in un Foglio Google; 2) scrive in #bs-landing-page su Discord,
-// firmato Bruno e con la menzione di Pietro; 3) manda una mail a chi possiede lo script (o a NOTIFICA_EMAIL).
+// firmato Bruno e con la menzione di Pietro; 3) manda una mail a Pietro e Iacopo (o a NOTIFICA_EMAIL).
 //
 // Setup (una volta), con l'account balestripietro@gmail.com:
 // 1. script.google.com -> Nuovo progetto -> nome «Contatti landing Travel Podcasting» -> incolla questo file.
@@ -9,7 +9,7 @@
 //      DISCORD_WEBHOOK_URL = l'URL copiato al punto 2 (è un segreto: non va in chat, su GitHub o su Drive)
 //      DISCORD_MENZIONE    = <@ID_DI_PIETRO>  (Discord -> Impostazioni -> Avanzate -> Modalità sviluppatore;
 //                            poi clic destro sul proprio nome -> Copia ID utente). Facoltativa.
-//      NOTIFICA_EMAIL      = indirizzi a cui mandare la mail, separati da virgola. Facoltativa: senza, va a chi possiede lo script.
+//      NOTIFICA_EMAIL      = indirizzi a cui mandare la mail, separati da virgola. Facoltativa: senza, va a Pietro e Iacopo (DESTINATARI).
 // 4. Esegui una volta prova() e concedi i permessi: crea il Foglio «Contatti landing» e manda un messaggio di prova.
 // 5. Distribuisci -> Nuova distribuzione -> Tipo «App web» -> Esegui come: Me -> Chi ha accesso: Chiunque -> Distribuisci.
 //    Copia l'URL che finisce con /exec: va in ENDPOINT_CONTATTI nella landing (index.html).
@@ -74,15 +74,39 @@ function avvisaDiscord(c) {
   });
 }
 
+var DESTINATARI = 'balestripietro@gmail.com,iacopopicca@gmail.com';   // Pietro e Iacopo; NOTIFICA_EMAIL lo sostituisce
+
+function esc(t) { return String(t || '').replace(/[&<>"]/g, function (x) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[x]; }); }
+
 function avvisaEmail(c) {
   var props = PropertiesService.getScriptProperties();
-  var a = props.getProperty('NOTIFICA_EMAIL') || Session.getEffectiveUser().getEmail();
-  if (!a) return;
+  var a = props.getProperty('NOTIFICA_EMAIL') || DESTINATARI;
+  var foglioUrl = SpreadsheetApp.openById(props.getProperty('FOGLIO_ID')).getUrl();
+  var righe = [['Nome', c.nome], ['Comune o ente', c.ente], ['Ruolo', c.ruolo], ['Email', c.email], ['Telefono', c.telefono], ['Messaggio', c.messaggio]]
+    .filter(function (r) { return r[1]; })
+    .map(function (r) {
+      return '<tr><td style="padding:8px 12px 8px 0;color:#5b6b66;font-size:14px;vertical-align:top;white-space:nowrap">' + r[0] +
+        '</td><td style="padding:8px 0;color:#173f39;font-size:16px;vertical-align:top">' + esc(r[1]).replace(/\n/g, '<br>') + '</td></tr>';
+    }).join('');
+  var rispondi = 'mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent('Travel Podcasting · ' + c.ente);
+  var html =
+    '<div style="background:#fff8ef;padding:24px 12px;font-family:Georgia,\'Times New Roman\',serif">' +
+    '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #dce3d6">' +
+    '<div style="background:#245c52;padding:22px 26px;color:#fff8ef">' +
+    '<div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e8c36d;font-weight:bold">«&nbsp;●&nbsp;» Travel Podcasting</div>' +
+    '<div style="font-size:24px;font-weight:bold;margin-top:8px">Nuovo contatto dalla landing</div>' +
+    '<div style="font-size:16px;margin-top:4px;opacity:.9">' + esc(c.ente) + '</div></div>' +
+    '<div style="padding:20px 26px 8px"><table style="border-collapse:collapse;width:100%">' + righe + '</table></div>' +
+    '<div style="padding:12px 26px 26px">' +
+    '<a href="' + rispondi + '" style="display:inline-block;background:#245c52;color:#fff8ef;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;margin:0 8px 8px 0">Rispondi a ' + esc(c.nome.split(' ')[0]) + '</a>' +
+    '<a href="' + foglioUrl + '" style="display:inline-block;background:#e8c36d;color:#173f39;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;margin:0 0 8px">Apri il Foglio dei contatti</a>' +
+    '</div></div>' +
+    '<p style="max-width:560px;margin:14px auto 0;color:#5b6b66;font-size:12px;text-align:center">Mail automatica dal modulo di balestripietro-commits.github.io/landing-page-travel-podcasting · ' + esc(Utilities.formatDate(new Date(), 'Europe/Rome', 'dd/MM/yyyy HH:mm')) + '</p></div>';
   MailApp.sendEmail({
-    to: a, replyTo: c.email, name: 'Travel Podcasting · landing',
-    subject: 'Nuovo contatto dalla landing: ' + c.ente,
-    body: riassunto(c) + '\n\nPagina: ' + c.pagina + '\nFoglio: ' + SpreadsheetApp.openById(props.getProperty('FOGLIO_ID')).getUrl() +
-      '\n\nRispondendo a questa mail scrivete direttamente a ' + c.email + '.'
+    to: a, replyTo: c.email, name: 'Travel Podcasting',
+    subject: 'Nuovo contatto: ' + c.nome + ' · ' + c.ente,
+    body: riassunto(c) + '\n\nFoglio: ' + foglioUrl + '\nRispondendo a questa mail scrivete direttamente a ' + c.email + '.',
+    htmlBody: html
   });
 }
 

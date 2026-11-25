@@ -15,8 +15,6 @@
 <meta property="og:url" content="https://balestripietro-commits.github.io/landing-page-travel-podcasting/">
 <meta property="og:image" content="https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/hero-vicopisano.webp">
 <meta property="og:locale" content="it_IT">
-<script>/* L'animazione di apertura si vede solo alla prima visita */
-try { if (localStorage.getItem("tp-landing-intro")) document.documentElement.classList.add("no-intro"); else localStorage.setItem("tp-landing-intro", "1"); } catch (e) { /* senza memoria locale: si vede ogni volta */ }</script>
 <style>
 /* Travel Podcasting — landing page.
    Stessa identità dei siti dei borghi: segno M-2, verde #245C52, oro #E8C36D,
@@ -806,18 +804,23 @@ html, body, * { -webkit-tap-highlight-color: transparent; }
 button, a, summary, label, select, input, [role="button"], [tabindex] { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
 button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:not(:focus-visible), summary:focus:not(:focus-visible) { outline: none; }
 /* ---------- apertura del sito: il pallino, poi le virgolette, poi il sito ---------- */
-.intro { position: fixed; inset: 0; z-index: 9999; background: #fff8ef; display: grid; place-items: center; animation: introOut .7s ease 2.3s forwards; }
-.intro__logo { width: min(46vw, 260px); height: auto; overflow: visible; }
+.intro { position: fixed; inset: 0; z-index: 9999; background: #fff8ef; display: grid; place-items: center; animation: introOut .6s ease 2.9s forwards; }
+/* Animazione del segno dal brand book (07-Web/segno-animato-centro): il segno spunta, il puntino si chiude,
+   le virgolette si aprono verso l'esterno e al centro compare la scritta. Le virgolette non si incrociano mai. */
+.intro__logo { width: min(86vw, 560px); height: auto; overflow: visible; }
 .intro-ch { fill: none; stroke: #245c52; stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; }
-.intro-dot { fill: #e8c36d; transform-box: fill-box; transform-origin: center; animation: introDot .6s cubic-bezier(.2,1.3,.4,1) .2s both; }
-.intro-l { animation: introL .8s cubic-bezier(.65,0,.35,1) 1s both; }
-.intro-r { animation: introR .8s cubic-bezier(.65,0,.35,1) 1s both; }
-@keyframes introDot { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-@keyframes introL { from { transform: translateX(52px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-@keyframes introR { from { transform: translateX(-52px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.intro-dot { fill: #e8c36d; transform-box: fill-box; transform-origin: center; animation: introDot 1.9s cubic-bezier(.65,0,.35,1) both; }
+.intro-l { animation: introIn .5s ease-out both, introOpenL .8s cubic-bezier(.65,0,.35,1) 1s both; }
+.intro-r { animation: introIn .5s ease-out both, introOpenR .8s cubic-bezier(.65,0,.35,1) 1s both; }
+.intro-word text { font: 700 36px "Petrona", Georgia, serif; fill: #245c52; }
+.intro-word { clip-path: inset(-8px 50% -8px 50%); animation: introWord .8s cubic-bezier(.65,0,.35,1) 1s both; }
+@keyframes introIn { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
+@keyframes introDot { 0% { transform: scale(0); opacity: 0; } 18% { transform: scale(1.12); opacity: 1; } 26% { transform: scale(1); } 52% { transform: scale(1); opacity: 1; } 62% { transform: scale(0); opacity: 0; } 100% { transform: scale(0); opacity: 0; } }
+@keyframes introOpenL { from { transform: translateX(0); } to { transform: translateX(calc(var(--apri, 112) * -1px)); } }
+@keyframes introOpenR { from { transform: translateX(0); } to { transform: translateX(calc(var(--apri, 112) * 1px)); } }
+@keyframes introWord { from { clip-path: inset(-8px 50% -8px 50%); } to { clip-path: inset(-8px -3% -8px -3%); } }
 @keyframes introOut { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .intro { display: none; } }
-.no-intro .intro { display: none; }
 /* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
 .voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
 .vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
@@ -942,10 +945,11 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 </head>
 <body>
 <div class="intro" id="intro" aria-hidden="true">
-  <svg viewBox="10 50 180 100" class="intro__logo" focusable="false">
+  <svg viewBox="-150 50 500 100" class="intro__logo" focusable="false">
     <g class="intro-l"><path class="intro-ch" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g>
     <g class="intro-r"><path class="intro-ch" transform="matrix(-1 0 0 1 200 0)" d="M52 62 L30 88 Q22 100 30 112 L52 138 M82 62 L60 88 Q52 100 60 112 L82 138"/></g>
     <circle class="intro-dot" cx="100" cy="100" r="15"/>
+    <g class="intro-word"><text x="100" y="93.5" text-anchor="middle">Travel</text><text x="100" y="130.2" text-anchor="middle">Podcasting</text></g>
   </svg>
 </div>
 
@@ -1189,7 +1193,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 
 // Indirizzo dell'app web di Google Apps Script che riceve i contatti.
 // Finché resta vuoto il modulo non invia nulla e lo dice a chi scrive.
-const ENDPOINT_CONTATTI = "";
+const ENDPOINT_CONTATTI = "https://script.google.com/macros/s/AKfycbwt-Zf3FUcc6cwhehmUQLlnNlNH8V_fspMk9lX5qwan7ABrTDu5bvSv-eaumsAHQEulyA/exec";
 
 function mostraNota(nota, testo, stato) {
   nota.textContent = testo;
@@ -1321,7 +1325,10 @@ attivaModulo();
 })();
 </script>
 <script>
-(function(){var i=document.getElementById('intro');if(!i)return;setTimeout(function(){i.remove()},3200);})();
+(function(){var i=document.getElementById('intro');if(!i)return;
+  function misura(){try{var w=i.querySelector('.intro-word').getBBox().width;if(w)i.style.setProperty('--apri',Math.round(w/2+3));}catch(e){}}
+  misura(); if(document.fonts&&document.fonts.ready)document.fonts.ready.then(misura);
+  setTimeout(function(){i.remove()},3600);})();
 </script>
 <script>
 /* Carosello dei telefoni: una «ruota» ferma; le frecce (o i tasti freccia) portano al centro la schermata accanto */
