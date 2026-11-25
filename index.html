@@ -880,6 +880,34 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 .piloti-grid .section__head { display: flex; flex-direction: column; justify-content: center; }
 .piloti-grid .section__head h2 { max-width: none; font-size: clamp(1.6rem, 2.3vw, 2.15rem); }
 @media (max-width: 860px) { .br-desk { display: none; } }
+
+/* ---------- persone che salutano (P1 + P3) ---------- */
+.problem__people { height: auto !important; gap: 18px !important; flex-wrap: wrap; }
+.problem__people .who { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.problem__people .who svg { height: 96px; width: auto; overflow: visible; }
+.problem__people .who.on svg { fill: #245c52; } .problem__people .who.on svg circle { fill: #173f39; }
+.problem__people .who.off svg { fill: none; stroke: #245c52; stroke-width: 20; opacity: .55; }
+.say { position: relative; display: inline-block; padding: 5px 14px 6px; border-radius: 16px; font-weight: 700; font-size: 1rem; line-height: 1.25; white-space: nowrap; }
+.say::before, .say::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-style: solid; }
+.who.on .say { background: #245c52; color: #fff8ef; }
+.who.on .say::after { top: 100%; border-width: 9px 8px 0 8px; border-color: #245c52 transparent transparent transparent; }
+.who.off .say { background: #f6e6b8; color: #245c52; box-shadow: inset 0 0 0 2px rgba(36,92,82,.55); }
+.who.off .say::before { top: 100%; border-width: 10px 9px 0 9px; border-color: rgba(36,92,82,.55) transparent transparent transparent; }
+.who.off .say::after { top: calc(100% - 3px); border-width: 9px 7px 0 7px; border-color: #f6e6b8 transparent transparent transparent; }
+@media (max-width: 520px) { .problem__people { gap: 10px !important; } .problem__people .who svg { height: 70px; } .say { font-size: .85rem; padding: 4px 9px 5px; } }
+/* ---------- kit per il Comune (K3: schede compatte) ---------- */
+#kit { background: #245c52; color: #fff8ef; }
+#kit .eyebrow { color: #e8c36d !important; }
+#kit h2, #kit .section__intro { color: #fff8ef; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.kit__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 2rem; }
+.kit__item { display: flex; gap: 14px; align-items: center; background: #fff8ef; border-radius: 22px; padding: 14px 16px; }
+.kit__item h3 { margin: 0; font-size: 1.15rem; line-height: 1.2; color: #173f39; }
+.kit__item p { margin: .2rem 0 0; font-size: .95rem; line-height: 1.4; color: #173f39; }
+.kit__badge { flex: 0 0 auto; width: 64px; height: auto; }
+.kit__badge .sh { fill: #245c52; } .kit__badge .ic { fill: none; stroke: #e8c36d; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 900px) { .kit__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .kit__grid { grid-template-columns: 1fr; gap: 10px; } .kit__badge { width: 52px; } }
 </style>
 </head>
 <body>
@@ -989,7 +1017,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
         </article>
         <article class="problem">
           <div>
-            <div class="problem__people" role="img" aria-label="Quattro persone su cinque"><svg viewBox="0 -170 400 590" class="on" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg><svg viewBox="0 -170 400 590" class="on" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg><svg viewBox="0 -170 400 590" class="on" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg><svg viewBox="0 -170 400 590" class="on" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg><svg viewBox="0 -170 400 590" class="off" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg></div>
+            <div class="problem__people" role="img" aria-label="Cinque persone: quattro salutano in cinese, spagnolo, russo e arabo; la quinta dice Ciao/Hello"><div class="who on"><span class="say" lang="zh">你好</span><svg viewBox="0 -170 400 590" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg></div><div class="who on"><span class="say" lang="es">Hola</span><svg viewBox="0 -170 400 590" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg></div><div class="who on"><span class="say" lang="ru">Привет</span><svg viewBox="0 -170 400 590" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg></div><div class="who on"><span class="say" lang="ar">مرحبا</span><svg viewBox="0 -170 400 590" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg></div><div class="who off"><span class="say" lang="it">Ciao/Hello</span><svg viewBox="0 -170 400 590" aria-hidden="true" focusable="false"><circle cx="200" cy="-60" r="95"/><path d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/></svg></div></div>
             <p class="stat__text"><b>4 su 5 persone</b> al mondo non parlano né italiano né inglese.</p>
             <p class="stat__src">Ethnologue; Banca Mondiale (popolazione 2025).</p>
             <p class="problem__note">I cartelli solo in italiano e in inglese non bastano: per farsi capire serve la lingua di chi arriva.</p>
@@ -1023,6 +1051,17 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
       </div>
       </div>
     </section>
+
+  <section class="section kit" id="kit">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Non solo audio</p>
+        <h2>Tutto quello che serve per farlo conoscere</h2>
+        <p class="section__intro">Con il percorso il Comune riceve un kit pronto da usare, nello stesso stile del sito.</p>
+      </div>
+      <div class="kit__grid"><article class="kit__item"><svg class="kit__badge" viewBox="0 0 400 420" aria-hidden="true" focusable="false"><path class="sh" d="M50 390V80Q50 30 100 30Q150 30 150 80V105Q150 130 175 130H225Q250 130 250 105V80Q250 30 300 30Q350 30 350 80V390Q350 400 340 400H60Q50 400 50 390Z"/><g transform="translate(90 100) scale(4.6)" class="ic"><rect x="9" y="9" width="11" height="11" rx="2"/><rect x="28" y="9" width="11" height="11" rx="2"/><rect x="9" y="28" width="11" height="11" rx="2"/><path d="M28 28h4v4M38 28v4M28 38h11M34 34v5"/></g></svg><div><h3>Cartelli con QR</h3><p>Uno accanto a ogni tappa, anche con un QR per lingua.</p></div></article><article class="kit__item"><svg class="kit__badge" viewBox="0 0 400 420" aria-hidden="true" focusable="false"><path class="sh" d="M80 400Q40 400 40 360V200A160 160 0 0 1 360 200V360Q360 400 320 400Z"/><g transform="translate(90 100) scale(4.6)" class="ic"><rect x="12" y="7" width="24" height="34" rx="3"/><path d="M17 15h14M17 21h14M17 27h9"/><circle cx="30" cy="34" r="2.5"/></g></svg><div><h3>Locandina e segnalibro</h3><p>Per bacheche, negozi, uffici turistici e strutture.</p></div></article><article class="kit__item"><svg class="kit__badge" viewBox="0 0 400 420" aria-hidden="true" focusable="false"><path class="sh" d="M200 20A180 180 0 0 0 20 200A180 180 0 0 0 200 380H345Q380 380 380 345V200A180 180 0 0 0 200 20Z"/><g transform="translate(90 100) scale(4.6)" class="ic"><path d="M24 12c-4-3-10-4-15-3v28c5-1 11 0 15 3 4-3 10-4 15-3V9c-5-1-11 0-15 3z"/><path d="M24 12v28"/></g></svg><div><h3>Booklet del percorso</h3><p>16 pagine: cos'è, come funziona, tappa per tappa.</p></div></article><article class="kit__item"><svg class="kit__badge" viewBox="0 0 400 420" aria-hidden="true" focusable="false"><path class="sh" d="M200 20H380V200A180 180 0 0 1 200 380H20V200A180 180 0 0 1 200 20Z"/><g transform="translate(90 100) scale(4.6)" class="ic"><rect x="13" y="6" width="22" height="36" rx="5"/><path d="M19 37h10"/><path d="M24 26l-5-5a3.2 3.2 0 0 1 5-4 3.2 3.2 0 0 1 5 4z"/></g></svg><div><h3>Post e caroselli social</h3><p>Una tappa a settimana sui canali del Comune.</p></div></article><article class="kit__item"><svg class="kit__badge" viewBox="0 0 400 420" aria-hidden="true" focusable="false"><path class="sh" d="M110 30H290Q370 30 370 110V290Q370 370 290 370H110Q30 370 30 290V110Q30 30 110 30Z"/><g transform="translate(90 100) scale(4.6)" class="ic"><path d="M9 12h24v26H13a4 4 0 0 1-4-4z"/><path d="M33 18h6v16a4 4 0 0 1-4 4h-2"/><path d="M14 19h14M14 25h14M14 31h9"/></g></svg><div><h3>Comunicato e press kit</h3><p>Pronti da mandare alla stampa locale.</p></div></article><article class="kit__item"><svg class="kit__badge" viewBox="0 0 400 420" aria-hidden="true" focusable="false"><path class="sh" d="M110 20H290Q315 20 330 45L385 170Q395 200 385 230L330 355Q315 380 290 380H110Q85 380 70 355L15 230Q5 200 15 170L70 45Q85 20 110 20Z"/><g transform="translate(90 100) scale(4.6)" class="ic"><circle cx="24" cy="24" r="15"/><path d="M30 18l-4 9-8 3 4-9z"/><circle cx="24" cy="24" r="1.6"/></g></svg><div><h3>Guida alla promozione</h3><p>Come farlo conoscere a scuole, turisti e associazioni.</p></div></article></div>
+    </div>
+  </section>
 
   <section class="section" id="team">
     <div class="wrap">
@@ -1070,6 +1109,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
             <span>Email</span>
             <input type="email" name="email" autocomplete="email" placeholder="nome@comune.it" required />
           </label>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp" />
           <label class="consent">
             <input type="checkbox" name="consent" required />
             <span>Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento a essere ricontattato su questo progetto.</span>
@@ -1159,6 +1199,7 @@ function attivaModulo() {
           name: nome,
           email,
           consent: true,
+          website: String(dati.get("website") || ""),
           page: location.href,
         }),
       });
