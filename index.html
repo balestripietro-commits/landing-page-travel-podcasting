@@ -876,10 +876,15 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 .carousel__arrow:focus-visible { outline: 3px solid #fff8ef; outline-offset: 3px; }
 @media (max-width: 760px) { .carousel { gap: .2rem; } .carousel__arrow { width: 44px; height: 44px; } .carousel .phones { height: 142vw; } .carousel .phone { width: 60vw !important; } }
 @media (prefers-reduced-motion: reduce) { .carousel .phone { transition: none; } }
-.piloti-grid { align-items: stretch; }
-.piloti-grid .section__head { display: flex; flex-direction: column; justify-content: center; }
-.piloti-grid .section__head h2 { max-width: none; font-size: clamp(1.6rem, 2.3vw, 2.15rem); }
-@media (max-width: 860px) { .br-desk { display: none; } }
+.piloti-head { margin-bottom: 2rem !important; }
+.piloti-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 470px) !important; gap: 3rem !important; align-items: center; }
+.piloti-left .narrator { margin-top: 0; }
+.piloti-left .narrator img { width: 140px; height: 140px; }
+.piloti-left .narrator p { font-size: 1.15rem; }
+#piloti .voice-single { padding: 1.2rem 1.3rem 1.3rem; border-radius: 24px; }
+#piloti .vs__name { font-size: 1.25rem; margin-bottom: .8rem; }
+#piloti .vs__play { width: 58px; height: 58px; }
+@media (max-width: 860px) { .piloti-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; } .piloti-left .narrator img { width: 96px; height: 96px; } }
 
 /* ---------- persone che salutano (P1 + P3) ---------- */
 .problem__people { height: auto !important; gap: 18px !important; flex-wrap: wrap; }
@@ -1029,12 +1034,14 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 
   <section class="section" id="piloti">
     <div class="wrap">
-      <div class="piloti-grid">
-        <div class="section__head">
+      <div class="section__head piloti-head">
         <p class="eyebrow">Un esempio da ascoltare</p>
-        <h2>Prova la prima tappa di <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span><br class="br-desk"> in <span class="lang-inline">70+&nbsp;lingue</span></h2>
+        <h2>Prova la prima tappa di <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span> in <span class="lang-inline">70+&nbsp;lingue</span></h2>
+      </div>
+      <div class="piloti-grid">
+        <div class="piloti-left">
         <div class="narrator">
-          <img src="assets/mascotte-brunelleschi.webp" alt="Filippo Brunelleschi, il narratore del percorso di Vicopisano" width="700" height="700" loading="lazy">
+          <img src="assets/mascotte-brunelleschi.webp" alt="Filippo Brunelleschi, il narratore del percorso di Vicopisano" width="700" height="700">
           <p><strong>A raccontare è Filippo Brunelleschi.</strong> L'architetto che nel 1435 trasformò Vicopisano in fortezza accompagna il visitatore tappa per tappa, con la sua voce e il suo carattere.</p>
         </div>
       </div>
