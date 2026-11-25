@@ -997,6 +997,8 @@ section[id] { scroll-margin-top: 0; }
 .carousel__cta .btn:focus-visible { outline: 3px solid #fff8ef; outline-offset: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 @media (max-width: 760px) { .carousel__cta { margin-top: -1.4rem; position: relative; z-index: 21; } }
+/* Da mobile niente composizione di foto e forme sotto «Ascolta un esempio» */
+@media (max-width: 760px) { .hero__art { display: none !important; } }
 </style>
 </head>
 <body>
