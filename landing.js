@@ -192,3 +192,10 @@ attivaModulo();
   function set(){ document.documentElement.style.setProperty('--header-h', Math.round(h.getBoundingClientRect().height)+'px'); }
   set(); window.addEventListener('resize', set); if(window.ResizeObserver) new ResizeObserver(set).observe(h);
 })();
+
+/* «Il problema» da mobile: le linee si riempiono quando arrivano sullo schermo */
+(function(){var els=document.querySelectorAll('.sbars'); if(!els.length) return;
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('is-on')}); return; }
+  var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-on'); io.unobserve(x.target); } }); },{threshold:.6});
+  els.forEach(function(e){ io.observe(e); });
+})();
