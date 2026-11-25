@@ -980,6 +980,12 @@ html, body { overflow-x: clip; }
 /* Ancore: l'inizio della sezione arriva subito sotto la testata */
 html { scroll-padding-top: var(--header-h, 73px); }
 section[id] { scroll-margin-top: 0; }
+/* «4 su 5»: da mobile le cinque persone tutte su una riga */
+@media (max-width: 760px) {
+  .problem__vis .problem__people { display: flex !important; flex-wrap: nowrap !important; align-items: flex-end; gap: clamp(10px, 3.5vw, 18px) !important; }
+  .problem__vis .problem__people .who { grid-column: auto !important; }
+  .problem__vis .problem__people .who svg { height: clamp(62px, 18vw, 84px) !important; }
+}
 </style>
 </head>
 <body>
