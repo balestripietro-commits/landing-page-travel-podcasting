@@ -970,6 +970,16 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 .skip-link:focus { top: 12px; outline: 3px solid #e8c36d; outline-offset: 2px; }
 main:focus { outline: none; }
 .field input[aria-invalid="true"] { border-color: #b3261e !important; box-shadow: 0 0 0 2px rgba(179,38,30,.25); }
+
+/* ---------- correzioni mobile 2026-11-25 ---------- */
+/* Niente scorrimento orizzontale: i telefoni laterali del carosello sbordavano e il telefono allargava la pagina (intro fuori centro) */
+html, body { overflow-x: clip; }
+.carousel { overflow-x: clip; overflow-y: visible; }
+/* «Parliamone» in testata: dopo il tocco resta :hover e la scritta diventava verde su verde */
+.site-nav .btn, .site-nav .btn:hover, .site-nav .btn:focus, .site-nav .btn:active, .site-nav .btn:visited { color: var(--btn-fg); }
+/* Ancore: l'inizio della sezione arriva subito sotto la testata */
+html { scroll-padding-top: var(--header-h, 73px); }
+section[id] { scroll-margin-top: 0; }
 </style>
 </head>
 <body>
@@ -1100,7 +1110,7 @@ main:focus { outline: none; }
       <div class="piloti-grid">
         <div class="piloti-left">
         <div class="narrator">
-          <img src="assets/mascotte-brunelleschi.webp" alt="Filippo Brunelleschi, il narratore del percorso di Vicopisano" width="700" height="700">
+          <img id="vs-mascot" src="assets/brunelleschi/B.webp" alt="Filippo Brunelleschi, il narratore del percorso di Vicopisano" width="400" height="400">
           <p><strong>A raccontare è Filippo Brunelleschi</strong>, l'architetto che nel 1435 trasformò Vicopisano in fortezza.</p>
         </div>
       </div>
@@ -1208,7 +1218,7 @@ main:focus { outline: none; }
 
 <footer class="site-footer site-footer--legal">
   <div class="wrap site-footer__inner">
-    <p>Travel Podcasting è un progetto di Iacopo Piccaluga e Pietro Balestri, libero professionista<br>
+    <p>Travel Podcasting è un progetto di Pietro Balestri e Iacopo Piccaluga<br>
       P.IVA 02589890504 · Via Alessandro Volta 20, 56017 Ghezzano, San Giuliano Terme (PI)</p>
     <nav aria-label="Note legali">
       <a href="privacy.html">Privacy e cookie</a>
@@ -1216,6 +1226,6 @@ main:focus { outline: none; }
   </div>
 </footer>
 
-<script src="landing.js?v=20261125-a11y"></script>
+<script src="landing.js?v=20261125-mobile"></script>
 </body>
 </html>

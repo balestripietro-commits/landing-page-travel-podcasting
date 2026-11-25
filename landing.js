@@ -110,6 +110,34 @@ attivaModulo();
   function paint(){var p=a.duration?a.currentTime/a.duration*100:0;bar.style.width=p+'%';dot.style.left=p+'%';ring.style.setProperty('--p',(p*3.6)+'deg');cur.textContent=fmt(a.currentTime);seek.setAttribute('aria-valuenow',Math.round(p));seek.setAttribute('aria-valuetext',fmt(a.currentTime)+(a.duration?' di '+fmt(a.duration):''))}
   function reset(){dur.textContent='--:--';paint()}
   a.src=sel.value;
+  /* Brunelleschi parla: bocca sincronizzata con i tempi di Rhubarb Lip Sync.
+     Per qualsiasi audio messo nel player basta il file assets/cues/<nome-audio>.json
+     (output JSON di rhubarb, anche compatto [inizio, fine, bocca]); se manca, la bocca resta chiusa. */
+  var masc=document.getElementById('vs-mascot'), cues=[], ci=0, raf=0, frame='B', cueCache={};
+  var FR={}; 'ABCDEFGHX'.split('').forEach(function(k){FR[k]='assets/brunelleschi/'+k+'.webp'});
+  function preload(){ if(preload.done) return; preload.done=1; Object.keys(FR).forEach(function(k){var im=new Image(); im.src=FR[k];}); }
+  function setFrame(k){ if(!FR[k]) k='B'; if(k===frame||!masc) return; frame=k; masc.src=FR[k]; }
+  function cuePath(src){ var f=(src||'').split('?')[0].split('/').pop(); return f?'assets/cues/'+f.replace(/\.[^.]+$/,'')+'.json':''; }
+  function loadCues(src){
+    var path=cuePath(src); cues=[]; ci=0; if(!path) return;
+    if(cueCache[path]){ cues=cueCache[path]; return; }
+    fetch(path).then(function(r){ return r.ok?r.json():null; }).then(function(d){
+      var list=(d&&d.mouthCues||[]).map(function(c){ return Array.isArray(c)?c:[c.start,c.end,c.value]; });
+      cueCache[path]=list; if(cuePath(a.currentSrc||a.src)===path){ cues=list; ci=0; }
+    }).catch(function(){ cueCache[path]=[]; });
+  }
+  function cueAt(t){
+    if(!cues.length) return 'B';
+    while(ci<cues.length-1 && t>=cues[ci][1]) ci++;
+    while(ci>0 && t<cues[ci][0]) ci--;
+    var c=cues[ci]; return (t>=c[0] && t<c[1]) ? c[2] : 'B';
+  }
+  function tick(){ if(a.paused||a.ended){ setFrame('B'); raf=0; return; } setFrame(cueAt(a.currentTime)); raf=requestAnimationFrame(tick); }
+  a.addEventListener('play',function(){ preload(); if(!raf) raf=requestAnimationFrame(tick); });
+  a.addEventListener('pause',function(){ setFrame('B'); });
+  a.addEventListener('seeked',function(){ ci=0; });
+  a.addEventListener('loadstart',function(){ loadCues(a.currentSrc||a.src); });
+  loadCues(a.src);
   sel.addEventListener('change',function(){
     var o=sel.options[sel.selectedIndex]; a.pause(); a.src=o.value; reset();
     name.textContent=o.dataset.name; name.lang=o.dataset.lang; name.dir=o.dataset.dir; var cd=document.getElementById('vs-code'); if(cd) cd.textContent=({zh:'中文'})[o.dataset.lang]||o.dataset.lang.toUpperCase(); a.play();
@@ -157,4 +185,10 @@ attivaModulo();
   track.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
   show(1);
+})();
+
+/* Altezza reale della testata (cambia con la tacca dell'iPhone): le ancore portano l'inizio della sezione subito sotto */
+(function(){var h=document.querySelector('.site-header'); if(!h) return;
+  function set(){ document.documentElement.style.setProperty('--header-h', Math.round(h.getBoundingClientRect().height)+'px'); }
+  set(); window.addEventListener('resize', set); if(window.ResizeObserver) new ResizeObserver(set).observe(h);
 })();
