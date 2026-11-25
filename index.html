@@ -964,6 +964,12 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
   .problem__vis .problem__people { grid-template-columns: repeat(6, 34px); }
   .problem__vis .problem__people .who svg { height: 84px !important; }
 }
+
+/* ---------- accessibilità: link per saltare al contenuto, visibile solo con la tastiera ---------- */
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 10000; background: #245c52; color: #fff8ef; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: top .15s; }
+.skip-link:focus { top: 12px; outline: 3px solid #e8c36d; outline-offset: 2px; }
+main:focus { outline: none; }
+.field input[aria-invalid="true"] { border-color: #b3261e !important; box-shadow: 0 0 0 2px rgba(179,38,30,.25); }
 </style>
 </head>
 <body>
@@ -992,6 +998,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
   </defs>
 </svg>
 
+<a class="skip-link" href="#top">Vai al contenuto</a>
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="#top" aria-label="Travel Podcasting, vai all'inizio">
@@ -1007,7 +1014,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
   </div>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
   <section class="hero">
     <div class="wrap">
       <div class="hero__grid">
@@ -1102,7 +1109,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
         <div class="vs__line">
           <div class="vs__play" id="vs-ring" style="--p:0deg"><button class="vs__btn" id="vs-play" type="button" aria-label="Ascolta"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button></div>
           <span class="vs__t" id="vs-cur">0:00</span>
-          <div class="vs__seek" id="vs-seek" role="slider" tabindex="0" aria-label="Posizione dell'audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="vs__track"><span id="vs-bar" style="width:0%"></span><i id="vs-dot" style="left:0%"></i></div></div>
+          <div class="vs__seek" id="vs-seek" role="slider" tabindex="0" aria-label="Posizione dell'audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0:00"><div class="vs__track"><span id="vs-bar" style="width:0%"></span><i id="vs-dot" style="left:0%"></i></div></div>
           <span class="vs__t" id="vs-dur">--:--</span>
         </div>
         <div class="vs__lang"><span class="vs__ic" aria-hidden="true">文A</span><span class="vs__code" id="vs-code">IT</span><i class="vs__chev" aria-hidden="true"></i><select class="vs__select" id="vs-select" aria-label="Lingua dell'audio"><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</option></select></div>
@@ -1209,6 +1216,6 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
   </div>
 </footer>
 
-<script src="landing.js?v=20261125-csp"></script>
+<script src="landing.js?v=20261125-a11y"></script>
 </body>
 </html>

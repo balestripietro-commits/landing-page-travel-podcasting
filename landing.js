@@ -31,20 +31,13 @@ function attivaModulo() {
     const email = campo("email").toLowerCase();
     const consenso = dati.get("consent") === "on";
 
-    if (!nome || !ente) {
-      mostraNota(nota, "Scrivete il vostro nome e il Comune o l'ente.", "error");
-      return;
-    }
+    ["name", "ente", "email", "consent"].forEach((k) => modulo.elements[k].removeAttribute("aria-invalid"));
+    const errore = (campo, testo) => { const el = modulo.elements[campo]; el.setAttribute("aria-invalid", "true"); el.setAttribute("aria-describedby", "form-note"); mostraNota(nota, testo, "error"); el.focus(); };
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      mostraNota(nota, "Controllate l'indirizzo email.", "error");
-      return;
-    }
-
-    if (!consenso) {
-      mostraNota(nota, "Serve la spunta sul consenso per poter rispondere.", "error");
-      return;
-    }
+    if (!nome) { errore("name", "Scrivete il vostro nome e cognome."); return; }
+    if (!ente) { errore("ente", "Scrivete il Comune o l'ente."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { errore("email", "Controllate l'indirizzo email."); return; }
+    if (!consenso) { errore("consent", "Serve la spunta sul consenso per poter rispondere."); return; }
 
     if (!ENDPOINT_CONTATTI) {
       mostraNota(nota, "Il modulo non è ancora collegato: riprovate tra poco.", "error");
@@ -114,7 +107,7 @@ attivaModulo();
   var a=new Audio(); a.preload='metadata';
   var sel=document.getElementById('vs-select'), name=document.getElementById('vs-name'), bar=document.getElementById('vs-bar'), dot=document.getElementById('vs-dot'), play=document.getElementById('vs-play'), ring=document.getElementById('vs-ring'), cur=document.getElementById('vs-cur'), dur=document.getElementById('vs-dur'), seek=document.getElementById('vs-seek');
   function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
-  function paint(){var p=a.duration?a.currentTime/a.duration*100:0;bar.style.width=p+'%';dot.style.left=p+'%';ring.style.setProperty('--p',(p*3.6)+'deg');cur.textContent=fmt(a.currentTime);seek.setAttribute('aria-valuenow',Math.round(p))}
+  function paint(){var p=a.duration?a.currentTime/a.duration*100:0;bar.style.width=p+'%';dot.style.left=p+'%';ring.style.setProperty('--p',(p*3.6)+'deg');cur.textContent=fmt(a.currentTime);seek.setAttribute('aria-valuenow',Math.round(p));seek.setAttribute('aria-valuetext',fmt(a.currentTime)+(a.duration?' di '+fmt(a.duration):''))}
   function reset(){dur.textContent='--:--';paint()}
   a.src=sel.value;
   sel.addEventListener('change',function(){
@@ -122,8 +115,8 @@ attivaModulo();
     name.textContent=o.dataset.name; name.lang=o.dataset.lang; name.dir=o.dataset.dir; var cd=document.getElementById('vs-code'); if(cd) cd.textContent=({zh:'中文'})[o.dataset.lang]||o.dataset.lang.toUpperCase(); a.play();
   });
   play.addEventListener('click',function(){ if(a.paused) a.play(); else a.pause(); });
-  a.addEventListener('play',function(){box.classList.add('is-playing')});
-  a.addEventListener('pause',function(){box.classList.remove('is-playing')});
+  a.addEventListener('play',function(){box.classList.add('is-playing');play.setAttribute('aria-label','Pausa')});
+  a.addEventListener('pause',function(){box.classList.remove('is-playing');play.setAttribute('aria-label','Ascolta')});
   a.addEventListener('ended',function(){box.classList.remove('is-playing');a.currentTime=0;paint()});
   a.addEventListener('loadedmetadata',function(){dur.textContent=fmt(a.duration)});
   a.addEventListener('timeupdate',paint);
