@@ -16,7 +16,7 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--crema); color: var(--ink); font: 400 1.05rem/1.65 "Petrona", Georgia, serif; }
 .wrap { width: min(760px, 100% - 2.5rem); margin-inline: auto; }
 header { background: var(--crema); border-bottom: 1px solid var(--salvia); padding: 1rem 0; }
-header a { display: inline-flex; align-items: center; gap: .6rem; color: var(--verde); font: 600 .95rem system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-decoration: none; }
+header a { display: inline-flex; align-items: center; gap: .6rem; color: var(--verde); font: 600 .95rem "Petrona", Georgia, serif; text-decoration: none; }
 header img { height: 36px; width: auto; }
 main { padding: 2.5rem 0 3.5rem; }
 h1 { font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.1; color: var(--verde-scuro); margin: 0 0 .5rem; }
@@ -26,14 +26,14 @@ ul { padding-left: 1.3rem; }
 li + li { margin-top: .35rem; }
 a { color: var(--verde); font-weight: 600; text-underline-offset: 3px; }
 a:focus-visible { outline: 3px solid #7d4fe0; outline-offset: 3px; border-radius: 4px; }
-.meta { font: 500 .9rem system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #3d4a46; }
+.meta { font: 500 .9rem "Petrona", Georgia, serif; color: #3d4a46; }
 .box { background: var(--salvia); border-radius: 20px; padding: 1.1rem 1.3rem; margin: 1.4rem 0; }
 .box p:last-child { margin: 0; }
 table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: .97rem; }
 th, td { text-align: left; vertical-align: top; padding: .55rem .6rem; border-bottom: 1px solid var(--salvia); }
-th { font: 700 .85rem system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--verde-scuro); }
+th { font: 700 .85rem "Petrona", Georgia, serif; color: var(--verde-scuro); }
 @media (max-width: 600px) { table, thead, tbody, tr, th, td { display: block; } thead { display: none; } td { border: 0; padding: .15rem 0; } tr { border-bottom: 1px solid var(--salvia); padding: .6rem 0; } td:first-child { font-weight: 700; } }
-footer { background: var(--verde-scuro); color: rgba(255,248,239,.88); padding: 1.6rem 0; font: 400 .88rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+footer { background: var(--verde-scuro); color: rgba(255,248,239,.88); padding: 1.6rem 0; font: 400 .88rem/1.6 "Petrona", Georgia, serif; }
 footer a { color: #e8c36d; }
 </style>
 </head>
@@ -80,11 +80,14 @@ footer a { color: #e8c36d; }
   <h2 id="cookie">Cookie e memoria del browser</h2>
   <p>I siti non installano cookie di profilazione o di statistica, quindi non vi chiediamo un consenso con un banner. Usano solo la memoria locale del browser (<em>localStorage</em>) per funzioni che avete scelto voi:</p>
   <ul>
-    <li>la lingua e le preferenze di lettura (dimensione del testo, velocità dell'audio);</li>
-    <li>le tappe già ascoltate, per mostrarvi quante ve ne mancano;</li>
+    <li>la lingua scelta e la dimensione del testo;</li>
+    <li>l'ultima tappa aperta e le tappe già ascoltate, per riprendere da dove eravate e mostrarvi quante ve ne mancano;</li>
     <li>l'animazione di apertura già vista, per non mostrarvela di nuovo.</li>
   </ul>
   <p>Queste informazioni restano sul vostro dispositivo e non ci vengono inviate. Potete cancellarle in qualsiasi momento dalle impostazioni del browser (cancellazione dei dati dei siti).</p>
+
+  <h2 id="posizione">Posizione</h2>
+  <p>Nei percorsi dei Comuni, solo se toccate il pulsante «Trova la mia posizione», il browser vi chiede il permesso di usare la posizione per mostrarla sulla mappa. La posizione resta sul vostro dispositivo: non la riceviamo e non la conserviamo.</p>
 
   <h2 id="voci-ai">Voci generate con l'intelligenza artificiale</h2>
   <p>Le voci dei narratori, come Filippo Brunelleschi a Vicopisano e Padre Gherardo a Calci, sono generate con l'intelligenza artificiale. I personaggi parlano in prima persona per raccontare la storia dei luoghi: sono una ricostruzione narrativa, non registrazioni di persone reali.</p>
