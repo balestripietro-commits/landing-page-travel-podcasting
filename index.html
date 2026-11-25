@@ -8,6 +8,15 @@
 <meta name="theme-color" content="#245c52">
 <link rel="icon" type="image/svg+xml" href="assets/segno.svg">
 <link rel="preload" href="assets/fonts/Petrona.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href="https://balestripietro-commits.github.io/landing-page-travel-podcasting/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Travel Podcasting · L'AI che dà voce ai luoghi">
+<meta property="og:description" content="Percorsi audio che raccontano un borgo mentre lo si attraversa. Si aprono dal telefono, senza app.">
+<meta property="og:url" content="https://balestripietro-commits.github.io/landing-page-travel-podcasting/">
+<meta property="og:image" content="https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/hero-vicopisano.webp">
+<meta property="og:locale" content="it_IT">
+<script>/* L'animazione di apertura si vede solo alla prima visita */
+try { if (localStorage.getItem("tp-landing-intro")) document.documentElement.classList.add("no-intro"); else localStorage.setItem("tp-landing-intro", "1"); } catch (e) { /* senza memoria locale: si vede ogni volta */ }</script>
 <style>
 /* Travel Podcasting — landing page.
    Stessa identità dei siti dei borghi: segno M-2, verde #245C52, oro #E8C36D,
@@ -808,6 +817,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 @keyframes introR { from { transform: translateX(-52px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 @keyframes introOut { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+.no-intro .intro { display: none; }
 /* ---------- un solo audio, lingua a tendina (tutte le larghezze) ---------- */
 .voice-single { display: block; max-width: 720px; margin: 1.5rem auto 0; }
 .vs__select { appearance: none; -webkit-appearance: none; width: 100%; font: 600 1rem var(--tp-font-sans); padding: .75rem 2.6rem .75rem 1.1rem; border-radius: 999px; border: 1.5px solid #245c52; background: #fff8ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23245c52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.1rem center; color: #245c52; cursor: pointer; }
@@ -815,6 +825,23 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
 .vs__label { margin-top: 1rem; }
 .voices { display: none !important; }
 .voice-single ~ .story__cta { margin-top: 2rem; text-align: center; }
+/* ---------- il narratore: Brunelleschi ---------- */
+.narrator { display: flex; align-items: center; gap: 1.1rem; margin-top: 1.4rem; }
+.narrator img { flex: 0 0 auto; width: 112px; height: 112px; object-fit: contain; filter: drop-shadow(0 8px 14px rgba(0,0,0,.18)); }
+.narrator p { margin: 0; font-family: var(--tp-font-editorial); font-size: 1.08rem; line-height: 1.45; color: var(--tp-color-ink); }
+.narrator strong { color: var(--heading); }
+.vs__ai { margin: 1rem 0 0; font: 500 .82rem var(--tp-font-sans); color: rgba(255,248,239,.9); }
+@media (max-width: 520px) { .narrator img { width: 88px; height: 88px; } .narrator p { font-size: 1rem; } }
+/* ---------- piè di pagina con i dati del titolare ---------- */
+.site-footer--legal { padding-block: var(--tp-space-6); }
+.site-footer--legal .site-footer__inner { align-items: flex-start; }
+.site-footer--legal p { margin: 0; line-height: 1.6; font-family: var(--tp-font-sans); font-size: .88rem; }
+.site-footer--legal nav { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-family: var(--tp-font-sans); }
+.site-footer--legal a { text-decoration: underline; text-underline-offset: 3px; }
+.consent a { color: var(--heading); font-weight: 600; text-decoration: underline; }
+/* ---------- contrasti (WCAG AA): viola e oro più scuri quando sono testo su fondo chiaro ---------- */
+#piloti .eyebrow, #team .eyebrow, #team .person__link, #problemi .stat__text { color: #6a3fd0 !important; }
+#piloti .gq { color: #8f6512; }
 </style>
 </head>
 <body>
@@ -934,7 +961,11 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
         <div class="section__head">
         <p class="eyebrow">Un esempio da ascoltare</p>
         <h2>Prova la prima tappa di <span class="gq">&laquo;</span>Vicopisano<span class="gq">&raquo;</span> in</h2>
-        <p class="lang-big">70+ lingue</p>
+        <p class="lang-big">9 lingue</p>
+        <div class="narrator">
+          <img src="assets/mascotte-brunelleschi.webp" alt="Filippo Brunelleschi, il narratore del percorso di Vicopisano" width="700" height="700" loading="lazy">
+          <p><strong>A raccontare è Filippo Brunelleschi.</strong> L'architetto che nel 1435 trasformò Vicopisano in fortezza accompagna il visitatore tappa per tappa, con la sua voce e il suo carattere.</p>
+        </div>
       </div>
         <div class="voice-single" id="voice-single">
         <p class="vs__name" id="vs-name" lang="it" dir="ltr">Benvenuti a Vicopisano</p>
@@ -945,6 +976,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
           <span class="vs__t" id="vs-dur">--:--</span>
         </div>
         <div class="vs__lang"><span class="vs__ic" aria-hidden="true">文A</span><span class="vs__code" id="vs-code">IT</span><i class="vs__chev" aria-hidden="true"></i><select class="vs__select" id="vs-select" aria-label="Lingua dell'audio"><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/it/01_torre_quattro_porte.mp3" data-lang="it" data-dir="ltr" data-name="Benvenuti a Vicopisano">Italiano</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/en/01_torre_quattro_porte_en.mp3" data-lang="en" data-dir="ltr" data-name="Welcome to Vicopisano">English</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/es/01_torre_quattro_porte_es.mp3" data-lang="es" data-dir="ltr" data-name="Bienvenidos a Vicopisano">Español</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/fr/01_torre_quattro_porte_fr.mp3" data-lang="fr" data-dir="ltr" data-name="Bienvenue à Vicopisano">Français</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/de/01_torre_quattro_porte_de.mp3" data-lang="de" data-dir="ltr" data-name="Willkommen in Vicopisano">Deutsch</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/pt/01_torre_quattro_porte_pt.mp3" data-lang="pt" data-dir="ltr" data-name="Bem-vindos a Vicopisano">Português</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ru/01_torre_quattro_porte_ru.mp3" data-lang="ru" data-dir="ltr" data-name="Добро пожаловать в Викопизано">Русский</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/zh/01_torre_quattro_porte_zh.mp3" data-lang="zh" data-dir="ltr" data-name="欢迎来到维科皮萨诺">中文</option><option value="https://balestripietro-commits.github.io/vicopisano-travel-podcasting/audio/ar/01_torre_quattro_porte_ar.mp3" data-lang="ar" data-dir="rtl" data-name="مرحبًا بكم في فيكوبيزانو">العربية</option></select></div>
+        <p class="vs__ai">Voce di Brunelleschi generata con l'intelligenza artificiale.</p>
       </div>
       </div>
     </section>
@@ -997,7 +1029,7 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
           </label>
           <label class="consent">
             <input type="checkbox" name="consent" required />
-            <span>Acconsento a essere ricontattato su questo progetto.</span>
+            <span>Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento a essere ricontattato su questo progetto.</span>
           </label>
           <button class="btn" type="submit">Invia il contatto</button>
           <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
@@ -1007,7 +1039,17 @@ button:focus:not(:focus-visible), a:focus:not(:focus-visible), [tabindex]:focus:
   </section>
 </main>
 
-<footer class="site-footer site-footer--thin" aria-hidden="true"></footer>
+<footer class="site-footer site-footer--legal">
+  <div class="wrap site-footer__inner">
+    <p>Travel Podcasting è un progetto di Pietro Balestri, libero professionista<br>
+      P.IVA 02589890504 · Via Alessandro Volta 20, 56017 Ghezzano, San Giuliano Terme (PI)<br>
+      <a href="mailto:balestripietro@gmail.com">balestripietro@gmail.com</a></p>
+    <nav aria-label="Note legali">
+      <a href="privacy.html">Privacy e cookie</a>
+      <a href="privacy.html#voci-ai">Voci generate con l'AI</a>
+    </nav>
+  </div>
+</footer>
 
 <script>
     // Landing page di Travel Podcasting: comparsa allo scorrimento e invio del contatto.
