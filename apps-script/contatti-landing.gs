@@ -70,7 +70,7 @@ function avvisaDiscord(c) {
   var utente = (menzione.match(/\d{5,}/) || [])[0];
   var opzioni = {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
-    payload: JSON.stringify({ username: 'Bruno', avatar_url: AVATAR_BRUNO, content: testo.slice(0, 1900), allowed_mentions: { users: utente ? [utente] : [] } })
+    payload: JSON.stringify({ username: 'Bruno', content: testo.slice(0, 1900), allowed_mentions: { users: utente ? [utente] : [] } })
   };
   var r = UrlFetchApp.fetch(url + (url.indexOf('?') < 0 ? '?wait=true' : '&wait=true'), opzioni);
   if (r.getResponseCode() >= 300) { Utilities.sleep(1500); r = UrlFetchApp.fetch(url, opzioni); }
@@ -79,7 +79,6 @@ function avvisaDiscord(c) {
 }
 
 var DESTINATARI = 'balestripietro@gmail.com,iacopopicca@gmail.com';
-var AVATAR_BRUNO = 'https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/bruno-avatar.png';
 var LOGO = 'https://balestripietro-commits.github.io/landing-page-travel-podcasting/assets/logo-orizzontale-su-scuro.png';   // Pietro e Iacopo; NOTIFICA_EMAIL lo sostituisce
 
 function esc(t) { return String(t || '').replace(/[&<>"]/g, function (x) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[x]; }); }
@@ -116,17 +115,7 @@ function avvisaEmail(c) {
   });
 }
 
-// Da lanciare una volta a mano: salva nel webhook di Discord il nome «Bruno» e la sua foto
-// (così Discord la conserva e non serve un'immagine pubblica a ogni messaggio).
-function impostaWebhookBruno() {
-  var url = PropertiesService.getScriptProperties().getProperty('DISCORD_WEBHOOK_URL');
-  var img = UrlFetchApp.fetch(AVATAR_BRUNO).getBlob();
-  var r = UrlFetchApp.fetch(url, {
-    method: 'patch', contentType: 'application/json', muteHttpExceptions: true,
-    payload: JSON.stringify({ name: 'Bruno', avatar: 'data:image/png;base64,' + Utilities.base64Encode(img.getBytes()) })
-  });
-  console.log('Webhook: risposta ' + r.getResponseCode());
-}
+// Nome e foto di Bruno sono salvati nel webhook di Discord (impostati una volta il 25/11/2026): non servono immagini pubbliche.
 
 // Prova da Apps Script: crea il Foglio (se manca) e manda su Discord un contatto finto, segnato come prova.
 function prova() {
