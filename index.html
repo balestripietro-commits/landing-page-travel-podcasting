@@ -1006,11 +1006,11 @@ section[id] { scroll-margin-top: 0; }
   .sbar__lab { font: 500 1.02rem/1.3 var(--tp-font-editorial); color: #173f39; margin-bottom: 8px; }
   .sbar__num { font-weight: 700; font-size: 1.5rem; color: #245c52; margin-right: .1em; }
   .sbar--gold .sbar__num { color: #8f6512; }
-  .sbar__track { position: relative; height: 14px; border-radius: 999px; background: rgba(36,92,82,.14); box-shadow: inset 0 0 0 1.5px rgba(36,92,82,.22); }
+  .sbar__track { position: relative; height: 14px; border-radius: 999px; background: #d9eee8; box-shadow: inset 0 0 0 1.5px rgba(36,92,82,.18); }
   .sbar__fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 999px; background: #245c52; transition: width 1.4s cubic-bezier(.65,0,.35,1); }
   .sbar__fill::after { content: ""; position: absolute; right: -9px; top: 50%; width: 18px; height: 18px; margin-top: -9px; border-radius: 50%; background: #e8c36d; box-shadow: 0 0 0 3px #f6e6b8; }
   .sbar--gold .sbar__fill { background: #e8c36d; min-width: 14px; }
-  .sbar--gold .sbar__fill::after { background: #245c52; }
+  .sbar--gold .sbar__fill::after { background: #e8c36d; box-shadow: 0 0 0 3px #245c52; }
   .sbar--gold .sbar__fill { transition-delay: .5s; }
   .sbar--five .sbar__track i { position: absolute; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; background: #f6e6b8; z-index: 1; }
   .sbar--five .sbar__track i:nth-of-type(1) { left: 20%; } .sbar--five .sbar__track i:nth-of-type(2) { left: 40%; }
@@ -1274,6 +1274,6 @@ section[id] { scroll-margin-top: 0; }
   </div>
 </footer>
 
-<script src="landing.js?v=20261125-barre"></script>
+<script src="landing.js?v=20261126-brand"></script>
 </body>
 </html>
